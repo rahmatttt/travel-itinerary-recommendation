@@ -1,0 +1,1702 @@
+[
+    {
+        "page_num": 1,
+        "place_name": "Hotel Tentrem Yogyakarta",
+        "rating": 4.8,
+        "reviews": 13080,
+        "place_id": "ChIJ4S1NXUhYei4RBvAQ2FBkmFk",
+        "address": "Jl. P. Mangkubumi No.72A, Cokrodiningratan, Kec. Jetis, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55233, Indonesia",
+        "phone": "+62 274 6415555",
+        "website": "https://yogyakarta.hoteltentrem.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58485d4d2de1%3A0x59986450d810f006&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58485d4d2de1%3A0x59986450d810f006&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7738153,
+            "longitude": 110.3684775
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNFsnG3rSGQbAa5ByRTbRs4CiX30OCrg79GvZbQ=w154-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "The Phoenix Hotel Yogyakarta - MGallery Collection",
+        "rating": 4.6,
+        "reviews": 4606,
+        "place_id": "ChIJ0-qu-P8_eC4RTeE6Zrd6x7k",
+        "address": "Jl. Jend. Sudirman No.9, Cokrodiningratan, Jetis, Yogyakarta City, Special Region of Yogyakarta 55233, Indonesia",
+        "phone": "+62 274 566617",
+        "website": "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=5451&merchantid=seo-maps-ID-5451&sourceid=aw-cen&utm_medium=seo+maps&utm_source=google+Maps&utm_campaign=seo+maps&y_source=1_MTUzNTkzNjUtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e783ffff8aeead3%3A0xb9c77ab7663ae14d&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e783ffff8aeead3%3A0xb9c77ab7663ae14d&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.782622699999999,
+            "longitude": 110.36850659999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipMrQDwh-V9_PQ186Iu9tL0TurfPC8h8KSkjo0Zn=w138-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "Novotel Suites Yogyakarta Malioboro",
+        "rating": 4.7,
+        "reviews": 1856,
+        "place_id": "ChIJobhHqT5Zei4RepakgcVisA4",
+        "address": "Jl. Malioboro No.52 - 58, Suryatmajan, Danurejan, Yogyakarta City, Special Region of Yogyakarta 55001, Indonesia",
+        "phone": "+62 274 5018888",
+        "website": "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=A088&merchantid=seo-maps-ID-A088&sourceid=aw-cen&utm_medium=seo+maps&utm_source=google+Maps&utm_campaign=seo+maps&y_source=1_MTUzNjE2NzUtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a593ea947b8a1%3A0xeb062c581a4967a&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a593ea947b8a1%3A0xeb062c581a4967a&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7931709,
+            "longitude": 110.36656289999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipO5E5aBWecDvbpbtCu84Bfjpoth7Rfb0i1D3wjl=w138-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "Yogyakarta Marriott Hotel",
+        "rating": 4.7,
+        "reviews": 9390,
+        "place_id": "ChIJQcATF6NZei4RyEqbloRBch0",
+        "address": "Jl. Ring Road Utara, Kaliwaru, Condongcatur, Depok, Sleman Regency, Special Region of Yogyakarta 55283, Indonesia",
+        "phone": "+62 274 6000888",
+        "website": "https://www.marriott.com/en-us/hotels/jogmc-yogyakarta-marriott-hotel/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59a31713c041%3A0x1d724184969b4ac8&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59a31713c041%3A0x1d724184969b4ac8&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7615123,
+            "longitude": 110.3984402
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOn4kJqIrdZsRVoCRlVeMDPkjeqJ3uV-ILty_Xu=w137-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "Meli\u00e1 Purosani Yogyakarta",
+        "rating": 4.6,
+        "reviews": 10447,
+        "place_id": "ChIJRe6mm4dXei4RoBWOaorKuxU",
+        "address": "Jl. Mayor Suryotomo No.31, Ngupasan, Gondomanan, Yogyakarta City, Special Region of Yogyakarta 55122, Indonesia",
+        "phone": "+62 274 589521",
+        "website": "https://www.melia.com/en/hotels/indonesia/yogyakarta/melia-purosani-yogyakarta?utm_medium=organic&utm_source=uberall&utm_content=dynamic",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57879ba6ee45%3A0x15bbca8a6a8e15a0&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57879ba6ee45%3A0x15bbca8a6a8e15a0&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7973538,
+            "longitude": 110.3689898
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipO3Day15-7xykiQv_pNMErMZHXjmnZ32kmrBXTK=w163-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "\u00e9L Hotel Royale Yogyakarta Malioboro",
+        "rating": 4.5,
+        "reviews": 2050,
+        "place_id": "ChIJq97Yez5Zei4RdqFjHU-wVuo",
+        "address": "Jl. Dagen No.6, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 5014111",
+        "website": "https://yogyakarta.el-hotels.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a593e7bd8deab%3A0xea56b04f1d63a176&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a593e7bd8deab%3A0xea56b04f1d63a176&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7938589,
+            "longitude": 110.3649049
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/Fwl7ggvnjye-iNModi3Xp6xOXL18x8sOWcxO7w7SaKaCnORQXxirq5l-A9B9LASXe9fP_5eWER8KcBedJ-NmGmcsAZI-yGDocCAB1_sw2vd5m_WG91u7-Jox3fDqHmT0S-RX4sW7Yy0lZph5JwMyBn_gVKSVHVk=w138-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "Swiss-Belboutique Yogyakarta",
+        "rating": 4.8,
+        "reviews": 7760,
+        "place_id": "ChIJneHHSzJYei4R0YH1qb4BK1Y",
+        "address": "Jl. Jend. Sudirman No.69, Terban, Gondokusuman, Yogyakarta City, Special Region of Yogyakarta 55224, Indonesia",
+        "phone": "+62 274 2921888",
+        "website": "http://www.swiss-belboutiqueyogyakarta.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58324bc7e19d%3A0x562b01bea9f581d1&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58324bc7e19d%3A0x562b01bea9f581d1&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.782607499999999,
+            "longitude": 110.37423779999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipMGluo5PAesx8ZE-U1QJ1zxoB76DRE2GX7E4P_f=w138-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "Aveta Hotel Malioboro",
+        "rating": 4.4,
+        "reviews": 1103,
+        "place_id": "ChIJo6UU5cZZei4RiP74NgSWyr4",
+        "address": "Jl. Malioboro No.42, Suryatmajan, Danurejan, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 815-6792-0999",
+        "website": "https://avetahotelmalioboro.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59c6e514a5a3%3A0xbeca960436f8fe88&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59c6e514a5a3%3A0xbeca960436f8fe88&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7938902,
+            "longitude": 110.36581659999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPf1Pogod-In3Dwmu6bznA4lGuQvGgy4R2UW_6y=w80-h142-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "Gaia Cosmo Hotel",
+        "rating": 4.6,
+        "reviews": 4875,
+        "place_id": "ChIJh4lcYWNXei4RRLYnb69fzBs",
+        "address": "Jl. Ipda Tut Harsono No.16, Muja Muju, Umbulharjo, Yogyakarta City, Special Region of Yogyakarta 55165, Indonesia",
+        "phone": "+62 274 5307777",
+        "website": "https://gaiacosmo.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5763615c8987%3A0x1bcc5faf6f27b644&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5763615c8987%3A0x1bcc5faf6f27b644&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7989469,
+            "longitude": 110.3929241
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/Eqse5uyGGPeI5v5tTAAh1XwjHYs6Ti5nFff1bggfpCg9daaK3hRdjPyvVNfu9JQaFnCr01jv-5xqGRFCXlCZSfkbltJn5eHXSwxaBS4vier9xFgZqKTAlaDv_qYvq71tql-XKm5myPoV45O7qlpTwSS9gdsMPG4=w80-h109-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "Grand Mercure Yogyakarta Adi Sucipto",
+        "rating": 4.6,
+        "reviews": 9535,
+        "place_id": "ChIJT56PPsVZei4RFwLFcr_CjkI",
+        "address": "Jl. Laksda Adisucipto No.80, Demangan Baru, Caturtunggal, Sleman, Yogyakarta City, Special Region of Yogyakarta 55281, Indonesia",
+        "phone": "+62 274 2924000",
+        "website": "https://all.accor.com/hotel/9608/index.en.shtml?utm_campaign=seo+maps&utm_medium=seo+maps&utm_source=google+Maps&y_source=1_MTUzNTgxMzktNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59c53e8f9e4f%3A0x428ec2bf72c50217&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59c53e8f9e4f%3A0x428ec2bf72c50217&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7837159,
+            "longitude": 110.3923981
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNuGDFjrIuaE4vcdhDSeV_71ycd7pfIc5znlWvE=w121-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "Malioboro Prime Hotel Yogyakarta",
+        "rating": 4.2,
+        "reviews": 1896,
+        "place_id": "ChIJXa__6SVYei4R8qGHzYzQOv4",
+        "address": "Jl. Ps. Kembang No.9, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 2922999",
+        "website": "http://www.malioboroprimehotel.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5825e9ffaf5d%3A0xfe3ad08ccd87a1f2&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5825e9ffaf5d%3A0xfe3ad08ccd87a1f2&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.790049,
+            "longitude": 110.36519
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipMtZlleqNPO1cPX0dS6c4cbIEyz1GgxreIW4cI0=w80-h120-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "Grand Zuri Malioboro Hotel",
+        "rating": 4.6,
+        "reviews": 8793,
+        "place_id": "ChIJPQ0CViVYei4RBdGvAjjyozw",
+        "address": "Jl. P. Mangkubumi No.18, Gowongan, Jetis, Yogyakarta City, Special Region of Yogyakarta 55232, Indonesia",
+        "phone": "+62 274 6429288",
+        "website": "http://www.zhmhotels.com/hotel/grand-zuri-malioboro-yogyakarta/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a582556020d3d%3A0x3ca3f23802afd105&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a582556020d3d%3A0x3ca3f23802afd105&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.787678,
+            "longitude": 110.36669839999999
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/FpfiymJFf5_8frt9LZzjFP2svzz9YN744yp4nTWI_m38fyYfG5IwOzjSYBj7Wh1P58FHlp7YycopmhYkDSLWkTqFU982BeofVnq6EKp_IjOZDibjw2PeFu0sV_MteB26UW3107L0VVyuxPRgjAvwj8i33oT34A=w80-h106-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "ARTOTEL Suites Bianti - Yogyakarta",
+        "rating": 4.7,
+        "reviews": 509,
+        "place_id": "ChIJ27t6zFVZei4RSKD2fJvHFRQ",
+        "address": "Jl. Urip Sumoharjo No.37, Klitren, Gondokusuman, Yogyakarta City, Special Region of Yogyakarta 55222, Indonesia",
+        "phone": "+62 274 566999",
+        "website": "https://artotelgroup.com/hotels/artotel-suites/bianti",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5955cc7abbdb%3A0x1415c79b7cf6a048&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5955cc7abbdb%3A0x1415c79b7cf6a048&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.782889399999999,
+            "longitude": 110.38191619999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipN5aJOuXtdfolzzDkfoQPTdOQq6l8ngbxAjRLKE=w163-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "Lynn Hotel By Horison",
+        "rating": 4.3,
+        "reviews": 3104,
+        "place_id": "ChIJOw8nKqVXei4RUHtwMmnHyCc",
+        "address": "Jl. Jogokaryan No.82, Mantrijeron, Yogyakarta City, Special Region of Yogyakarta 55143, Indonesia",
+        "phone": "+62 274 372500",
+        "website": "http://www.myhorison.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57a52a270f3b%3A0x27c8c76932707b50&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57a52a270f3b%3A0x27c8c76932707b50&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.824458699999999,
+            "longitude": 110.36685349999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipP-ruLlW12PfMvdrVh0_75UdGWV3WdYa7e6F8cg=w122-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "The Alana Hotel & Conference Center Malioboro",
+        "rating": 4.5,
+        "reviews": 10448,
+        "place_id": "ChIJNR0rk5dXei4RjLGsCbR4Z6A",
+        "address": "Jl. Mayjend Sutoyo No.52, Mantrijeron, Yogyakarta City, Special Region of Yogyakarta 55143, Indonesia",
+        "phone": "+62 274 4580111",
+        "website": "http://malioboro.alanahotels.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5797932b1d35%3A0xa06778b409acb18c&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5797932b1d35%3A0xa06778b409acb18c&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.8152832,
+            "longitude": 110.36558529999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipM-OsDTT9Wyp7s5pID-guJcw4oArGaHWrk0kBUQ=w163-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "The Manohara Hotel Yogyakarta",
+        "rating": 4.7,
+        "reviews": 1138,
+        "place_id": "ChIJp8ZBrzxZei4R_6qrAb0hex8",
+        "address": "Jl. Affandi No.35, Gejayan, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia",
+        "phone": "+62 274 550001",
+        "website": "http://themanoharahotelyogyakarta.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a593caf41c6a7%3A0x1f7b21bd01abaaff&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a593caf41c6a7%3A0x1f7b21bd01abaaff&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.774500499999999,
+            "longitude": 110.38917359999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipP-erD0aielO311ifZjonFbYdMmK-Sy-1AImdb2=w138-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "THE 1O1 Yogyakarta Tugu",
+        "rating": 4.6,
+        "reviews": 9018,
+        "place_id": "ChIJ48yT-C9Yei4RdAJEHppVvwg",
+        "address": "Jl. Margo Utomo No.103, Gowongan, Jetis, Yogyakarta City, Special Region of Yogyakarta 55233, Indonesia",
+        "phone": "+62 274 2920101",
+        "website": "https://www.phm-hotels.com/hotel/1O1YTG",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a582ff893cce3%3A0x8bf559a1e440274&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a582ff893cce3%3A0x8bf559a1e440274&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7841438,
+            "longitude": 110.3667813
+        },
+        "thumbnail": "//lh3.googleusercontent.com/proxy/fp_HTrwkpc4lEOOUOAj871CuUQaRkYBFvblfHXP8KfRy2FZPLpN5yLls-TNcsfxH3c5RaQczT5jD8eOkzCfD0T5VqwP1E2QuRlhnz7cqmSIS9TovNtbRvydkvTxj4dxmJMg8I05xGR4K7vDBBPXU5UlxzDOv578=w138-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "Patra Malioboro Hotel",
+        "rating": 4.8,
+        "reviews": 829,
+        "place_id": "ChIJxxcYkcpZei4Rc_rgJGN2PPw",
+        "address": "Sosrowijayan St No.35, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 5012177",
+        "website": "http://www.patra-jasa.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59ca911817c7%3A0xfc3c766324e0fa73&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59ca911817c7%3A0xfc3c766324e0fa73&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7917305,
+            "longitude": 110.3637213
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNk6_YWjeR4a1x3ZUVAMdl_ZoEJCAm9H9SAqMAU=w163-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "D'Senopati Malioboro Grand Hotel",
+        "rating": 4.4,
+        "reviews": 3125,
+        "place_id": "ChIJhRD9LYRXei4R8rA4JAYgclc",
+        "address": "Jl. Panembahan Senopati No.40, Prawirodirjan, Gondomanan, Yogyakarta City, Special Region of Yogyakarta 55121, Indonesia",
+        "phone": "+62 274 5011456",
+        "website": "https://dsenopatimalioboro.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57842dfd1085%3A0x577220062438b0f2&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57842dfd1085%3A0x577220062438b0f2&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.801747199999999,
+            "longitude": 110.37002779999999
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/T-wGGeVCH1yW_HjafKp26m7qc3-lZCk7h2R12dnXRcO3NF75aVCkOcIz9kAhcfAz_6cXsF13dnJ3YfTvX255xsmEE0tjlhs_yNGXM6yWxOeFoWSXZYBucv90xKFo_dUzbVnVuoT8GJD3kcdfeqlyKRt9oMLG-Q=w133-h92-k-no"
+    },
+    {
+        "page_num": 1,
+        "place_name": "Hotel Santika Premiere Jogja",
+        "rating": 4.6,
+        "reviews": 5902,
+        "place_id": "ChIJOTUz_jBYei4RuuBL4lX7g9Y",
+        "address": "Jl. Jend. Sudirman No.19, Cokrodiningratan, Jetis, Yogyakarta City, Special Region of Yogyakarta 55233, Indonesia",
+        "phone": "+62 274 563036",
+        "website": "https://mysantika.com/indonesia/jogja/hotel-santika-premiere-jogja",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5830fe333539%3A0xd683fb55e24be0ba&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5830fe333539%3A0xd683fb55e24be0ba&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7824228,
+            "longitude": 110.3697363
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipMkAtkN82rP2n6KoCB_hUqFZwr8oe2qulxa5e0C=w138-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "D'Senopati Malioboro Grand Hotel",
+        "rating": 4.4,
+        "reviews": 3125,
+        "place_id": "ChIJhRD9LYRXei4R8rA4JAYgclc",
+        "address": "Jl. Panembahan Senopati No.40, Prawirodirjan, Gondomanan, Yogyakarta City, Special Region of Yogyakarta 55121, Indonesia",
+        "phone": "+62 274 5011456",
+        "website": "https://dsenopatimalioboro.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57842dfd1085%3A0x577220062438b0f2&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57842dfd1085%3A0x577220062438b0f2&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.801747199999999,
+            "longitude": 110.37002779999999
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/T-wGGeVCH1yW_HjafKp26m7qc3-lZCk7h2R12dnXRcO3NF75aVCkOcIz9kAhcfAz_6cXsF13dnJ3YfTvX255xsmEE0tjlhs_yNGXM6yWxOeFoWSXZYBucv90xKFo_dUzbVnVuoT8GJD3kcdfeqlyKRt9oMLG-Q=w133-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Harper Malioboro Yogyakarta",
+        "rating": 4.6,
+        "reviews": 7562,
+        "place_id": "ChIJoWoQDDBYei4RoYS7prhy-Ms",
+        "address": "Jl. P. Mangkubumi No.52, Gowongan, Jetis, Yogyakarta City, Special Region of Yogyakarta 55232, Indonesia",
+        "phone": "+62 274 2920008",
+        "website": "http://malioboro.harperhotels.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58300c106aa1%3A0xcbf872b8a6bb84a1&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58300c106aa1%3A0xcbf872b8a6bb84a1&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.784761199999999,
+            "longitude": 110.36722999999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipN-mcXhvo5jsDaCYp9opNI9ICN6t2O3t6PsbwX6=w138-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Hotel New Saphir Yogyakarta",
+        "rating": 4.5,
+        "reviews": 4818,
+        "place_id": "ChIJt3t9Q8VZei4RkSgB98AtnvI",
+        "address": "Jl. Laksda Adisucipto No.38, Demangan, Gondokusuman, Yogyakarta City, Special Region of Yogyakarta 55221, Indonesia",
+        "phone": "+62 274 566222",
+        "website": "https://www.newsaphirhotel.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59c5437d7bb7%3A0xf29e2dc0f7012891&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59c5437d7bb7%3A0xf29e2dc0f7012891&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.783555,
+            "longitude": 110.391437
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPbfeA-1Rbs9Thy0JYNpUixX70FtVvZoMhUWBpS=w137-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "KJ Hotel Yogyakarta",
+        "rating": 4.5,
+        "reviews": 4428,
+        "place_id": "ChIJjy0LvKRXei4RN6FqiD1fiGk",
+        "address": "Jl. Parangtritis No.120, Mantrijeron, Yogyakarta City, Special Region of Yogyakarta 55143, Indonesia",
+        "phone": "+62 274 2872777",
+        "website": "http://www.kjhoteljogja.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57a4bc0b2d8f%3A0x69885f3d886aa137&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57a4bc0b2d8f%3A0x69885f3d886aa137&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.8224427,
+            "longitude": 110.3673455
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipP-KAxe0tDGDO6HyYgcC0TlFuoSG2l5B0vV-ac=w163-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Arte Hotel Malioboro",
+        "rating": 4.4,
+        "reviews": 1496,
+        "place_id": "ChIJ7yXdPyRYei4RqXpcbxDHKKo",
+        "address": "Jl. Ps. Kembang No.53, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 811-2821-550",
+        "website": "http://www.arte-hotel.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58243fdd25ef%3A0xaa28c7106f5c7aa9&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58243fdd25ef%3A0xaa28c7106f5c7aa9&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7899967,
+            "longitude": 110.3622553
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPE1YKOXqpk61-XX54Jp733z0FHtvVPjewJDWMk=w138-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Grand Zuri Malioboro Hotel",
+        "rating": 4.6,
+        "reviews": 8793,
+        "place_id": "ChIJPQ0CViVYei4RBdGvAjjyozw",
+        "address": "Jl. P. Mangkubumi No.18, Gowongan, Jetis, Yogyakarta City, Special Region of Yogyakarta 55232, Indonesia",
+        "phone": "+62 274 6429288",
+        "website": "http://www.zhmhotels.com/hotel/grand-zuri-malioboro-yogyakarta/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a582556020d3d%3A0x3ca3f23802afd105&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a582556020d3d%3A0x3ca3f23802afd105&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.787678,
+            "longitude": 110.36669839999999
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/FpfiymJFf5_8frt9LZzjFP2svzz9YN744yp4nTWI_m38fyYfG5IwOzjSYBj7Wh1P58FHlp7YycopmhYkDSLWkTqFU982BeofVnq6EKp_IjOZDibjw2PeFu0sV_MteB26UW3107L0VVyuxPRgjAvwj8i33oT34A=w80-h106-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "ibis Styles Yogyakarta",
+        "rating": 4.4,
+        "reviews": 5686,
+        "place_id": "ChIJRaT4JydYei4ReqQwjL7d95M",
+        "address": "Jl. Dagen No.109, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 588889",
+        "website": "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=7460&merchantid=seo-maps-ID-7460&sourceid=aw-cen&utm_medium=seo+maps&utm_source=google+Maps&utm_campaign=seo+maps&y_source=1_MTUzNjEwMDktNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a582727f8a445%3A0x93f7ddbe8c30a47a&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a582727f8a445%3A0x93f7ddbe8c30a47a&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7938979999999995,
+            "longitude": 110.3614602
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPUdL_pFnWajI3DkkVeUrLa-9RR0leYvopsHj-T=w122-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Patra Malioboro Hotel",
+        "rating": 4.8,
+        "reviews": 829,
+        "place_id": "ChIJxxcYkcpZei4Rc_rgJGN2PPw",
+        "address": "Sosrowijayan St No.35, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 5012177",
+        "website": "http://www.patra-jasa.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59ca911817c7%3A0xfc3c766324e0fa73&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59ca911817c7%3A0xfc3c766324e0fa73&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7917305,
+            "longitude": 110.3637213
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNk6_YWjeR4a1x3ZUVAMdl_ZoEJCAm9H9SAqMAU=w163-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Kotta GO Hotel Yogyakarta",
+        "rating": 4.7,
+        "reviews": 480,
+        "place_id": "ChIJvUPupztYei4RHLFwS3XknUE",
+        "address": "Jl. Pangeran Diponegoro No.87, Bumijo, Jetis, Yogyakarta City, Special Region of Yogyakarta 55231, Indonesia",
+        "phone": "+62 274 545999",
+        "website": "https://kottahotels.com/yogyakarta/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a583ba7ee43bd%3A0x419de4754b70b11c&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a583ba7ee43bd%3A0x419de4754b70b11c&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.783135,
+            "longitude": 110.3628832
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPpvNBgMFhYndV7fuA6EY8OPwW9CpDTkeTH8eF9=w80-h119-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Tasneem Hotel and Convention Yogyakarta",
+        "rating": 4.3,
+        "reviews": 2229,
+        "place_id": "ChIJYwvxBptXei4RmFHQwBVnDh0",
+        "address": "Purawisata, Kawasan Mandira Baruga, Jl. Brigjen Katamso, Keparakan, Kec. Mergangsan, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55152, Indonesia",
+        "phone": "+62 274 371333",
+        "website": "http://www.tasneemhoteljogja.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a579b06f10b63%3A0x1d0e6715c0d05198&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a579b06f10b63%3A0x1d0e6715c0d05198&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.8087447999999995,
+            "longitude": 110.3711512
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipMVnLFpHwqImVIE3fnsIBHeDUR7NKDiI0Bq0zov=w138-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Grand Serela Yogyakarta",
+        "rating": 4.3,
+        "reviews": 3454,
+        "place_id": "ChIJYQ3DdkRYei4RTvxT2NvMdkE",
+        "address": "Jalan Magelang KM.4 No.145, Rogoyudan, Sinduadi, Kec. Mlati, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55284, Indonesia",
+        "phone": "+62 274 2921188",
+        "website": "https://grandserela.com/magelang-yogyakarta/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a584476c30d61%3A0x4176ccdbd853fc4e&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a584476c30d61%3A0x4176ccdbd853fc4e&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.768796,
+            "longitude": 110.361195
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPr9Pwt3q7HwAUX98vbPi8ky4R4TicnUbFZlTHQ=w80-h106-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Grand Rohan Jogja",
+        "rating": 4.7,
+        "reviews": 7093,
+        "place_id": "ChIJfTqmZl5Xei4REmYlqhb2fak",
+        "address": "Jl. Raya Janti Jl. Gedongkuning No.336, Modalan, Banguntapan, Bantul Regency, Special Region of Yogyakarta 55198, Indonesia",
+        "phone": "+62 274 2810099",
+        "website": "http://grandrohanjogja.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a575e66a63a7d%3A0xa97df616aa256612&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a575e66a63a7d%3A0xa97df616aa256612&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.798237899999999,
+            "longitude": 110.4051231
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPi50qY7wXR_QJUdCo6gn_bzkplfW8gKkZbCQEq=w148-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Amaris Hotel Malioboro Jogja",
+        "rating": 4.3,
+        "reviews": 4334,
+        "place_id": "ChIJL0XlfydYei4R_FcCvNNZnio",
+        "address": "Jl. Pajeksan No.10, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55231, Indonesia",
+        "phone": "+62 274 2921999",
+        "website": "https://mysantika.com/indonesia/jogja/amaris-hotel-malioboro",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58277fe5452f%3A0x2a9e59d3bc0257fc&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58277fe5452f%3A0x2a9e59d3bc0257fc&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.796214399999999,
+            "longitude": 110.3646619
+        },
+        "thumbnail": "//lh4.googleusercontent.com/proxy/O7dJ4wAUMEL2XnrSZExvG5Potg_-EK-qmd2FVgqfEvnD8-rUCvmX8ptBjvmu1_BBGm1wLdogO3RCAyB1hLbJJphA4TaxQdboepOdnJzA8Q5a7PjEJEJxuIJg_E5hQqWkfKYzigt1gK21NP0Pv-ibaOyZXWMT3A=w151-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Whiz Hotel Malioboro Yogyakarta",
+        "rating": 4.1,
+        "reviews": 3608,
+        "place_id": "ChIJ_YS_ACdYei4RMAGk3_kNW_I",
+        "address": "Jl. Dagen No.8, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 583328",
+        "website": "https://www.whizhotels.com/yogyakarta",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a582700bf84fd%3A0xf25b0df9dfa40130&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a582700bf84fd%3A0xf25b0df9dfa40130&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7937804999999996,
+            "longitude": 110.3648101
+        },
+        "thumbnail": "//lh4.googleusercontent.com/proxy/QBTrUUfin790pIqlEdigcmpWRx6iGXHNBWyyopilT_rH7v_NMitsgi-cZasj7A9dDMqhVBI5NKzeMCfnkxKdJ48gBqFwwvwhhfjdcEmWUwMHBLNURWaAUdCp3OjWZTxr9-nsJ_9gGUXSDLgbJMqU6Uiq2OFePQ=w119-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Horison Ultima Riss Malioboro Yogyakarta",
+        "rating": 4.5,
+        "reviews": 3868,
+        "place_id": "ChIJr2dTfyVYei4RHc5GTWnVXDk",
+        "address": "Jl. Gowongan Kidul No.33-49, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 6429155",
+        "website": "https://myhorison.com/hotel/detail?hotel=horison-ultima-riss-yogyakarta&room=1&checkindate=05-06-2020&duration=1&promocode=&utm_source=googlebusiness&utm_medium=googlebusiness&utm_campaign=googlebusiness",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58257f5367af%3A0x395cd5694d46ce1d&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58257f5367af%3A0x395cd5694d46ce1d&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7876435,
+            "longitude": 110.3644008
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/LS_GpMlOSis8KWPCnGhsZQSnecS1slI63HmTxwTh-gICUK9ftBuDVr7ALLV0HnqLLEzRun4oLJkdHowId67S289t368WNwlOYsqJlgPhHLoFK-aj-NHgnOFG3DVsCb23Hji_6_DzVeRVL-46gyja3Te6VJIAMQ=w138-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "PORTA by The Ambarrukmo",
+        "rating": 4.7,
+        "reviews": 1618,
+        "place_id": "ChIJ-4wbutxZei4RhqbdE3S8FiY",
+        "address": "Jl. Colombo Yogyakarta No.7, RT.01/RW.01, Samirono, Caturtunggal, Depok, Sleman Regency, Special Region of Yogyakarta 55281, Indonesia",
+        "phone": "+62 274 5022777",
+        "website": "http://www.porta.co.id/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59dcba1b8cfb%3A0x2616bc7413dda686&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59dcba1b8cfb%3A0x2616bc7413dda686&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.776762199999999,
+            "longitude": 110.38233659999999
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/1pZ0dJ-9wfbTiMcwKDLjl1VJHASqz3MQihnyftnOS8YX2VMMsa4x8WXy9KIBdI6nKp8LjMY7TdDW5NLgC4DP5r9kaM6_EWIdTl0xSdIZNOanzjVho_9MXUje4khBGsRKDV0bFP9aDJYAOQ1_aeBMPKO0ZRjKTg=w80-h120-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "KHAS Malioboro Hotel Yogyakarta",
+        "rating": 4.5,
+        "reviews": 4152,
+        "place_id": "ChIJ66dssolXei4Rdjjp4-094QE",
+        "address": "Jl. Gadean No.3, Ngupasan, Gondomanan, Yogyakarta City, Special Region of Yogyakarta 55122, Indonesia",
+        "phone": "+62 274 2871551",
+        "website": "https://khashotels.com/hotels/Khas-Malioboro",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5789b26ca7eb%3A0x1e13dede3e93876&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5789b26ca7eb%3A0x1e13dede3e93876&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7982187,
+            "longitude": 110.3633193
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOsI0EulCS8dyBsmjScshkje7Hqib09TOu8LH8a=w178-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Malioboro Garden Hotel",
+        "rating": 4.2,
+        "reviews": 1903,
+        "place_id": "ChIJpT-XeyhYei4RLqBEZPfA_zI",
+        "address": "DN I/163 Malioboro, Jl. Mataram Jl. Sosrokusuman, Suryatmajan, Kec. Danurejan, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55213, Indonesia",
+        "phone": "+62 274 514395",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58287b973fa5%3A0x32ffc0f76444a02e&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58287b973fa5%3A0x32ffc0f76444a02e&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7942029999999995,
+            "longitude": 110.366817
+        },
+        "thumbnail": "//lh5.googleusercontent.com/proxy/1uUnAz_RfpvgOYJPlxaEOJ1gzLthPsA4BD_chTH2JnnXB8kuEvJ4h78Ne7p4Hn_O0zcE9voqbC5d5385akvyvwLZTC5FqNUSHG7LakAZ9s2gMLbp86M8rPSMFqr0tYsBO97DHWwkwJfcM2nnUcl8zc3jXnLx2lk=w138-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "Horaios Malioboro Hotel",
+        "rating": 4.3,
+        "reviews": 4347,
+        "place_id": "ChIJr2dTfyVYei4RbhYGInyd7W4",
+        "address": "Jl. Gowongan Kidul No.57, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 557070",
+        "website": "https://horaios-malioboro-hotel.business.site/?m=true",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58257f5367af%3A0x6eed9d7c2206166e&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58257f5367af%3A0x6eed9d7c2206166e&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7874194999999995,
+            "longitude": 110.3636363
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipN6orafu9bR56b647SHf5Mf9jS1UQ-kTLZDCxf0=w163-h92-k-no"
+    },
+    {
+        "page_num": 2,
+        "place_name": "The Manohara Hotel Yogyakarta",
+        "rating": 4.7,
+        "reviews": 1138,
+        "place_id": "ChIJp8ZBrzxZei4R_6qrAb0hex8",
+        "address": "Jl. Affandi No.35, Gejayan, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia",
+        "phone": "+62 274 550001",
+        "website": "http://themanoharahotelyogyakarta.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a593caf41c6a7%3A0x1f7b21bd01abaaff&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a593caf41c6a7%3A0x1f7b21bd01abaaff&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.774500499999999,
+            "longitude": 110.38917359999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipP-erD0aielO311ifZjonFbYdMmK-Sy-1AImdb2=w138-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "KHAS Malioboro Hotel Yogyakarta",
+        "rating": 4.5,
+        "reviews": 4152,
+        "place_id": "ChIJ66dssolXei4Rdjjp4-094QE",
+        "address": "Jl. Gadean No.3, Ngupasan, Gondomanan, Yogyakarta City, Special Region of Yogyakarta 55122, Indonesia",
+        "phone": "+62 274 2871551",
+        "website": "https://khashotels.com/hotels/Khas-Malioboro",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5789b26ca7eb%3A0x1e13dede3e93876&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5789b26ca7eb%3A0x1e13dede3e93876&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7982187,
+            "longitude": 110.3633193
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOsI0EulCS8dyBsmjScshkje7Hqib09TOu8LH8a=w178-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Malioboro Garden Hotel",
+        "rating": 4.2,
+        "reviews": 1903,
+        "place_id": "ChIJpT-XeyhYei4RLqBEZPfA_zI",
+        "address": "DN I/163 Malioboro, Jl. Mataram Jl. Sosrokusuman, Suryatmajan, Kec. Danurejan, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55213, Indonesia",
+        "phone": "+62 274 514395",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58287b973fa5%3A0x32ffc0f76444a02e&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58287b973fa5%3A0x32ffc0f76444a02e&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7942029999999995,
+            "longitude": 110.366817
+        },
+        "thumbnail": "//lh5.googleusercontent.com/proxy/1uUnAz_RfpvgOYJPlxaEOJ1gzLthPsA4BD_chTH2JnnXB8kuEvJ4h78Ne7p4Hn_O0zcE9voqbC5d5385akvyvwLZTC5FqNUSHG7LakAZ9s2gMLbp86M8rPSMFqr0tYsBO97DHWwkwJfcM2nnUcl8zc3jXnLx2lk=w138-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Museum Batik Yogyakarta",
+        "rating": 4.2,
+        "reviews": 1058,
+        "place_id": "ChIJizHNEYBXei4RyCitdpXQNuI",
+        "address": "Jl. Doktor Sutomo No.13A, Bausasran, Danurejan, Yogyakarta City, Special Region of Yogyakarta 55211, Indonesia",
+        "phone": "+62 274 541766",
+        "website": "https://www.museumbatikhotel.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a578011cd318b%3A0xe236d09576ad28c8&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a578011cd318b%3A0xe236d09576ad28c8&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7955906,
+            "longitude": 110.3772754
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPzXRPRD-XRu1oK94MgLrKsXFww2AfY0-QBLXve=w163-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Horaios Malioboro Hotel",
+        "rating": 4.3,
+        "reviews": 4347,
+        "place_id": "ChIJr2dTfyVYei4RbhYGInyd7W4",
+        "address": "Jl. Gowongan Kidul No.57, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 557070",
+        "website": "https://horaios-malioboro-hotel.business.site/?m=true",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58257f5367af%3A0x6eed9d7c2206166e&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58257f5367af%3A0x6eed9d7c2206166e&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7874194999999995,
+            "longitude": 110.3636363
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipN6orafu9bR56b647SHf5Mf9jS1UQ-kTLZDCxf0=w163-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Nueve Malioboro Hotel Yogyakarta",
+        "rating": 4.3,
+        "reviews": 1862,
+        "place_id": "ChIJ55Ljh4dXei4R5ZX33nrghVk",
+        "address": "Mataram St No.9, Suryatmajan, Danurejan, Yogyakarta City, Special Region of Yogyakarta 55213, Indonesia",
+        "phone": "+62 274 562420",
+        "website": "http://nuevemalioboro.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a578787e392e7%3A0x5985e07adef795e5&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a578787e392e7%3A0x5985e07adef795e5&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7959233999999995,
+            "longitude": 110.3688956
+        },
+        "thumbnail": "//lh4.googleusercontent.com/proxy/tV0GOFrd-NEjuPrDNIltVJwq-DF_sKEk_m2oYKOFI0Eh7gj2I7euV-kotrBVImID6sRS6BV7xo6LSwCQdqb7LzuDEtsxPl9ng_5yM39iLbC6tG-hsqNnmsK1ylvxbBv0YLggToDHhTv78Y1ne5TnP0q9O-LbolQ=w122-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Hotel Zamrud Sosrokusuman",
+        "rating": 4.6,
+        "reviews": 23,
+        "place_id": "ChIJyw9seyhYei4RIH-4iWRsz0M",
+        "address": "Jl. Sosrokusuman, Suryatmajan, Kec. Danurejan, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55213, Indonesia",
+        "phone": "+62 812-1573-5956",
+        "website": "https://hotel-zamrud.business.site/?utm_source=gmb&utm_medium=referral",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58287b6c0fcb%3A0x43cf6c6489b87f20&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58287b6c0fcb%3A0x43cf6c6489b87f20&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7937897,
+            "longitude": 110.3672539
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipN3oMbz59Ex8f8xSF3Mah697hThXwhLnmpfWt40=w92-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "The Manohara Hotel Yogyakarta",
+        "rating": 4.7,
+        "reviews": 1138,
+        "place_id": "ChIJp8ZBrzxZei4R_6qrAb0hex8",
+        "address": "Jl. Affandi No.35, Gejayan, Caturtunggal, Kec. Depok, Kabupaten Sleman, Daerah Istimewa Yogyakarta 55281, Indonesia",
+        "phone": "+62 274 550001",
+        "website": "http://themanoharahotelyogyakarta.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a593caf41c6a7%3A0x1f7b21bd01abaaff&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a593caf41c6a7%3A0x1f7b21bd01abaaff&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.774500499999999,
+            "longitude": 110.38917359999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipP-erD0aielO311ifZjonFbYdMmK-Sy-1AImdb2=w138-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Sahid Raya Hotel & Convention Yogyakarta",
+        "rating": 4.3,
+        "reviews": 6492,
+        "place_id": "ChIJ82tTp4hXei4REZxLOf5L1io",
+        "address": "Jl. Babarsari No.2, Janti, Caturtunggal, Depok, Sleman Regency, Special Region of Yogyakarta 55281, Indonesia",
+        "phone": "+62 274 486196",
+        "website": "https://sahid-raya-yogyakarta.business.site/?utm_source=gmb&utm_medium=referral",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5788a7536bf3%3A0x2ad64bfe394b9c11&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5788a7536bf3%3A0x2ad64bfe394b9c11&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.779761199999999,
+            "longitude": 110.4139668
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNAOAM3FKSBDrW5VjuXn1OSJO3bmjhZt5FyuUdC=w138-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Le Krasak Boutique Hotel",
+        "rating": 4.3,
+        "reviews": 371,
+        "place_id": "ChIJK3RKWSxYei4Ra-MCCjOCgts",
+        "address": "Jl. Krasak No.9, Kotabaru, Gondokusuman, Yogyakarta City, Special Region of Yogyakarta 55224, Indonesia",
+        "phone": "+62 274 517745",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a582c594a742b%3A0xdb8282330a02e36b&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a582c594a742b%3A0xdb8282330a02e36b&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7887602,
+            "longitude": 110.37275629999999
+        },
+        "thumbnail": "//lh4.googleusercontent.com/proxy/yVlEdBjtGOL52zYXV1fIGRsaT5eSQwT8fzgYkFmZmjmaYTWz3d3mmNZbAIANyzNtFY8CR5uee3UKn-h53o8T7_c0Zd9UTaj8uq8oI6__OlO6tQJujYvyKcXgYw8TFKWx-3NnG3eZgF3wNmjxlwykMM6L0QlIuAA=w167-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Cavinton Hotel Yogyakarta by Tritama Hospitality",
+        "rating": 4.4,
+        "reviews": 5444,
+        "place_id": "ChIJAcg6H4tXei4RxFebEEV_kwk",
+        "address": "Jl. Letjen Suprapto No.1, Ngampilan, Yogyakarta City, Special Region of Yogyakarta 55261, Indonesia",
+        "phone": "+62 274 6429988",
+        "website": "http://www.cavintonhotel.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a578b1f3ac801%3A0x9937f45109b57c4&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a578b1f3ac801%3A0x9937f45109b57c4&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.8008378,
+            "longitude": 110.35603499999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPwfDkMqvKVf7MvyUmbtq--PMGY1RoDVknWj7f2=w138-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "The Jayakarta Yogyakarta Hotel & Spa",
+        "rating": 4.4,
+        "reviews": 3623,
+        "place_id": "ChIJ2UI1GfpZei4RmgvtrTnm0ts",
+        "address": "Depan Transmart, Jl. Raya Solo - Yogyakarta No.km, 8, Kalongan, Maguwoharjo, Depok, Sleman Regency, Special Region of Yogyakarta 55282, Indonesia",
+        "phone": "+62 274 488418",
+        "website": "https://www.jayakartahotelsresorts.com/en/hotel/the-jayakarta-yogyakarta-hotel-spa",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59fa193542d9%3A0xdbd2e639aded0b9a&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59fa193542d9%3A0xdbd2e639aded0b9a&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7839979999999995,
+            "longitude": 110.4197006
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipP4skK7oa9Z-LTU5ix2QMgazQxA_bkw63N8TyCC=w163-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Yellow Star Hotel - Ambarrukmo",
+        "rating": 4.3,
+        "reviews": 2969,
+        "place_id": "ChIJNaQSRsNZei4RB4YhoLS1pds",
+        "address": "Jl. Laksda Adisucipto No.23, Papringan, Caturtunggal, Depok, Sleman Regency, Special Region of Yogyakarta 55281, Indonesia",
+        "phone": "+62 274 2800719",
+        "website": "https://www.yellowstar.co.id/property/detail/yellow-star-ambarrukmo",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59c34612a435%3A0xdba5b5b4a0218607&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59c34612a435%3A0xdba5b5b4a0218607&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7834794,
+            "longitude": 110.3975966
+        },
+        "thumbnail": "//lh5.googleusercontent.com/proxy/vz_JkKUmdpAJ250wT-9kYFxakFMn7PcUnmbgGv9ZllBK0o99ED62vTJT6mUBb_owDdFX7F8PdzFLkb0AgW6R0nywXFV5DlsNuoom-S9DhnTwxGcSLD-eqgpYshpm3tuoX45r3dSB_CpdaXkp_c2J_1PC0Rilp9o=w138-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Summer Quest Hotel",
+        "rating": 4.1,
+        "reviews": 759,
+        "place_id": "ChIJZ11kaCZYei4RTsm_ZMznVJs",
+        "address": "Jl. Sosrowijayan, Sosromenduran, Gedong Tengen, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55271, Indonesia",
+        "phone": null,
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a582668645d67%3A0x9b54e7cc64bfc94e&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a582668645d67%3A0x9b54e7cc64bfc94e&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.792075799999999,
+            "longitude": 110.36449929999999
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/J4DTRZFvwFF5oxAwujSb1T6KFowiexPDP2moe0cSP1HkJbHFctX4kbdQWwL3v0kUfv34NpoPsWS8goTSlQyRJHL9Jmz5L-t8xBFEAITtjEHUivuzAKNvxRptZPg3KjmQ90QOWCe3hMj7bEhLLJVAJb5hmaOFdQ=w122-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Burza Hotel Yogyakarta",
+        "rating": 4.4,
+        "reviews": 3586,
+        "place_id": "ChIJTapeA7tXei4Rr-eqMy-YtTo",
+        "address": "Jl. Jogokaryan No.61-63, Mantrijeron, Yogyakarta City, Special Region of Yogyakarta 55143, Indonesia",
+        "phone": "+62 274 4580130",
+        "website": "http://www.burzayogyakarta.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57bb035eaa4d%3A0x3ab5982f33aae7af&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57bb035eaa4d%3A0x3ab5982f33aae7af&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.8237862,
+            "longitude": 110.3666306
+        },
+        "thumbnail": "//lh4.googleusercontent.com/proxy/6yW7QMxY7iWS95rPvo1e9j4tqZosXKui3dNO0RlhzQhYmsNz3I1-2xxY6KD7uvr73okx05VjKPcqrpxH8v20YWYMeLSyfXOQOZmNiE5Vjl9Pf24ZeeYDq4S6seCBNeyTiPL7GNXkV81dqTLVNZrE42-DLQrvPQ=w138-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "The Alana Yogyakarta Hotel & Convention Center",
+        "rating": 4.6,
+        "reviews": 13051,
+        "place_id": "ChIJXXBYPeJYei4RMz0TBt7x4-M",
+        "address": "Jl. Palagan Tentara Pelajar No.KM.7, Mudal, Sariharjo, Ngaglik, Sleman Regency, Special Region of Yogyakarta 55581, Indonesia",
+        "phone": "+62 274 888800",
+        "website": "http://yogya.alanahotels.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58e23d58705d%3A0xe3e3f1de06133d33&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58e23d58705d%3A0xe3e3f1de06133d33&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7393398,
+            "longitude": 110.37719589999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOFG3a-NCQR5UxWnHPHnuSKalt4OCHw3PcThbjS=w138-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Agung Mas Hotel Yogyakarta",
+        "rating": 4.3,
+        "reviews": 845,
+        "place_id": "ChIJDw6nshhYei4Rc8E6R_IZVQs",
+        "address": "Jl. HOS Cokroaminoto No.108, Tegalrejo, Yogyakarta City, Special Region of Yogyakarta 55253, Indonesia",
+        "phone": "+62 274 619576",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5818b2a70e0f%3A0xb5519f2473ac173&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5818b2a70e0f%3A0xb5519f2473ac173&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.791444899999999,
+            "longitude": 110.35396019999999
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/UspCAFZEL9Ssl8uI0z4K0IWdtLgJgnGsy3qeTv65AQ1h-oAyGcs-yV7ETSCCjL1UAMAqAkL6ClUiCVWTWLw_EUpIrTLax5moEZwq5bVkr_a1p_55ipJGYk8f7IT0UY3bJr78Vta6mCor_E-eHjVRi8IMvAH4uSs=w138-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "All Nite & Day Hotel Gejayan Yogyakarta",
+        "rating": 4.1,
+        "reviews": 3222,
+        "place_id": "ChIJvT4-G89Zei4Rgs8jyOvV5yo",
+        "address": "Jl. Affandi No.17C, Klitren, Gondokusuman, Yogyakarta City, Special Region of Yogyakarta 55222, Indonesia",
+        "phone": "+62 811-275-785",
+        "website": "https://www.secure-hotel-booking.com/touch/All-Nite-and-Day-Yogyakarta-Gejayan/JI9E/en#/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59cf1b3e3ebd%3A0x2ae7d5ebc823cf82&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59cf1b3e3ebd%3A0x2ae7d5ebc823cf82&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7802114,
+            "longitude": 110.3879623
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipMTrAiIa41F6CiOatFJIsFRcfvHBARrRiXvwnw=w163-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Tara Hotel Yogyakarta",
+        "rating": 4.4,
+        "reviews": 3886,
+        "place_id": "ChIJv8D2tkZYei4ROuNNG8ttDD8",
+        "address": "Magelang St No.129, Kricak, Tegalrejo, Yogyakarta City, Special Region of Yogyakarta 55242, Indonesia",
+        "phone": "+62 274 2801818",
+        "website": "http://www.tarahotel.co.id/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5846b6f6c0bf%3A0x3f0c6dcb1b4de33a&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5846b6f6c0bf%3A0x3f0c6dcb1b4de33a&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.771604,
+            "longitude": 110.3608098
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNsufYDGMEKT4KfHIvmaFAD9pwAYoRHgprPrBJa=w80-h106-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "POP! Hotel Timoho - Yogyakarta",
+        "rating": 4.3,
+        "reviews": 3162,
+        "place_id": "ChIJpzMUamNXei4RKg_EuMfcIlk",
+        "address": "Jl. Ipda Tut Harsono No.11, Muja Muju, Umbulharjo, Yogyakarta City, Special Region of Yogyakarta 55165, Indonesia",
+        "phone": "+62 274 2924646",
+        "website": "https://www.discoverasr.com/en/pop-hotels/indonesia/pop-hotel-timoho-yogyakarta?utm_source=google&utm_medium=gmb&utm_campaign=-google-gmb-alwayson-20220101-all-en-id-id-PTMH--&utm_content=--",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57636a1433a7%3A0x5922dcc7b8c40f2a&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57636a1433a7%3A0x5922dcc7b8c40f2a&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7986173999999995,
+            "longitude": 110.3914401
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPEYnPI-cCtAG2LzuVK9O9at514hgg1siknWt8N=w138-h92-k-no"
+    },
+    {
+        "page_num": 3,
+        "place_name": "Grand Puri Saron Hotel Malioboro",
+        "rating": 4.3,
+        "reviews": 1515,
+        "place_id": "ChIJg7T7miZYei4RoHPJv2XYaU0",
+        "address": "Sosrowijayan St No.70, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 5304100",
+        "website": "https://linktr.ee/grandpurisaron",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58269afbb483%3A0x4d69d865bfc973a0&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58269afbb483%3A0x4d69d865bfc973a0&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.791408499999999,
+            "longitude": 110.3629208
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOr4RVpCBDZHT57voL-HBVgFuFiKx1EVVm91XeB=w122-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Uniq Hotel Yogyakarta",
+        "rating": 4.3,
+        "reviews": 1256,
+        "place_id": "ChIJdw-f0jhYei4R01WI3w7smeY",
+        "address": "Magelang St No.61, Kricak, Tegalrejo, Yogyakarta City, Special Region of Yogyakarta 55242, Indonesia",
+        "phone": "+62 274 2924848",
+        "website": "https://www.instagram.com/uniq_hotel/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5838d29f0f77%3A0xe699ec0edf8855d3&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5838d29f0f77%3A0xe699ec0edf8855d3&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7775981,
+            "longitude": 110.3607775
+        },
+        "thumbnail": "//lh5.googleusercontent.com/proxy/YkwZBnmV5yCNg3aVn1eTOiGrA4BJUSi0aOoFC1UMUhWf6yFTR9i9fk9K_11gAvy15CNN1Yxys8AKnf_U4yNAW78OnoqKmcvVFFiNUEowK-HwXJ3mvGboHA1Qc-nyP-m546pDGXM-TGxyp8r2IaifwrWEMQH9Og=w115-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Tara Hotel Yogyakarta",
+        "rating": 4.4,
+        "reviews": 3886,
+        "place_id": "ChIJv8D2tkZYei4ROuNNG8ttDD8",
+        "address": "Magelang St No.129, Kricak, Tegalrejo, Yogyakarta City, Special Region of Yogyakarta 55242, Indonesia",
+        "phone": "+62 274 2801818",
+        "website": "http://www.tarahotel.co.id/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5846b6f6c0bf%3A0x3f0c6dcb1b4de33a&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5846b6f6c0bf%3A0x3f0c6dcb1b4de33a&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.771604,
+            "longitude": 110.3608098
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNsufYDGMEKT4KfHIvmaFAD9pwAYoRHgprPrBJa=w80-h106-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Hotel Citradream Yogyakarta",
+        "rating": 4.3,
+        "reviews": 2850,
+        "place_id": "ChIJJSq_szBYei4R7B1GJqEoVs8",
+        "address": "Jl. A.M. Sangaji No.28, Cokrodiningratan, Jetis, Yogyakarta City, Special Region of Yogyakarta 55233, Indonesia",
+        "phone": "+62 274 6429123",
+        "website": "https://citradreamhotel.com/hotel/citradream-yogyakarta/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5830b3bf2a25%3A0xcf5628a126461dec&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5830b3bf2a25%3A0xcf5628a126461dec&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7801874,
+            "longitude": 110.36768389999999
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/0DLBwbRKCs3_ZGPGsSJtPkLO3_a_EnRWJ7nGtjI60QG0VnMvQPTcIsus9q_pXZS0ZqGyzJVRTbmXN-CuQL9serWAS34lfRq_DAstEK_c9tiJv08Nv_sKXj6J2rosJeamLqf-Ro7ULLybWraojP2WpPW5AdSdHW0=w138-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Grand Puri Saron Hotel Malioboro",
+        "rating": 4.3,
+        "reviews": 1515,
+        "place_id": "ChIJg7T7miZYei4RoHPJv2XYaU0",
+        "address": "Sosrowijayan St No.70, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 5304100",
+        "website": "https://linktr.ee/grandpurisaron",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58269afbb483%3A0x4d69d865bfc973a0&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58269afbb483%3A0x4d69d865bfc973a0&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.791408499999999,
+            "longitude": 110.3629208
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOr4RVpCBDZHT57voL-HBVgFuFiKx1EVVm91XeB=w122-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Agung Mas Hotel Yogyakarta",
+        "rating": 4.3,
+        "reviews": 845,
+        "place_id": "ChIJDw6nshhYei4Rc8E6R_IZVQs",
+        "address": "Jl. HOS Cokroaminoto No.108, Tegalrejo, Yogyakarta City, Special Region of Yogyakarta 55253, Indonesia",
+        "phone": "+62 274 619576",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5818b2a70e0f%3A0xb5519f2473ac173&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5818b2a70e0f%3A0xb5519f2473ac173&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.791444899999999,
+            "longitude": 110.35396019999999
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/UspCAFZEL9Ssl8uI0z4K0IWdtLgJgnGsy3qeTv65AQ1h-oAyGcs-yV7ETSCCjL1UAMAqAkL6ClUiCVWTWLw_EUpIrTLax5moEZwq5bVkr_a1p_55ipJGYk8f7IT0UY3bJr78Vta6mCor_E-eHjVRi8IMvAH4uSs=w138-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "The Rich Jogja Hotel",
+        "rating": 4.5,
+        "reviews": 13606,
+        "place_id": "ChIJIcEXZfZYei4RNngAcEceevs",
+        "address": "Magelang St No.KM.6 No.18, Kutu Patran, Sinduadi, Mlati, Sleman Regency, Special Region of Yogyakarta 55284, Indonesia",
+        "phone": "+62 274 5305888",
+        "website": "http://therichjogjahotel.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58f66517c121%3A0xfb7a1e4770007836&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58f66517c121%3A0xfb7a1e4770007836&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7524542,
+            "longitude": 110.36108229999999
+        },
+        "thumbnail": "//lh4.googleusercontent.com/proxy/rKXBknyWe5sHH_5POF3BCRHAYVF96bvoQ-6kBbJ2Acm0UjjqLWc1vL8wKeYwdzmgEP4V6e8q8fDJzG65L4QRskTMpcvqXh1BTtZAroQlGlTCdNw96hY_Po7AN2KYXyh2vil182v2CAFA9duHmflgG8JT_iT8Rg=w145-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "The Victoria Hotel Yogyakarta",
+        "rating": 4.4,
+        "reviews": 3026,
+        "place_id": "ChIJk7x8PMVZei4R2tlJox6P9LU",
+        "address": "Jl. Laksda Adisucipto KM.5, Tempel, Caturtunggal, Depok, Sleman Regency, Special Region of Yogyakarta 55281, Indonesia",
+        "phone": "+62 274 4533838",
+        "website": "http://www.thevictoriahotelyogya.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59c53c7cbc93%3A0xb5f48f1ea349d9da&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59c53c7cbc93%3A0xb5f48f1ea349d9da&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7796239,
+            "longitude": 110.40378869999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNPNqePYoicsEjIVlqCmSyIjUpYRCk-I5lEMFm3=w192-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Abadi Malioboro Jogja by Tritama Hospitality",
+        "rating": 4.4,
+        "reviews": 3110,
+        "place_id": "ChIJU8q4yCVYei4RiVJUd3bsYvU",
+        "address": "Jl. Ps. Kembang No.49, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 818-0418-6036",
+        "website": "http://abadihoteljogja.co.id/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5825c8b8ca53%3A0xf562ec7677545289&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5825c8b8ca53%3A0xf562ec7677545289&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7903142999999995,
+            "longitude": 110.3632615
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOzGKG3DEOazgSlOi74vo9CDD8ksZR4BLjRkYVl=w92-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Hotel Indah Palace Yogyakarta",
+        "rating": 4.3,
+        "reviews": 962,
+        "place_id": "ChIJ036IyaNXei4R5frfDbRfJfI",
+        "address": "Jl. Sisingamangaraja No.74, Brontokusuman, Mergangsan, Yogyakarta City, Special Region of Yogyakarta 55153, Indonesia",
+        "phone": "+62 274 383738",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57a3c9887ed3%3A0xf2255fb40ddffae5&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57a3c9887ed3%3A0xf2255fb40ddffae5&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.8185351,
+            "longitude": 110.3729171
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipN9cl-c7UFMn-SYNETxiMiAjBQcMAhS5RldEDsA=w80-h106-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Hotel Dafam Fortuna Malioboro Yogyakarta",
+        "rating": 4.4,
+        "reviews": 4298,
+        "place_id": "ChIJs5qnqidYei4R0JR_XjUlxxM",
+        "address": "Jl. Malioboro Jl. Dagen No.60, Sosromenduran, Gedong Tengen, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 6429888",
+        "website": "https://secure.staah.com/common-cgi/package/packagebooking.pl?propertyId=1759&unk=101&Ln=en",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5827aaa79ab3%3A0x13c725355e7f94d0&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5827aaa79ab3%3A0x13c725355e7f94d0&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7933718999999995,
+            "longitude": 110.36297309999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNwbnHXkJ46TsuCWxHHleV9HL7pqU2Ho1Savowv=w163-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Indonesia Hotel",
+        "rating": 4.2,
+        "reviews": 861,
+        "place_id": "ChIJ1dVsEyZYei4RJxcrRbtZxAc",
+        "address": "Sosrowijayan St No.9, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 819-4713-0076",
+        "website": "http://indonesiahotelyogya.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5826136cd5d5%3A0x7c459bb452b1727&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5826136cd5d5%3A0x7c459bb452b1727&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7917673999999995,
+            "longitude": 110.3651953
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPsgVqHAJEhyGgmviyVqzs6jDbcTkT6d6_TA2FN=w163-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Duta Garden Hotel and Boutique Villa",
+        "rating": 4.4,
+        "reviews": 445,
+        "place_id": "ChIJ8ZqyxodXei4Rl0cjmscUdh8",
+        "address": "Timuran Jl. Parangtritis No.103, Brontokusuman, Kec. Mergangsan, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55153, Indonesia",
+        "phone": "+62 274 373482",
+        "website": "http://www.dutagardenhotel.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5787c6b29af1%3A0x1f7614c79a234797&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5787c6b29af1%3A0x1f7614c79a234797&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.8167503,
+            "longitude": 110.3695223
+        },
+        "thumbnail": "//lh4.googleusercontent.com/proxy/_3oQwaY94jSQVLlOyyc9WKuCeh8mqk2Dpz8GMe2k1Euu61_e3v3j5URUWcK24kCct6Wl4HgLbrdOR7BuOnA90T7Wq8aq6q1yLpR7QmRMpuRXdo8G-uMFwqtBllzmh5es-82zN5f6ffmk7QCzohMljjHBLDmOifc=w138-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Hotel Grand Rosela",
+        "rating": 4.2,
+        "reviews": 1133,
+        "place_id": "ChIJ036IyaNXei4RAAmI6jzr70s",
+        "address": "Jl. Prawirotaman No.28, Brontokusuman, Mergangsan, Yogyakarta City, Special Region of Yogyakarta 55153, Indonesia",
+        "phone": "+62 274 419191",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57a3c9887ed3%3A0x4befeb3cea880900&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57a3c9887ed3%3A0x4befeb3cea880900&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.819400699999999,
+            "longitude": 110.37123989999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipMaEyVioPd9rTqXaUuS_VRA2GbTMoVTPKw6pYbp=w163-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Kalya Hotel",
+        "rating": 4.3,
+        "reviews": 2580,
+        "place_id": "ChIJP2_dompXei4Ro6bugNwkHcs",
+        "address": "Jl. Gedongkuning No.118, Rejowinangun, Kotagede, Yogyakarta City, Special Region of Yogyakarta 55171, Indonesia",
+        "phone": "+62 274 371225",
+        "website": "https://kalyahoteljogja.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a576aa2dd6f3f%3A0xcb1d24dc80eea6a3&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a576aa2dd6f3f%3A0xcb1d24dc80eea6a3&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.8135292,
+            "longitude": 110.40140749999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOzgtFT0WdeLz9w8u0NajbT9H-a-zbdv_oNcuW0=w80-h106-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Top Malioboro Hotel Jogja",
+        "rating": 4.1,
+        "reviews": 2158,
+        "place_id": "ChIJ_4jKtRhYei4Ry3626jQv87g",
+        "address": "Jl. HOS Cokroaminoto No.145, Tegalrejo, Yogyakarta City, Special Region of Yogyakarta 55244, Indonesia",
+        "phone": "+62 274 5305755",
+        "website": "https://topmalioboro.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5818b5ca88ff%3A0xb8f32f34eab67ecb&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5818b5ca88ff%3A0xb8f32f34eab67ecb&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7912164,
+            "longitude": 110.35327199999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNCKuA2sBd9rzcph7U7ircAiljFt6t54f8swkIW=w83-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Hotel Dafam Fortuna Seturan",
+        "rating": 4.4,
+        "reviews": 4022,
+        "place_id": "ChIJCwwiA5FZei4R2eI0w_n5rbc",
+        "address": "Jl. Seturan Raya No.4b, Kledokan, Caturtunggal, Depok, Sleman Regency, Special Region of Yogyakarta 55281, Indonesia",
+        "phone": "+62 274 4932080",
+        "website": "https://secure.staah.com/common-cgi/package/packagebooking.pl?propertyId=2665&unk=101&Ln=en",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a599103220c0b%3A0xb7adf9f9c334e2d9&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a599103220c0b%3A0xb7adf9f9c334e2d9&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7658154999999995,
+            "longitude": 110.4108134
+        },
+        "thumbnail": "//lh4.googleusercontent.com/proxy/JYEnsprW7Ox1swB86NadnYBMsQLNhDpcANGoI1e1lYNkAyU3EwYob3h0GAFEjpwRumes49nBh8e8QXPffoeK0Y5UgZjQNbzqvYQvtzMYfXj-07uWH0UE8_Qeqpsugtq9AE-eHQn9N__1u-nL-Qu9flDBhu_3gg=w80-h120-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Royal Brongto Hotel",
+        "rating": 4.4,
+        "reviews": 62,
+        "place_id": "ChIJh7mp5shXei4RBXkygNWyi3s",
+        "address": "Jl. Suryodiningratan No.26, RW.03, Suryodiningratan, Kec. Mantrijeron, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55141, Indonesia",
+        "phone": "+62 274 3900800",
+        "website": "http://royalbrongtohotel.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57c8e6a9b987%3A0x7b8bb2d580327905&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57c8e6a9b987%3A0x7b8bb2d580327905&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.817778,
+            "longitude": 110.3599488
+        },
+        "thumbnail": "//lh6.googleusercontent.com/proxy/QwHRuAdmZWP3nJeoATEyIIJiBU_6oxT8J_vHNJ-QJvre8ARPeYnIdDeoawFrGkVH6KHN0s_hAYvCXeqJ8fqGtVNInIolFc1wqdfNY1-odTB5Kp0dUVFdFdUUebERehoR01Pcu8e4VI7O5j4WoJEK9_Efy8te4g=w138-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Satoria Hotel Yogyakarta",
+        "rating": 4.5,
+        "reviews": 4801,
+        "place_id": "ChIJEbJQw_lZei4Rw13HUOG_LUo",
+        "address": "Jl. Laksda Adisucipto No.Km, RW.8, Kalongan, Maguwoharjo, Sleman, Sleman Regency, Special Region of Yogyakarta 55282, Indonesia",
+        "phone": "+62 274 2802888",
+        "website": "http://www.satoriahotel.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59f9c350b211%3A0x4a2dbfe150c75dc3&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59f9c350b211%3A0x4a2dbfe150c75dc3&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7836064,
+            "longitude": 110.42206499999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOPUstxdcWjC2hIGFAX7YItUU5V9blTca-2FT4a=w138-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "Prime Cailendra Hotel RedPartner near Malioboro Yogyakarta",
+        "rating": 4.6,
+        "reviews": 290,
+        "place_id": "ChIJPw0C551Xei4RaGlHRsl5-JM",
+        "address": "Jl. Taman Siswa No.91, Wirogunan, Mergangsan, Yogyakarta City, Special Region of Yogyakarta 55111, Indonesia",
+        "phone": "+62 274 376094",
+        "website": "https://www.reddoorz.com/id-id/hotel/indonesia/yogyakarta/badran/prime-cailendra-hotel?utm_source=google&utm_medium=mybusiness&utm_campaign=webclick",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a579de7020d3f%3A0x93f879c946476968&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a579de7020d3f%3A0x93f879c946476968&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.810461999999999,
+            "longitude": 110.37723799999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNjkNoElKW5s1IjmhkJxU8IabX4cIVN53lg28MH=w138-h92-k-no"
+    },
+    {
+        "page_num": 4,
+        "place_name": "POP! Hotel Malioboro - Yogyakarta",
+        "rating": 4.1,
+        "reviews": 3579,
+        "place_id": "ChIJwQMH0CZYei4RvlslvbZA-Cs",
+        "address": "Jl. Gandekan No.92, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55272, Indonesia",
+        "phone": "+62 274 6429711",
+        "website": "https://www.discoverasr.com/en/pop-hotels/indonesia/pop-hotel-malioboro-yogyakarta?utm_source=google&utm_medium=gmb&utm_campaign=-google-gmb-alwayson-20220101-all-en-id-id-PGDL--&utm_content=--",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5826d00703c1%3A0x2bf840b6bd255bbe&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5826d00703c1%3A0x2bf840b6bd255bbe&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7907481999999995,
+            "longitude": 110.3620009
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOg6hZs667XeVfEcn7fxp6rWNqQAxE4g8jtE9I=w115-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "@HOM Premiere Timoho By Horison",
+        "rating": 4.5,
+        "reviews": 1599,
+        "place_id": "ChIJjzDBu1tXei4R1ywbMsE13Zo",
+        "address": "Jl. Ipda Tut Harsono No.24, Muja Muju, Kec. Umbulharjo, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55165, Indonesia",
+        "phone": "+62 274 547171",
+        "website": "https://myhorison.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a575bbbc1308f%3A0x9add35c1321b2cd7&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a575bbbc1308f%3A0x9add35c1321b2cd7&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7985481,
+            "longitude": 110.3927832
+        },
+        "thumbnail": "//lh4.googleusercontent.com/proxy/Kmj8IdMNjzRY3LV0o017tTTeO1wSJeXJKPdizwrIPE6VQv552z-0oV2gAm3-DE3U-CQpC_ZmbpQGXe3aMkTpFRzpMLhepkFs1mn1oou2-W3yGE2Z8sWZk8shLGmVaimyFYmubAh47w8lwzeFnPG22Ju6FCiV0Q=w80-h106-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "POP! Hotel Malioboro - Yogyakarta",
+        "rating": 4.1,
+        "reviews": 3579,
+        "place_id": "ChIJwQMH0CZYei4RvlslvbZA-Cs",
+        "address": "Jl. Gandekan No.92, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55272, Indonesia",
+        "phone": "+62 274 6429711",
+        "website": "https://www.discoverasr.com/en/pop-hotels/indonesia/pop-hotel-malioboro-yogyakarta?utm_source=google&utm_medium=gmb&utm_campaign=-google-gmb-alwayson-20220101-all-en-id-id-PGDL--&utm_content=--",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5826d00703c1%3A0x2bf840b6bd255bbe&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5826d00703c1%3A0x2bf840b6bd255bbe&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7907481999999995,
+            "longitude": 110.3620009
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOg6hZs667XeVfEcn7fxp6rWNqQAxE4g8jtE9I=w115-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Tab Hotel Malioboro Jogja",
+        "rating": 4.6,
+        "reviews": 145,
+        "place_id": "ChIJKQ3NA4JZei4RqkaqIYcUgag",
+        "address": "Jl. Kemetiran No.21, Pringgokusuman, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55272, Indonesia",
+        "phone": "+62 274 5016060",
+        "website": "http://tabhotels.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a598203cd0d29%3A0xa881148721aa46aa&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a598203cd0d29%3A0xa881148721aa46aa&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7922148,
+            "longitude": 110.3601348
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPjuL-JESGjc1dhxoDFmPg-Lk3bRJAIhbjM-uMH=w92-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "POP! Hotel Sangaji",
+        "rating": 4.2,
+        "reviews": 5445,
+        "place_id": "ChIJUUNhuzBYei4RIwI5u93lELw",
+        "address": "Jl. A.M. Sangaji No.Kav.16-18, Cokrodiningratan, Jetis, Yogyakarta City, Special Region of Yogyakarta 55000, Indonesia",
+        "phone": "+62 274 4469399",
+        "website": "https://www.discoverasr.com/en/pop-hotels/indonesia/pop-hotel-sangaji-yogyakarta?utm_source=google&utm_medium=gmb&utm_campaign=-google-gmb-alwayson-20220101-all-en-id-id-PSAJ--&utm_content=--",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5830bb614351%3A0xbc10e5ddbb390223&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5830bb614351%3A0xbc10e5ddbb390223&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7813117,
+            "longitude": 110.367661
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNQa_jB3nDrI19Km4OiPr56kDZe-mn2TogN8RMF=w138-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Ceria Hotel @Alun Alun Yogyakarta",
+        "rating": 4.3,
+        "reviews": 229,
+        "place_id": "ChIJCVBEp4VXei4R5vPJmLI6U2c",
+        "address": "Jl. Ibu Ruswo No.57, Prawirodirjan, Gondomanan, Yogyakarta City, Special Region of Yogyakarta 55121, Indonesia",
+        "phone": "+62 811-2625-758",
+        "website": "http://ceriahotelyogyakarta.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5785a7445009%3A0x67533ab298c9f3e6&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5785a7445009%3A0x67533ab298c9f3e6&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.8035485,
+            "longitude": 110.368612
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNxXUik0b02Cy1nS-N-bcu4wu4xR1zWS2JOzKKI=w138-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Grand Sarila",
+        "rating": 4.2,
+        "reviews": 3654,
+        "place_id": "ChIJzZGnBKRZei4RUi1W_WPFujk",
+        "address": "Jl. Affandi Jl. Gejayan Soropadan XII No.03, Kaliwaru, Condongcatur, Depok, Sleman Regency, Special Region of Yogyakarta 55283, Indonesia",
+        "phone": "+62 274 5306365",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59a404a791cd%3A0x39bac563fd562d52&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59a404a791cd%3A0x39bac563fd562d52&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7589596,
+            "longitude": 110.3959946
+        },
+        "thumbnail": "//lh5.googleusercontent.com/proxy/nxw1dJdaFWeUzNfGgCeZ6hL8U5aO7Ljpk7HBZ4Vg4KeZndZKPLelAWLbfJpg0nPP-0PgLNswZAh6H5dL_0jo_aBWW8lbm5qmCohOw20S1_8FBTXaqhyHdzE8e2MSePe74pZWxqDd93NfL3ubIsy_hWBjuR-1MWk=w80-h120-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Urban Nurdiono Hotel",
+        "rating": 4.6,
+        "reviews": 41,
+        "place_id": "ChIJ4684QRdXei4RfXnfTflbxCs",
+        "address": "Jl. Timoho No.31-37, Muja Muju, Kec. Umbulharjo, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55165, Indonesia",
+        "phone": null,
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57174138afe3%3A0x2bc45bf94ddf797d&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57174138afe3%3A0x2bc45bf94ddf797d&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.795883099999999,
+            "longitude": 110.39088679999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipMp4i35odgbLahgrSlO1GeZSakalbQM7YIKjWYX=w122-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Hotel Madina Inn Yogyakarta",
+        "rating": 4.8,
+        "reviews": 175,
+        "place_id": "ChIJFZERx9NXei4Rd6zhzJTsL58",
+        "address": "Jl. Taman Siswa No.56, Wirogunan, Kec. Mergangsan, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55151, Indonesia",
+        "phone": "+62 274 384137",
+        "website": "https://www.madinainn.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57d3c7119115%3A0x9f2fec94cce1ac77&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57d3c7119115%3A0x9f2fec94cce1ac77&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.8072349,
+            "longitude": 110.3773569
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNzadRQkGJ9CK3rsEx5-EAzZNNJL-0JzDEAbUsJ=w137-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Front One Cabin Malioboro Jogja",
+        "rating": 4.6,
+        "reviews": 517,
+        "place_id": "ChIJveL9EodXei4RcCafEw2OILo",
+        "address": "Jl. Jagalan - Beji Jl. Beji No.61, Purwokinanti, Pakualaman, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55166, Indonesia",
+        "phone": "+62 274 5019195",
+        "website": "http://www.frontonecabinmalioboro.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a578712fde2bd%3A0xba208e0d139f2670&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a578712fde2bd%3A0xba208e0d139f2670&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7970350999999996,
+            "longitude": 110.3704515
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOFuXtrQaWmtR1rcSBN0ffwnlriDxFFlgI1Xujf=w138-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Pawon Cokelat",
+        "rating": 4.2,
+        "reviews": 429,
+        "place_id": "ChIJ0yEF5iVYei4RFOPxX7XEXno",
+        "address": "Jl. Ps. Kembang Gg. 1 No.102, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 878-7880-9008",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5825e60521d3%3A0x7a5ec4b55ff1e314&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5825e60521d3%3A0x7a5ec4b55ff1e314&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.790546699999999,
+            "longitude": 110.3654284
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipPxnevQHFR61MkY5wClDTz899ZF8JP_mr5hU4mf=w137-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "YezYezYez Yogyakarta",
+        "rating": 4.5,
+        "reviews": 396,
+        "place_id": "ChIJVzBo9KJXei4Rfn1jD1Jt6Zs",
+        "address": "Gg. Batik Gringsing No.509, Brontokusuman, Mergangsan, Yogyakarta City, Special Region of Yogyakarta 55153, Indonesia",
+        "phone": "+62 823-2773-7824",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a57a2f4683057%3A0x9be96d520f637d7e&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a57a2f4683057%3A0x9be96d520f637d7e&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.8180361,
+            "longitude": 110.3699946
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipP5VWjzuQnHIh6p7jxlE8Ang-z3EGtjN2l2En6a=w187-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Tickle Hotel",
+        "rating": 4.2,
+        "reviews": 1813,
+        "place_id": "ChIJJ9EYdFj_ei4RQ6A9lrtYzyQ",
+        "address": "Jl. Urip Sumoharjo No.64, Klitren, Gondokusuman, Yogyakarta City, Special Region of Yogyakarta 55222, Indonesia",
+        "phone": "+62 274 560393",
+        "website": "http://instagram.com/ticklehoteljogja",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7aff587418d127%3A0x24cf58bb963da043&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7aff587418d127%3A0x24cf58bb963da043&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7829118,
+            "longitude": 110.3853717
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOn3H1an_HKArofVEg4yVClYC2lpv-Oi8ErWIXU=w122-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Happy Family Hotel /dekat Malioboro Yogya/Diy.",
+        "rating": 4.1,
+        "reviews": 285,
+        "place_id": "ChIJzwAyVSFYei4RF1bhV-xBPDU",
+        "address": "Jl. Jlagran Lor No.10, Pringgokusuman, Gedong Tengen, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55272, Indonesia",
+        "phone": "+62 274 552360",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a5821553200cf%3A0x353c41ec57e15617&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a5821553200cf%3A0x353c41ec57e15617&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7908228,
+            "longitude": 110.3604696
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNnran10eD9GD0mrpiCOjbAbbiIVNHH2G-fOEVh=w138-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "h-Boutique Hotel Jogjakarta",
+        "rating": 4.3,
+        "reviews": 2646,
+        "place_id": "ChIJV5TyIstZei4RKRA-yqdSC0g",
+        "address": "Jl. Prof. Herman Yohanes No.1, Terban, Gondokusuman, Yogyakarta City, Special Region of Yogyakarta 55223, Indonesia",
+        "phone": "+62 274 6429742",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59cb22f29457%3A0x480b52a7ca3e1029&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59cb22f29457%3A0x480b52a7ca3e1029&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.781765,
+            "longitude": 110.3790782
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipP25KxbjzNxPK00PrOKh3o5dpw9Q8gIi-Vdw634=w163-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Malioboro Inn Hotel",
+        "rating": 4.2,
+        "reviews": 1324,
+        "place_id": "ChIJn190ZSZYei4R8LwDHj-UrT4",
+        "address": "Sosrowijayan St No.23 - 25, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 561705",
+        "website": "https://e1-booking.com/booking/hotel-malioboro-inn_3046.html",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a582665745f9f%3A0x3ead943f1e03bcf0&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a582665745f9f%3A0x3ead943f1e03bcf0&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7918185,
+            "longitude": 110.3642496
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipOE92Y6USEHm5fuxvpH8iq4yA0b4eMjd9Wjl01N=w138-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Forriz Hotel Yogyakarta",
+        "rating": 4.4,
+        "reviews": 3654,
+        "place_id": "ChIJSxYTlR9Yei4RDPRaPbssVio",
+        "address": "Jl. HOS Cokroaminoto No.60, Pakuncen, Wirobrajan, Yogyakarta City, Special Region of Yogyakarta 55253, Indonesia",
+        "phone": "+62 274 5012777",
+        "website": "https://www.forrizhotels.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a581f9513164b%3A0x2a562cbb3d5af40c&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a581f9513164b%3A0x2a562cbb3d5af40c&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7954415,
+            "longitude": 110.3535053
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipMJUB0LkBNK4AzV5V2-zEtMy1MLxCWQ-I8zCmrG=w138-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Hotel Radyoharto Malioboro Yogyakarta",
+        "rating": 4.3,
+        "reviews": 83,
+        "place_id": "ChIJZ-XZf5ZZei4RBO7h9gOWmbM",
+        "address": "Jl. Kp. Jogonegaran, Sosromenduran, Gedong Tengen, Kota Yogyakarta, Daerah Istimewa Yogyakarta 55271, Indonesia",
+        "phone": "+62 812-2247-3500",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59967fd9e567%3A0xb3999603f6e1ee04&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59967fd9e567%3A0xb3999603f6e1ee04&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.795443799999999,
+            "longitude": 110.3621311
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipNMjETK5kcihkd0W6c9ynBnO64NyrqgncxtVn5p=w163-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Grand Tjokro Yogyakarta",
+        "rating": 4.4,
+        "reviews": 4667,
+        "place_id": "ChIJY7YIA7pZei4RgTFiK-QSXL8",
+        "address": "Jl. Affandi No.37, Karang Gayam, Caturtunggal, Depok, Sleman Regency, Special Region of Yogyakarta 55281, Indonesia",
+        "phone": "+62 274 6429100",
+        "website": "http://www.grandtjokro.com/yogyakarta",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a59ba0308b663%3A0xbf5c12e42b623181&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a59ba0308b663%3A0xbf5c12e42b623181&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7669396,
+            "longitude": 110.39149909999999
+        },
+        "thumbnail": "//lh5.googleusercontent.com/proxy/GVobrHUbRBcMFE2dJafMhtncj_aidyHgusm6QbuvBbL5LnFimSac6uwUn9RpkasDiHoj2bkyfLz8ZPhl0iI7v3b6jiAC-K1mXH-u0YblkD1T_j2APYe3QkhzJFHlXeN5zJ_mVY8jMXvPJTOE9GfA7KDskARCsIs=w138-h92-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Grage Bussines Hotel Yogyakarta",
+        "rating": 4.3,
+        "reviews": 2537,
+        "place_id": "ChIJT1UUmSZYei4RAvEELb2fPxQ",
+        "address": "Sosrowijayan St No.242, Sosromenduran, Gedong Tengen, Yogyakarta City, Special Region of Yogyakarta 55271, Indonesia",
+        "phone": "+62 274 560125",
+        "website": "http://www.hotelgrage.com/",
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58269914554f%3A0x143f9fbd2d04f102&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58269914554f%3A0x143f9fbd2d04f102&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7913443,
+            "longitude": 110.3622759
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipMQn-zxnKh1Rn_jOHgxYaduWKSUMHgg4wO7oOEq=w80-h142-k-no"
+    },
+    {
+        "page_num": 5,
+        "place_name": "Hotel Laxston Jl. Magelang",
+        "rating": 4.2,
+        "reviews": 1639,
+        "place_id": "ChIJz2RfTTlYei4RPL1wplQD4Ws",
+        "address": "Magelang St No.31, Bumijo, Jetis, Yogyakarta City, Special Region of Yogyakarta 55231, Indonesia",
+        "phone": "+62 274 556600",
+        "website": null,
+        "reviews_link": "https://serpapi.com/search.json?data_id=0x2e7a58394d5f64cf%3A0x6be10354a670bd3c&engine=google_maps_reviews&hl=en",
+        "photos_link": "https://serpapi.com/search.json?data_id=0x2e7a58394d5f64cf%3A0x6be10354a670bd3c&engine=google_maps_photos&hl=en",
+        "gps_coordinates": {
+            "latitude": -7.7801399,
+            "longitude": 110.36065669999999
+        },
+        "thumbnail": "https://lh5.googleusercontent.com/p/AF1QipMM37HUD1plQ5jcx3uthgObsw8C97zfdoXCAgUI=w80-h106-k-no"
+    }
+]
