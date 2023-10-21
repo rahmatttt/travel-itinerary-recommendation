@@ -8,7 +8,7 @@ import datetime
 import numpy as np
 
 class BSO_VRP(object):
-    def __init__(self,p1 = 0.3,p2 = 0.4,p3 = 0.5,p4 = 0.5,max_iter = 100,max_idem = 15,random_state=None):
+    def __init__(self,p1 = 0.1,p2 = 0.3,p3 = 0.5,p4 = 0.5,max_iter = 100,max_idem = 15,two_opt_method="best",random_state=None):
         self.db = ConDB()
         
         # parameter setting
@@ -20,6 +20,8 @@ class BSO_VRP(object):
         self.max_iter = max_iter #max iteration of BSO
         self.max_idem = max_idem #stop if the best fitness doesn't increase for max_idem iteration
         
+        self.two_opt_method = two_opt_method
+
         # set initial solution
         self.init_solution = [] #2D list of nodes, [[node1,node2,....],[node4,node5,....]]
         self.rest_nodes = [] #1D list of nodes, [node1,node2,node4,node5,....]
@@ -98,6 +100,9 @@ class BSO_VRP(object):
         elif len(self.init_solution)<=1 and len(self.rest_nodes)==0:
             self.p1 = 1 #no two interchange (only two opt)
     
+    def set_max_iter(self,max_iter):
+        self.max_iter = max_iter
+
     def set_init_solution(self,init_solution):
         # inital solution
         if len(init_solution) > 0:
@@ -242,6 +247,9 @@ class BSO_VRP(object):
             if len(day_solution) > 0:
                 final_solution.append(day_solution)
             
+            if len(tabu_nodes) == len(self.tour):
+                break
+            
             day += 1
         return final_solution
     
@@ -264,26 +272,44 @@ class BSO_VRP(object):
         fitness = self.MAUT(self.solution_list_of_nodes_to_dict([solution[1:-1]]),use_penalty=False)
         n = len(solution)
         
-        improved = True
-        while improved:
-            improved = False
-            for i in range(1,n-2):
-                for j in range(i+2,n-1):
-                    if j-i == 1:
-                        continue
-                    temp_solution = copy.deepcopy(solution)
-                    temp_solution[i+1:j+1] = reversed(temp_solution[i+1:j+1])
-                    temp_solution[1:-1],status = self.reset_depart_arrive_time(temp_solution[1:-1])
-                    if status:
-                        temp_fitness = self.MAUT(self.solution_list_of_nodes_to_dict([temp_solution[1:-1]]),use_penalty=False)
-                        if temp_fitness > fitness:
-                            solution = copy.deepcopy(temp_solution)
-                            fitness = temp_fitness
-                            improved = True
-        return solution[1:-1] #best improvement
+        if self.two_opt_method == "first": #first improvement
+        	improved = False
+	        for i in range(1,n-2):
+	            for j in range(i+2,n-1):
+	                if j-i == 1:
+	                    continue
+	                temp_solution = copy.deepcopy(solution)
+	                temp_solution[i+1:j+1] = reversed(temp_solution[i+1:j+1])
+	                temp_solution[1:-1],status = self.reset_depart_arrive_time(temp_solution[1:-1])
+	                if status:
+	                    temp_fitness = self.MAUT(self.solution_list_of_nodes_to_dict([temp_solution[1:-1]]),use_penalty=False)
+	                    if temp_fitness > fitness:
+	                        solution = copy.deepcopy(temp_solution)
+	                        fitness = temp_fitness
+	                        improved = True
+	                        return solution[1:-1] #first improvement
+        else: #best improvement
+	        improved = True
+	        while improved:
+	            improved = False
+	            for i in range(1,n-2):
+	                for j in range(i+2,n-1):
+	                    if j-i == 1:
+	                        continue
+	                    temp_solution = copy.deepcopy(solution)
+	                    temp_solution[i+1:j+1] = reversed(temp_solution[i+1:j+1])
+	                    temp_solution[1:-1],status = self.reset_depart_arrive_time(temp_solution[1:-1])
+	                    if status:
+	                        temp_fitness = self.MAUT(self.solution_list_of_nodes_to_dict([temp_solution[1:-1]]),use_penalty=False)
+	                        if temp_fitness > fitness:
+	                            solution = copy.deepcopy(temp_solution)
+	                            fitness = temp_fitness
+	                            improved = True
+
+        return solution[1:-1] #return best or return unchanged
     
     def two_interchange(self,itinerary1,itinerary2, rest_nodes = False):
-        operator = [(0,1),(0,2),(1,0),(1,1),(1,2),(2,0),(2,1),(2,2)]
+        operator = [(0,1),(1,0),(1,1),(1,2),(2,0),(2,1),(2,2)]
         solution1 = copy.deepcopy(itinerary1)
         solution2 = copy.deepcopy(itinerary2)
         if rest_nodes == False:
@@ -431,13 +457,15 @@ class BSO_VRP(object):
         return solution,solution_dict,fitness
 
 class BSO_TSP(object):
-    def __init__(self,p1 = 0.4,max_iter = 100,max_idem = 20, random_state = None):
+    def __init__(self,p1 = 0.9,max_iter = 100,max_idem = 20, two_opt_method = "best", random_state = None):
         self.db = ConDB()
         
         # parameter setting
         self.p1 = p1 #less than: 2-opt, more than: 2-interchange
         self.max_iter = max_iter
         self.max_idem = max_idem
+
+        self.two_opt_method = two_opt_method
         
         # set initial solution
         self.init_solution = [] #1D list of nodes, [node1,node2,....]
@@ -507,6 +535,9 @@ class BSO_TSP(object):
         else:
             self.init_solution = self.generate_init_solution()
     
+    def set_max_iter(self,max_iter):
+        self.max_iter = max_iter
+
     def set_init_solution(self,init_solution):
         # inital solution
         if len(init_solution) > 0:
@@ -643,20 +674,36 @@ class BSO_TSP(object):
         solution = [start_node] + itinerary + [end_node]
         fitness = self.MAUT_TSP(self.create_solution_dict_TSP(solution[1:-1]))
         n = len(solution)
-        improved = True
-        while improved:
+        if self.two_opt_method == "first":
             improved = False
             for i in range(1,n-2):
                 for j in range(i+2,n-1):
                     if j-i == 1:
                         continue
                     temp_solution = copy.deepcopy(solution)
-                    temp_solution[i+1:j+1] = reversed(temp_solution[i+1:j+1])                    
+                    temp_solution[i+1:j+1] = reversed(temp_solution[i+1:j+1])
                     temp_fitness = self.MAUT_TSP(self.create_solution_dict_TSP(temp_solution[1:-1]))
                     if temp_fitness > fitness:
                         solution = copy.deepcopy(temp_solution)
                         fitness = temp_fitness
                         improved = True
+                        return solution[1:-1] #first improvement
+        else: #best improvement
+            improved = True
+            while improved:
+                improved = False
+                for i in range(1,n-2):
+                    for j in range(1+2,n-1):
+                        if j-1 == 1:
+                            continue
+                        temp_solution = copy.deepcopy(solution)
+                        temp_solution[i+1:j+1] = reversed(temp_solution[i+1:j+1])
+                        temp_fitness = self.MAUT_TSP(self.create_solution_dict_TSP(temp_solution[1:-1]))
+                        if temp_fitness > fitness:
+                            solution = copy.deepcopy(temp_solution)
+                            fitness = temp_fitness
+                            improved = True
+
         return solution[1:-1] #best improvement
     
     def two_interchange(self,itinerary1,itinerary2):
@@ -775,7 +822,10 @@ class BSO_TSP(object):
             day_solution_dict = {"index":[],"waktu":[current_node.depart_time],"rating":[],"tarif":[]}
             next_node_candidates = [node for node in solution if node._id not in tabu_nodes]
             for i in range(len(next_node_candidates)):
-                if self.next_node_check(current_node,next_node_candidates[i]):
+                time_needed = self.time_to_second(current_node.depart_time)+self.timematrix[current_node._id][next_node_candidates[i]._id]["waktu"]+next_node_candidates[i].waktu_kunjungan
+                if time_needed >= self.time_to_second(next_node_candidates[i].jam_tutup):
+                    continue
+                elif self.next_node_check(current_node,next_node_candidates[i]):
                     next_node_candidates[i] = self.set_next_node_depart_arrive_time(current_node,next_node_candidates[i])
                     day_solution.append(next_node_candidates[i])
                     day_solution_dict['index'].append(next_node_candidates[i]._id)
@@ -784,6 +834,8 @@ class BSO_TSP(object):
                     day_solution_dict['tarif'].append(next_node_candidates[i].tarif)
                     tabu_nodes.append(next_node_candidates[i]._id)
                     current_node = next_node_candidates[i]
+                else:
+                    break
             if current_node._id != self.hotel._id:
                 self.hotel = self.set_next_node_depart_arrive_time(current_node,self.hotel)
                 day_solution_dict['waktu'].append(self.hotel.arrive_time)
@@ -792,8 +844,12 @@ class BSO_TSP(object):
                 final_solution.append(day_solution)
                 final_solution_dict.append(day_solution_dict)
             
+            if len(tabu_nodes) == len(self.tour):
+                break
+            
             day += 1
         
         final_fitness = self.MAUT(final_solution_dict)
         return final_solution,final_solution_dict,final_fitness
+    
     

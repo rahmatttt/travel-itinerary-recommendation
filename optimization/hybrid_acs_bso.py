@@ -6,10 +6,11 @@ import time
 import json
 import datetime
 import numpy as np
+import time
 from optimization.bso import BSO_VRP,BSO_TSP
 
 class ACSBSO_VRP(object):
-    def __init__(self,alpha_t = 1,beta = 2,q0 = 0.1,init_pheromone = 0.1,rho = 0.1,alpha = 0.1,num_ant = 30,max_iter_acs = 500,max_iter_bso=15,p1=0.3,p2=0.4,p3=0.5,p4=0.5,max_idem_acs=50,max_idem_bso=10,random_state=None):
+    def __init__(self,alpha_t = 1,beta = 1,q0 = 0.1,init_pheromone = 0.1,rho = 0.1,alpha = 0.1,num_ant = 30,max_iter_acs = 200,max_iter_bso=15,p1=0.4,p2=0.4,p3=0.5,p4=0.5,max_idem_acs=30,max_idem_bso=10,random_state=None):
         self.db = ConDB()
         
         #ACS parameter setting
@@ -22,10 +23,19 @@ class ACSBSO_VRP(object):
         self.num_ant = num_ant #number of ants
         self.max_iter_acs = max_iter_acs #max iteration ACS
         self.max_idem = max_idem_acs #stop if the best fitness doesn't increase for max_idem iteration
+
+        # BSO parameter setting
+        self.p1 = p1 #less than: 2-opt, more than: 2-interchange
+        self.p2 = p2 #less than: center, more than: random cluster (2-opt)
+        self.p3 = p3 #less than: interchange a cluster and rest nodes, more than: interchange between clusters
+        self.p4 = p4 #less than: center, more than: random cluster
         
-        #BSO model
-        self.bso_model = BSO_VRP(p1,p2,p3,p4,max_iter_bso,max_idem_bso,random_state=random_state)
-        
+        self.max_iter_bso = max_iter_bso #max iteration of BSO
+        self.max_idem_bso = max_idem_bso #stop if the best fitness doesn't increase for max_idem iteration
+        self.bso_model = BSO_VRP(p1=self.p1,p2=self.p2,p3=self.p3,p4=self.p4,
+                                max_iter=self.max_iter_bso,max_idem=self.max_idem_bso,
+                                two_opt_method = "first",random_state=random_state)
+
         # data model setting
         self.tour = None #POI yang dipilih oleh user untuk dikunjungi
         self.hotel = None #hotel yang dipilih oleh user
@@ -56,8 +66,8 @@ class ACSBSO_VRP(object):
         self.max_time_penalty = None
         
         #set random seed
-        if random_state != None:
-            random.seed(random_state)
+        self.random_state = random_state
+        random.seed(self.random_state)
     
     def set_model(self,tour,hotel,timematrix,travel_days = 3, depart_time = datetime.time(8,0,0),max_travel_time = datetime.time(20,0,0),degree_waktu = 1,degree_tarif = 1,degree_rating = 1):
         #initiate model
@@ -84,9 +94,10 @@ class ACSBSO_VRP(object):
         self.max_poi_penalty = len(self.tour)
         self.min_time_penalty = 0
         self.max_time_penalty = ((24*3600)-self.diff_second_between_time(max_travel_time,depart_time))*travel_days
-        
-        self.bso_model.set_model(tour,hotel,timematrix,init_solution=[],travel_days=travel_days,degree_waktu = degree_waktu,degree_tarif = degree_tarif,degree_rating = degree_rating)
-    
+            
+    def set_max_iter_acs(self,max_iter_acs):
+        self.max_iter_acs = max_iter_acs
+
     def time_to_second(self,time):
         return (time.hour*3600)+(time.minute*60)+time.second
     
@@ -252,18 +263,11 @@ class ACSBSO_VRP(object):
                 ant_solution = []
                 ant_solution_dict = []
                 day = 1
+                tabu_nodes = []
                 while day<=self.travel_days:
                     current_node = self.hotel
                     ant_day_solution = []
                     ant_day_solution_dict = {"index":[],"waktu":[current_node.depart_time],"rating":[],"tarif":[]}
-                    
-                    #create tabu node list
-                    if len(ant_solution)>0:
-                        tabu_nodes = [sol['index'] for sol in ant_solution_dict]
-                        tabu_nodes = sum(tabu_nodes,[]) #flatten
-                        tabu_nodes = tabu_nodes+ant_day_solution_dict["index"]
-                    else:
-                        tabu_nodes = []
                     
                     for pos in range(len(self.tour)+1):
                         #recheck next node candidates (perlu dicek jam sampainya apakah melebihi max time)
@@ -293,6 +297,9 @@ class ACSBSO_VRP(object):
                     if len(ant_day_solution_dict['index'])>0:
                         ant_solution.append(ant_day_solution)
                         ant_solution_dict.append(ant_day_solution_dict)
+
+                    if len(tabu_nodes) == len(self.tour):
+                        break
                     day += 1
                 
                 fitness = self.MAUT(ant_solution_dict)
@@ -305,9 +312,13 @@ class ACSBSO_VRP(object):
                 local_pheromone_matrix = self.local_pheromone_update(ant_solution_dict,fitness,local_pheromone_matrix)
             
             #BSO
-            self.bso_model.set_init_solution(best_found_solution)
-            _,new_solution,new_fitness = self.bso_model.construct_solution()
             
+            self.bso_model.set_model(self.tour,self.hotel,self.timematrix,init_solution=best_found_solution,
+                                    travel_days=self.travel_days,degree_waktu = self.degree_waktu,
+                                    degree_tarif = self.degree_tarif,degree_rating = self.degree_rating)
+
+            _,new_solution,new_fitness = self.bso_model.construct_solution()
+
             #global pheromone update
             if new_fitness > best_found_fitness:
                 best_found_solution_dict = new_solution
@@ -328,7 +339,7 @@ class ACSBSO_VRP(object):
         return best_solution,best_fitness
 
 class ACSBSO_TSP(object):
-    def __init__(self,alpha_t = 1,beta = 2,q0 = 0.1,init_pheromone = 0.1,rho = 0.1,alpha = 0.1,num_ant = 30,max_iter_acs = 100,max_iter_bso=15,p1=0.2,max_idem_acs=50,max_idem_bso=10,random_state=None):
+    def __init__(self,alpha_t = 1,beta = 1,q0 = 0.1,init_pheromone = 0.1,rho = 0.1,alpha = 0.1,num_ant = 30,max_iter_acs = 200,max_iter_bso=15,p1=0.9,max_idem_acs=30,max_idem_bso=10,random_state=None):
         self.db = ConDB()
         
         #ACS parameter setting
@@ -343,7 +354,8 @@ class ACSBSO_TSP(object):
         self.max_idem = max_idem_acs #stop if the best fitness doesn't increase for max_idem iteration
         
         #BSO model
-        self.bso_model = BSO_TSP(p1,max_iter_bso,max_idem_bso,random_state=random_state)
+        self.bso_model = BSO_TSP(p1=p1,max_iter=max_iter_bso,max_idem=max_idem_bso,
+                                two_opt_method="first",random_state=random_state)
         
         # data model setting
         self.tour = None #POI yang dipilih oleh user untuk dikunjungi
@@ -406,6 +418,9 @@ class ACSBSO_TSP(object):
         
         self.bso_model.set_model(tour,hotel,timematrix,init_solution=[],travel_days=travel_days,degree_waktu = degree_waktu,degree_tarif = degree_tarif,degree_rating = degree_rating)
     
+    def set_max_iter_acs(self,max_iter_acs):
+        self.max_iter_acs = max_iter_acs
+
     def time_to_second(self,time):
         return (time.hour*3600)+(time.minute*60)+time.second
     
@@ -658,7 +673,10 @@ class ACSBSO_TSP(object):
             day_solution = {"index":[],"waktu":[current_node.depart_time],"rating":[],"tarif":[]}
             next_node_candidates = [node for node in solution if node._id not in tabu_nodes]
             for i in range(len(next_node_candidates)):
-                if self.next_node_check(current_node,next_node_candidates[i]):
+                time_needed = self.time_to_second(current_node.depart_time)+self.timematrix[current_node._id][next_node_candidates[i]._id]["waktu"]+next_node_candidates[i].waktu_kunjungan
+                if time_needed >= self.time_to_second(next_node_candidates[i].jam_tutup):
+                    continue
+                elif self.next_node_check(current_node,next_node_candidates[i]):
                     next_node_candidates[i] = self.set_next_node_depart_arrive_time(current_node,next_node_candidates[i])
                     day_solution['index'].append(next_node_candidates[i]._id)
                     day_solution['waktu'].append(next_node_candidates[i].arrive_time)
@@ -666,6 +684,8 @@ class ACSBSO_TSP(object):
                     day_solution['tarif'].append(next_node_candidates[i].tarif)
                     tabu_nodes.append(next_node_candidates[i]._id)
                     current_node = next_node_candidates[i]
+                else:
+                    break
             if current_node._id != self.hotel._id:
                 self.hotel = self.set_next_node_depart_arrive_time(current_node,self.hotel)
                 day_solution['waktu'].append(self.hotel.arrive_time)
@@ -673,6 +693,9 @@ class ACSBSO_TSP(object):
             if len(day_solution['index']) > 0:
                 final_solution.append(day_solution)
             
+            if len(tabu_nodes) == len(self.tour):
+                break
+
             day += 1
         
         final_fitness = self.MAUT(final_solution)

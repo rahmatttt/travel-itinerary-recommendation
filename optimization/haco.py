@@ -8,7 +8,7 @@ import datetime
 import numpy as np
 
 class HACO_VRP(object):
-    def __init__(self,alpha_t = 1,beta = 4,q0 = 0.6,q1=0.6,q2=0.3,q3=0.6,init_pheromone = 0.1,rho = 0.7,num_ant = 35,max_iter = 100,max_idem=50,random_state=None):
+    def __init__(self,alpha_t = 1,beta = 1,q0 = 0.1,q1=0.6,q2=0.3,q3=0.3,init_pheromone = 0.1,rho = 0.7,num_ant = 35,max_iter = 100,max_idem=50,random_state=None):
         self.db = ConDB()
         
         #parameter setting
@@ -82,6 +82,9 @@ class HACO_VRP(object):
         self.min_time_penalty = 0
         self.max_time_penalty = ((24*3600)-self.diff_second_between_time(max_travel_time,depart_time))*travel_days
     
+    def set_max_iter(self,max_iter):
+        self.max_iter = max_iter
+
     def time_to_second(self,time):
         return (time.hour*3600)+(time.minute*60)+time.second
     
@@ -307,18 +310,11 @@ class HACO_VRP(object):
                 ant_solution = []
                 ant_solution_dict = []
                 day = 1
+                tabu_nodes = []
                 while day<=self.travel_days:
                     current_node = self.hotel
                     ant_day_solution = []
                     ant_day_solution_dict = {"index":[],"waktu":[current_node.depart_time],"rating":[],"tarif":[]}
-                    
-                    #create tabu node list
-                    if len(ant_solution_dict)>0:
-                        tabu_nodes = [sol['index'] for sol in ant_solution_dict]
-                        tabu_nodes = sum(tabu_nodes,[]) #flatten
-                        tabu_nodes = tabu_nodes+ant_day_solution_dict["index"]
-                    else:
-                        tabu_nodes = []
                     
                     for pos in range(len(self.tour)+1):
                         #recheck next node candidates (perlu dicek jam sampainya apakah melebihi max time)
@@ -348,6 +344,10 @@ class HACO_VRP(object):
                     if len(ant_day_solution_dict['index'])>0:
                         ant_solution.append(ant_day_solution)
                         ant_solution_dict.append(ant_day_solution_dict)
+                    
+                    if len(tabu_nodes) == len(self.tour):
+                        break
+
                     day += 1
                 
                 fitness = self.MAUT(ant_solution_dict)
@@ -389,7 +389,7 @@ class HACO_VRP(object):
         return best_solution,best_fitness
 
 class HACO_TSP(object):
-    def __init__(self,alpha_t = 1,beta = 4,q0 = 0.6,q1=0.6,q2=0.3,q3=0.6,init_pheromone = 0.1,rho = 0.7,num_ant = 35,max_iter = 100,max_idem=50,random_state=None):
+    def __init__(self,alpha_t = 1,beta = 1,q0 = 0.1,q1=0.6,q2=0.3,q3=0.3,init_pheromone = 0.1,rho = 0.7,num_ant = 35,max_iter = 100,max_idem=50,random_state=None):
         self.db = ConDB()
         
         #parameter setting
@@ -463,6 +463,9 @@ class HACO_TSP(object):
         self.min_time_penalty = 0
         self.max_time_penalty = ((24*3600)-self.diff_second_between_time(max_travel_time,depart_time))*travel_days
     
+    def set_max_iter(self,max_iter):
+        self.max_iter = max_iter
+
     def time_to_second(self,time):
         return (time.hour*3600)+(time.minute*60)+time.second
     
@@ -770,7 +773,10 @@ class HACO_TSP(object):
             day_solution = {"index":[],"waktu":[current_node.depart_time],"rating":[],"tarif":[]}
             next_node_candidates = [node for node in solution if node._id not in tabu_nodes]
             for i in range(len(next_node_candidates)):
-                if self.next_node_check(current_node,next_node_candidates[i]):
+                time_needed = self.time_to_second(current_node.depart_time)+self.timematrix[current_node._id][next_node_candidates[i]._id]["waktu"]+next_node_candidates[i].waktu_kunjungan
+                if time_needed >= self.time_to_second(next_node_candidates[i].jam_tutup):
+                    continue
+                elif self.next_node_check(current_node,next_node_candidates[i]):
                     next_node_candidates[i] = self.set_next_node_depart_arrive_time(current_node,next_node_candidates[i])
                     day_solution['index'].append(next_node_candidates[i]._id)
                     day_solution['waktu'].append(next_node_candidates[i].arrive_time)
@@ -778,12 +784,17 @@ class HACO_TSP(object):
                     day_solution['tarif'].append(next_node_candidates[i].tarif)
                     tabu_nodes.append(next_node_candidates[i]._id)
                     current_node = next_node_candidates[i]
+                else:
+                    break
             if current_node._id != self.hotel._id:
                 self.hotel = self.set_next_node_depart_arrive_time(current_node,self.hotel)
                 day_solution['waktu'].append(self.hotel.arrive_time)
             
             if len(day_solution['index']) > 0:
                 final_solution.append(day_solution)
+            
+            if len(tabu_nodes) == len(self.tour):
+            	break
             
             day += 1
         
