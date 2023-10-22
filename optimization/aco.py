@@ -102,7 +102,10 @@ class ACO_VRP(object):
         return timematrix
     
     def min_max_scaler(self,min_value,max_value,value):
-        return (value-min_value)/(max_value-min_value)
+        if max_value-min_value == 0:
+            return 0
+        else:
+            return (value-min_value)/(max_value-min_value)
     
     def MAUT(self,solutions,use_penalty = True):
         #input: optimization solutions, format = [{"index":[],"waktu":[],"rating":[],"tarif":[]},...]
@@ -121,12 +124,12 @@ class ACO_VRP(object):
         
         #tarif
         sum_tarif = sum(tarif_ls)
-        score_tarif = 1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif) * self.degree_tarif
+        score_tarif = (1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif)) * self.degree_tarif
         
         #waktu
         waktu_per_day = [self.diff_second_between_time(i[0],i[-1]) for i in waktu_ls]
         sum_waktu = sum(waktu_per_day)
-        score_waktu = 1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu)*self.degree_waktu
+        score_waktu = (1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu))*self.degree_waktu
         
         #poi
         count_poi = len(index_ls)
@@ -136,12 +139,12 @@ class ACO_VRP(object):
             #poi penalty
             penalty_index = [node._id for node in self.tour if node._id not in index_ls]
             count_penalty = len(penalty_index)
-            score_poipenalty = 1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty) * self.degree_poi_penalty
+            score_poipenalty = (1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty)) * self.degree_poi_penalty
             
             #time penalty
             penalty_per_day = [max(self.diff_second_between_time(i[-1],self.max_travel_time),0) for i in waktu_ls]
             sum_time_penalty = sum(penalty_per_day)
-            score_timepenalty = 1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty) * self.degree_time_penalty
+            score_timepenalty = (1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty)) * self.degree_time_penalty
         else:
             score_poipenalty = 0
             score_timepenalty = 0
@@ -173,11 +176,13 @@ class ACO_VRP(object):
             sum_sample += pheromone_in_edge*heuristic_val
         
         #probability
+        sum_sample = 0.0001 if sum_sample == 0 else sum_sample
         next_node_prob = []
         for next_node in next_node_candidates:
             pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha_t
             heuristic_val = self.MAUT_between_two_nodes(current_node,next_node)**self.beta
             node_prob = (pheromone_in_edge*heuristic_val)/sum_sample
+            node_prob = 0.0001 if node_prob == 0 else node_prob
             next_node_prob.append(node_prob)
         
         next_node = random.choices(next_node_candidates,next_node_prob,k=1)
@@ -343,6 +348,7 @@ class ACO_TSP(object):
         self.max_tarif = None
         self.min_waktu = None
         self.max_waktu = None
+        self.max_waktu_tsp = None
         self.min_poi = None
         self.max_poi = None
         self.min_poi_penalty = None
@@ -379,6 +385,12 @@ class ACO_TSP(object):
         self.max_poi_penalty = len(self.tour)
         self.min_time_penalty = 0
         self.max_time_penalty = ((24*3600)-self.diff_second_between_time(max_travel_time,depart_time))*travel_days
+
+        self.max_waktu_tsp = 0  # Initialize the total waktu to 0
+
+        for source, destinations in self.timematrix.items():
+            for destination, values in destinations.items():
+                self.max_waktu_tsp += values['waktu']
     
     def set_max_iter(self,max_iter):
         self.max_iter = max_iter
@@ -402,7 +414,10 @@ class ACO_TSP(object):
         return timematrix
     
     def min_max_scaler(self,min_value,max_value,value):
-        return (value-min_value)/(max_value-min_value)
+        if max_value-min_value == 0:
+            return 0
+        else:
+            return (value-min_value)/(max_value-min_value)
     
     def MAUT_TSP(self,solutions):
         #concat all attribute lists (except for waktu)
@@ -420,7 +435,7 @@ class ACO_TSP(object):
         
         #waktu
         sum_waktu = solutions['waktu']
-        score_waktu = 1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu)*self.degree_waktu
+        score_waktu = 1-self.min_max_scaler(self.min_waktu,self.max_waktu_tsp,sum_waktu)*self.degree_waktu
         
         #MAUT
         pembilang = score_rating+score_tarif+score_waktu
@@ -445,12 +460,12 @@ class ACO_TSP(object):
         
         #tarif
         sum_tarif = sum(tarif_ls)
-        score_tarif = 1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif) * self.degree_tarif
+        score_tarif = (1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif)) * self.degree_tarif
         
         #waktu
         waktu_per_day = [self.diff_second_between_time(i[0],i[-1]) for i in waktu_ls]
         sum_waktu = sum(waktu_per_day)
-        score_waktu = 1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu)*self.degree_waktu
+        score_waktu = (1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu))*self.degree_waktu
         
         #poi
         count_poi = len(index_ls)
@@ -460,12 +475,12 @@ class ACO_TSP(object):
             #poi penalty
             penalty_index = [node._id for node in self.tour if node._id not in index_ls]
             count_penalty = len(penalty_index)
-            score_poipenalty = 1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty) * self.degree_poi_penalty
+            score_poipenalty = (1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty)) * self.degree_poi_penalty
             
             #time penalty
             penalty_per_day = [max(self.diff_second_between_time(i[-1],self.max_travel_time),0) for i in waktu_ls]
             sum_time_penalty = sum(penalty_per_day)
-            score_timepenalty = 1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty) * self.degree_time_penalty
+            score_timepenalty = (1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty)) * self.degree_time_penalty
         else:
             score_poipenalty = 0
             score_timepenalty = 0
@@ -497,11 +512,13 @@ class ACO_TSP(object):
             sum_sample += pheromone_in_edge*heuristic_val
         
         #probability
+        sum_sample = 0.0001 if sum_sample == 0 else sum_sample
         next_node_prob = []
         for next_node in next_node_candidates:
             pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha_t
             heuristic_val = self.MAUT_between_two_nodes(current_node,next_node)**self.beta
             node_prob = (pheromone_in_edge*heuristic_val)/sum_sample
+            node_prob = 0.0001 if node_prob == 0 else node_prob
             next_node_prob.append(node_prob)
         
         next_node = random.choices(next_node_candidates,next_node_prob,k=1)

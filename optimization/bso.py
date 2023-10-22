@@ -131,7 +131,10 @@ class BSO_VRP(object):
         return self.time_to_second(time_b) - self.time_to_second(time_a)
     
     def min_max_scaler(self,min_value,max_value,value):
-        return (value-min_value)/(max_value-min_value)
+        if max_value-min_value == 0:
+            return 0
+        else:
+            return (value-min_value)/(max_value-min_value)
     
     def MAUT(self,solutions,use_penalty = True):
         #input: optimization solutions, format = [{"index":[],"waktu":[],"rating":[],"tarif":[]},...]
@@ -150,12 +153,12 @@ class BSO_VRP(object):
         
         #tarif
         sum_tarif = sum(tarif_ls)
-        score_tarif = 1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif) * self.degree_tarif
+        score_tarif = (1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif)) * self.degree_tarif
         
         #waktu
         waktu_per_day = [self.diff_second_between_time(i[0],i[-1]) for i in waktu_ls]
         sum_waktu = sum(waktu_per_day)
-        score_waktu = 1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu)*self.degree_waktu
+        score_waktu = (1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu))*self.degree_waktu
         
         #poi
         count_poi = len(index_ls)
@@ -165,12 +168,12 @@ class BSO_VRP(object):
             #poi penalty
             penalty_index = [node._id for node in self.tour if node._id not in index_ls]
             count_penalty = len(penalty_index)
-            score_poipenalty = 1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty) * self.degree_poi_penalty
+            score_poipenalty = (1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty)) * self.degree_poi_penalty
             
             #time penalty
             penalty_per_day = [max(self.diff_second_between_time(i[-1],self.max_travel_time),0) for i in waktu_ls]
             sum_time_penalty = sum(penalty_per_day)
-            score_timepenalty = 1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty) * self.degree_time_penalty
+            score_timepenalty = (1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty)) * self.degree_time_penalty
         else:
             score_poipenalty = 0
             score_timepenalty = 0
@@ -375,10 +378,16 @@ class BSO_VRP(object):
                     
                     if status1 and status2:
                         #count fitness
-                        if rest_nodes == False:
+                        if rest_nodes == False and len(temp2) > 0 and len(temp1) > 0:
                             temp_fitness = self.MAUT(self.solution_list_of_nodes_to_dict([temp1,temp2]),use_penalty=False)
-                        else:
+                        elif rest_nodes == False and len(temp2) > 0:
+                        	temp_fitness = self.MAUT(self.solution_list_of_nodes_to_dict([temp2]),use_penalty=False)
+                        elif rest_nodes == False and len(temp1) > 0:
+                        	temp_fitness = self.MAUT(self.solution_list_of_nodes_to_dict([temp1]),use_penalty=False)
+                        elif rest_nodes == True and len(temp1) > 0:
                             temp_fitness = self.MAUT(self.solution_list_of_nodes_to_dict([temp1]),use_penalty=False)
+                        else:
+                        	temp_fitness = 0
                     
                         if temp_fitness > fitness:
                             return temp1,temp2 #first improvement
@@ -444,6 +453,7 @@ class BSO_VRP(object):
             for cluster_id in clusters:
                 solution.extend(clusters[cluster_id]['list'])
             
+            solution = [sol for sol in solution if len(sol)>0]
             solution_dict = self.solution_list_of_nodes_to_dict(solution)
             new_fitness = self.MAUT(solution_dict)
             if new_fitness > fitness:
@@ -492,6 +502,7 @@ class BSO_TSP(object):
         self.max_tarif = None
         self.min_waktu = None
         self.max_waktu = None
+        self.max_waktu_tsp = None
         self.min_poi = None
         self.max_poi = None
         self.min_poi_penalty = None
@@ -529,6 +540,12 @@ class BSO_TSP(object):
         self.min_time_penalty = 0
         self.max_time_penalty = ((24*3600)-self.diff_second_between_time(max_travel_time,depart_time))*travel_days
         
+        self.max_waktu_tsp = 0  # Initialize the total waktu to 0
+
+        for source, destinations in self.timematrix.items():
+            for destination, values in destinations.items():
+                self.max_waktu_tsp += values['waktu']
+
         # inital solution
         if len(init_solution) > 0:
             self.init_solution = init_solution
@@ -556,7 +573,10 @@ class BSO_TSP(object):
         return self.time_to_second(time_b) - self.time_to_second(time_a)
     
     def min_max_scaler(self,min_value,max_value,value):
-        return (value-min_value)/(max_value-min_value)        
+        if max_value-min_value == 0:
+            return 0
+        else:
+            return (value-min_value)/(max_value-min_value)        
     
     def MAUT_TSP(self,solutions):
         #concat all attribute lists (except for waktu)
@@ -574,13 +594,12 @@ class BSO_TSP(object):
         
         #waktu
         sum_waktu = solutions['waktu']
-        score_waktu = 1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu)*self.degree_waktu
+        score_waktu = 1-self.min_max_scaler(self.min_waktu,self.max_waktu_tsp,sum_waktu)*self.degree_waktu
         
         #MAUT
         pembilang = score_rating+score_tarif+score_waktu
         penyebut = self.degree_rating+self.degree_tarif+self.degree_waktu
         maut = pembilang/penyebut
-
         return maut
     
     def MAUT(self,solutions,use_penalty = True):
@@ -600,12 +619,12 @@ class BSO_TSP(object):
         
         #tarif
         sum_tarif = sum(tarif_ls)
-        score_tarif = 1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif) * self.degree_tarif
+        score_tarif = (1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif)) * self.degree_tarif
         
         #waktu
         waktu_per_day = [self.diff_second_between_time(i[0],i[-1]) for i in waktu_ls]
         sum_waktu = sum(waktu_per_day)
-        score_waktu = 1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu)*self.degree_waktu
+        score_waktu = (1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu))*self.degree_waktu
         
         #poi
         count_poi = len(index_ls)
@@ -615,12 +634,12 @@ class BSO_TSP(object):
             #poi penalty
             penalty_index = [node._id for node in self.tour if node._id not in index_ls]
             count_penalty = len(penalty_index)
-            score_poipenalty = 1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty) * self.degree_poi_penalty
+            score_poipenalty = (1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty)) * self.degree_poi_penalty
             
             #time penalty
             penalty_per_day = [max(self.diff_second_between_time(i[-1],self.max_travel_time),0) for i in waktu_ls]
             sum_time_penalty = sum(penalty_per_day)
-            score_timepenalty = 1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty) * self.degree_time_penalty
+            score_timepenalty = (1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty)) * self.degree_time_penalty
         else:
             score_poipenalty = 0
             score_timepenalty = 0
