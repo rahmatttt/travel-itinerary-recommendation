@@ -8,7 +8,7 @@ import datetime
 import numpy as np
 
 class BSO_VRP(object):
-    def __init__(self,p1 = 0.1,p2 = 0.3,p3 = 0.5,p4 = 0.5,max_iter = 100,max_idem = 15,two_opt_method="best",random_state=None):
+    def __init__(self,p1 = 0.7,p2 = 0.7,p3 = 0.9,p4 = 0.3,max_iter = 100,max_idem = 15,two_opt_method="best",random_state=None):
         self.db = ConDB()
         
         # parameter setting
@@ -467,7 +467,7 @@ class BSO_VRP(object):
         return solution,solution_dict,fitness
 
 class BSO_TSP(object):
-    def __init__(self,p1 = 0.9,max_iter = 100,max_idem = 20, two_opt_method = "best", random_state = None):
+    def __init__(self,p1 = 0.5,max_iter = 100,max_idem = 20, two_opt_method = "best", random_state = None):
         self.db = ConDB()
         
         # parameter setting
@@ -590,11 +590,11 @@ class BSO_TSP(object):
         
         #tarif
         sum_tarif = sum(tarif_ls)
-        score_tarif = 1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif) * self.degree_tarif
+        score_tarif = (1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif)) * self.degree_tarif
         
         #waktu
         sum_waktu = solutions['waktu']
-        score_waktu = 1-self.min_max_scaler(self.min_waktu,self.max_waktu_tsp,sum_waktu)*self.degree_waktu
+        score_waktu = (1-self.min_max_scaler(self.min_waktu,self.max_waktu_tsp,sum_waktu))*self.degree_waktu
         
         #MAUT
         pembilang = score_rating+score_tarif+score_waktu

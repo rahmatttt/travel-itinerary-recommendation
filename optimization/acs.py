@@ -8,7 +8,7 @@ import datetime
 import numpy as np
 
 class ACS_VRP(object):
-    def __init__(self,alpha_t = 1,beta = 1,q0 = 0.1,init_pheromone = 0.1,rho = 0.1,alpha = 0.1,num_ant = 30,max_iter = 200,max_idem=30,random_state=None):
+    def __init__(self,alpha_t = 1,beta = 3,q0 = 0.1,init_pheromone = 0.1,rho = 0.9,alpha = 0.1,num_ant = 30,max_iter = 200,max_idem=30,random_state=None):
         self.db = ConDB()
         
         #parameter setting
@@ -314,7 +314,7 @@ class ACS_VRP(object):
 
 
 class ACS_TSP(object):
-    def __init__(self,alpha_t = 1,beta = 1,q0 = 0.1,init_pheromone = 0.1,rho = 0.1,alpha = 0.1,num_ant = 30,max_iter = 200,max_idem=30,random_state=None):
+    def __init__(self,alpha_t = 1,beta = 3,q0 = 0.1,init_pheromone = 0.1,rho = 0.9,alpha = 0.1,num_ant = 30,max_iter = 200,max_idem=30,random_state=None):
         self.db = ConDB()
         
         #parameter setting
@@ -433,11 +433,11 @@ class ACS_TSP(object):
         
         #tarif
         sum_tarif = sum(tarif_ls)
-        score_tarif = 1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif) * self.degree_tarif
+        score_tarif = (1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif)) * self.degree_tarif
         
         #waktu
         sum_waktu = solutions['waktu']
-        score_waktu = 1-self.min_max_scaler(self.min_waktu,self.max_waktu_tsp,sum_waktu)*self.degree_waktu
+        score_waktu = (1-self.min_max_scaler(self.min_waktu,self.max_waktu_tsp,sum_waktu))*self.degree_waktu
         
         #MAUT
         pembilang = score_rating+score_tarif+score_waktu
@@ -612,7 +612,7 @@ class ACS_TSP(object):
                         break
                 
                 fitness = self.MAUT_TSP(ant_solution_dict)
-                if fitness > best_found_fitness:
+                if fitness >= best_found_fitness:
                     best_found_fitness = fitness
                     best_found_solution = copy.deepcopy(ant_solution)
                     best_found_solution_dict = copy.deepcopy(ant_solution_dict)
@@ -624,7 +624,7 @@ class ACS_TSP(object):
             self.global_pheromone_update(best_found_solution_dict,best_found_fitness)
             
             #checking best vs best found
-            if best_found_fitness > best_fitness:
+            if best_found_fitness >= best_fitness:
                 best_fitness = best_found_fitness
                 best_solution = copy.deepcopy(best_found_solution)
                 idem_counter = 0
