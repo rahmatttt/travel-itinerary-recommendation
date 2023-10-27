@@ -109,7 +109,7 @@ class HACO_VRP(object):
         else:
             return (value-min_value)/(max_value-min_value)
     
-    def MAUT(self,solutions,use_penalty = True):
+    def MAUT(self,solutions,consider_total_poi = True,use_penalty = True):
         #input: optimization solutions, format = [{"index":[],"waktu":[],"rating":[],"tarif":[]},...]
         #output: fitness value calculated using MAUT
         
@@ -135,7 +135,7 @@ class HACO_VRP(object):
         
         #poi
         count_poi = len(index_ls)
-        score_poi = self.min_max_scaler(self.min_poi,self.max_poi,count_poi)
+        score_poi = self.min_max_scaler(self.min_poi,self.max_poi,count_poi) if consider_total_poi == True else 0
         
         if use_penalty==True:
             #poi penalty
@@ -152,8 +152,15 @@ class HACO_VRP(object):
             score_timepenalty = 0
             
         #MAUT
+        degree_rating = self.degree_rating
+        degree_tarif = self.degree_tarif
+        degree_waktu = self.degree_waktu
+        degree_poi = self.degree_poi if consider_total_poi == True else 0
+        degree_poi_penalty = self.degree_poi_penalty if use_penalty == True else 0
+        degree_time_penalty = self.degree_time_penalty if use_penalty == True else 0
+
         pembilang = score_rating+score_tarif+score_waktu+score_poi+score_poipenalty+score_timepenalty
-        penyebut = self.degree_rating+self.degree_tarif+self.degree_waktu+self.degree_poi+self.degree_poi_penalty+self.degree_time_penalty
+        penyebut = degree_rating+degree_tarif+degree_waktu+degree_poi+degree_poi_penalty+degree_time_penalty
         maut = pembilang/penyebut
         return maut
     
@@ -526,7 +533,7 @@ class HACO_TSP(object):
         maut = pembilang/penyebut
         return maut
     
-    def MAUT(self,solutions,use_penalty = True):
+    def MAUT(self,solutions,consider_total_poi = True,use_penalty = True):
         #input: optimization solutions, format = [{"index":[],"waktu":[],"rating":[],"tarif":[]},...]
         #output: fitness value calculated using MAUT
         
@@ -552,7 +559,7 @@ class HACO_TSP(object):
         
         #poi
         count_poi = len(index_ls)
-        score_poi = self.min_max_scaler(self.min_poi,self.max_poi,count_poi)
+        score_poi = self.min_max_scaler(self.min_poi,self.max_poi,count_poi) if consider_total_poi == True else 0
         
         if use_penalty==True:
             #poi penalty
@@ -569,8 +576,15 @@ class HACO_TSP(object):
             score_timepenalty = 0
             
         #MAUT
+        degree_rating = self.degree_rating
+        degree_tarif = self.degree_tarif
+        degree_waktu = self.degree_waktu
+        degree_poi = self.degree_poi if consider_total_poi == True else 0
+        degree_poi_penalty = self.degree_poi_penalty if use_penalty == True else 0
+        degree_time_penalty = self.degree_time_penalty if use_penalty == True else 0
+
         pembilang = score_rating+score_tarif+score_waktu+score_poi+score_poipenalty+score_timepenalty
-        penyebut = self.degree_rating+self.degree_tarif+self.degree_waktu+self.degree_poi+self.degree_poi_penalty+self.degree_time_penalty
+        penyebut = degree_rating+degree_tarif+degree_waktu+degree_poi+degree_poi_penalty+degree_time_penalty
         maut = pembilang/penyebut
         return maut
     
