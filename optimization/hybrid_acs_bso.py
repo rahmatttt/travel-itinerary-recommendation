@@ -10,7 +10,7 @@ import time
 from optimization.bso import BSO_VRP,BSO_TSP
 
 class ACSBSO_VRP(object):
-    def __init__(self,alpha_t = 1,beta = 1,q0 = 0.1,init_pheromone = 0.1,rho = 0.1,alpha = 0.1,num_ant = 30,max_iter_acs = 200,max_iter_bso=15,p1=0.4,p2=0.4,p3=0.5,p4=0.5,max_idem_acs=30,max_idem_bso=10,random_state=None):
+    def __init__(self,alpha_t = 1,beta = 1,q0 = 0.1,init_pheromone = 0.1,rho = 0.1,alpha = 0.1,num_ant = 30,max_iter_acs = 200,max_iter_bso=15,p0=0.5,p1=0.4,p2=0.4,p3=0.5,p4=0.5,max_idem_acs=30,max_idem_bso=10,random_state=None):
         self.db = ConDB()
         
         #ACS parameter setting
@@ -23,6 +23,9 @@ class ACSBSO_VRP(object):
         self.num_ant = num_ant #number of ants
         self.max_iter_acs = max_iter_acs #max iteration ACS
         self.max_idem = max_idem_acs #stop if the best fitness doesn't increase for max_idem iteration
+
+        #hybrid setting
+        self.p0 = p0 #less than: no BSO, more than: do BSO 
 
         # BSO parameter setting
         self.p1 = p1 #less than: 2-opt, more than: 2-interchange
@@ -324,18 +327,19 @@ class ACSBSO_VRP(object):
                 local_pheromone_matrix = self.local_pheromone_update(ant_solution_dict,fitness,local_pheromone_matrix)
             
             #BSO
+            if random.uniform(0,1) > self.p0:
+                self.bso_model.set_model(self.tour,self.hotel,self.timematrix,init_solution=best_found_solution,
+                                        travel_days=self.travel_days,degree_waktu = self.degree_waktu,
+                                        degree_tarif = self.degree_tarif,degree_rating = self.degree_rating)
+
+                _,new_solution,new_fitness = self.bso_model.construct_solution()
+
             
-            self.bso_model.set_model(self.tour,self.hotel,self.timematrix,init_solution=best_found_solution,
-                                    travel_days=self.travel_days,degree_waktu = self.degree_waktu,
-                                    degree_tarif = self.degree_tarif,degree_rating = self.degree_rating)
-
-            _,new_solution,new_fitness = self.bso_model.construct_solution()
-
+                if new_fitness > best_found_fitness:
+                    best_found_solution_dict = new_solution
+                    best_found_fitness = new_fitness
+            
             #global pheromone update
-            if new_fitness > best_found_fitness:
-                best_found_solution_dict = new_solution
-                best_found_fitness = new_fitness
-            
             self.global_pheromone_update(best_found_solution_dict,best_found_fitness)
             
             #checking best vs best found
@@ -351,7 +355,7 @@ class ACSBSO_VRP(object):
         return best_solution,best_fitness
 
 class ACSBSO_TSP(object):
-    def __init__(self,alpha_t = 1,beta = 3,q0 = 0.1,init_pheromone = 0.1,rho = 0.9,alpha = 0.1,num_ant = 30,max_iter_acs = 200,max_iter_bso=15,p1=0.9,max_idem_acs=30,max_idem_bso=10,random_state=None):
+    def __init__(self,alpha_t = 1,beta = 3,q0 = 0.1,init_pheromone = 0.1,rho = 0.9,alpha = 0.1,num_ant = 30,max_iter_acs = 200,max_iter_bso=15,p0=0.5,p1=0.9,max_idem_acs=30,max_idem_bso=10,random_state=None):
         self.db = ConDB()
         
         #ACS parameter setting
@@ -365,6 +369,9 @@ class ACSBSO_TSP(object):
         self.max_iter_acs = max_iter_acs #max iteration ACS
         self.max_idem = max_idem_acs #stop if the best fitness doesn't increase for max_idem iteration
         
+        #hybrid setting
+        self.p0 = p0 #less than: no BSO, more than: do BSO 
+
         #BSO model
         self.bso_model = BSO_TSP(p1=p1,max_iter=max_iter_bso,max_idem=max_idem_bso,
                                 two_opt_method="first",random_state=random_state)
@@ -671,15 +678,17 @@ class ACSBSO_TSP(object):
                 local_pheromone_matrix = self.local_pheromone_update(ant_solution_dict,fitness,local_pheromone_matrix)
             
             #BSO
-            self.bso_model.set_init_solution(best_found_solution)
-            new_solution,new_fitness = self.bso_model.TSP()
+            if random.uniform(0,1) > self.p0:
+                self.bso_model.set_init_solution(best_found_solution)
+                new_solution,new_fitness = self.bso_model.TSP()
+            
+            
+                if new_fitness >= best_found_fitness:
+                    best_found_solution = new_solution
+                    best_found_solution_dict = self.bso_model.create_solution_dict_TSP(new_solution)
+                    best_found_fitness = new_fitness
             
             #global pheromone update
-            if new_fitness >= best_found_fitness:
-                best_found_solution = new_solution
-                best_found_solution_dict = self.bso_model.create_solution_dict_TSP(new_solution)
-                best_found_fitness = new_fitness
-            
             self.global_pheromone_update(best_found_solution_dict,best_found_fitness)
 
             #checking best vs best found

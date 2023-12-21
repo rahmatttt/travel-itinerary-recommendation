@@ -8,11 +8,11 @@ import datetime
 import numpy as np
 
 class HACO_VRP(object):
-    def __init__(self,alpha_t = 1,beta = 1,q0 = 0.1,q1=0.9,q2=0.5,q3=0.3,init_pheromone = 1,rho = 0.7,num_ant = 35,max_iter = 100,max_idem=50,random_state=None):
+    def __init__(self,alpha = 1,beta = 4,q0 = 0.4,q1=0.6,q2=0.3,q3=0.6,init_pheromone = 0.5,rho = 0.7,num_ant = 30,max_iter = 100,max_idem=50,random_state=None):
         self.db = ConDB()
         
         #parameter setting
-        self.alpha_t = alpha_t #relative value for pheromone (in transition rule)
+        self.alpha = alpha #relative value for pheromone (in transition rule)
         self.beta = beta #relative value for heuristic value (in transition rule)
         self.q0 = q0 #threshold in HACO transition rule
         self.q1 = q1
@@ -172,7 +172,7 @@ class HACO_VRP(object):
         return maut
     
     def exploitation(self,current_node,next_node_candidates,local_pheromone_matrix):
-        max_pos = np.argmax([local_pheromone_matrix[current_node._id][next_node._id]['pheromone']*(self.MAUT_between_two_nodes(current_node,next_node)**self.beta) for next_node in next_node_candidates])
+        max_pos = np.argmax([(local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha)*(self.MAUT_between_two_nodes(current_node,next_node)**self.beta) for next_node in next_node_candidates])
         next_node = next_node_candidates[max_pos]
         return next_node
     
@@ -180,7 +180,7 @@ class HACO_VRP(object):
         #penyebut
         sum_sample = 0
         for next_node in next_node_candidates:
-            pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha_t
+            pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha
             heuristic_val = self.MAUT_between_two_nodes(current_node,next_node)**self.beta
             sum_sample += pheromone_in_edge*heuristic_val
         
@@ -188,7 +188,7 @@ class HACO_VRP(object):
         sum_sample = 0.0001 if sum_sample == 0 else sum_sample
         next_node_prob = []
         for next_node in next_node_candidates:
-            pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha_t
+            pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha
             heuristic_val = self.MAUT_between_two_nodes(current_node,next_node)**self.beta
             node_prob = (pheromone_in_edge*heuristic_val)/sum_sample
             node_prob = 0.0001 if node_prob == 0 else node_prob
@@ -401,11 +401,11 @@ class HACO_VRP(object):
         return best_solution,best_fitness
 
 class HACO_TSP(object):
-    def __init__(self,alpha_t = 1,beta = 1,q0 = 0.1,q1=0.6,q2=0.3,q3=0.3,init_pheromone = 1,rho = 0.7,num_ant = 35,max_iter = 100,max_idem=50,random_state=None):
+    def __init__(self,alpha = 1,beta = 3,q0 = 0.8,q1=0.4,q2=0.3,q3=0.6,init_pheromone = 0.5,rho = 0.7,num_ant = 35,max_iter = 100,max_idem=50,random_state=None):
         self.db = ConDB()
         
         #parameter setting
-        self.alpha_t = alpha_t #relative value for pheromone (in transition rule)
+        self.alpha = alpha #relative value for pheromone (in transition rule)
         self.beta = beta #relative value for heuristic value (in transition rule)
         self.q0 = q0 #threshold in HACO transition rule
         self.q1 = q1
@@ -596,7 +596,7 @@ class HACO_TSP(object):
         return maut
     
     def exploitation(self,current_node,next_node_candidates,local_pheromone_matrix):
-        max_pos = np.argmax([local_pheromone_matrix[current_node._id][next_node._id]['pheromone']*(self.MAUT_between_two_nodes(current_node,next_node)**self.beta) for next_node in next_node_candidates])
+        max_pos = np.argmax([(local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha)*(self.MAUT_between_two_nodes(current_node,next_node)**self.beta) for next_node in next_node_candidates])
         next_node = next_node_candidates[max_pos]
         return next_node
     
@@ -604,7 +604,7 @@ class HACO_TSP(object):
         #penyebut
         sum_sample = 0
         for next_node in next_node_candidates:
-            pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha_t
+            pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha
             heuristic_val = self.MAUT_between_two_nodes(current_node,next_node)**self.beta
             sum_sample += pheromone_in_edge*heuristic_val
         
@@ -612,7 +612,7 @@ class HACO_TSP(object):
         sum_sample = 0.0001 if sum_sample == 0 else sum_sample
         next_node_prob = []
         for next_node in next_node_candidates:
-            pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha_t
+            pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha
             heuristic_val = self.MAUT_between_two_nodes(current_node,next_node)**self.beta
             node_prob = (pheromone_in_edge*heuristic_val)/sum_sample
             node_prob = 0.0001 if node_prob == 0 else node_prob
