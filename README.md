@@ -12,7 +12,9 @@ Several optimization algorithms are implemented in this code, such as:
 - Hybrid Ant Colony Optimization (HACO)
 - Discrete Komodo Mlipir Algorithm (DKA)
 
-Code for each optimization algorithm can be found in **Optimization** folder
+Code for each optimization algorithm can be found in **Optimization** folder (the code is in .py format)
+
+Code for results analysis can be found in Results_analysis.ipynb file (open with Jupyter Notebook)
 
 We use the POIs and hotels in Yogyakarta as the dataset of this project obtained from Google Maps API and SerpAPI
 
