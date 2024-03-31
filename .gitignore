@@ -12,7 +12,7 @@ tmp/
 .empty
 :memory
 cov.xml
-.xlsx
+*.xlsx
 
 # pycharm
 .idea/

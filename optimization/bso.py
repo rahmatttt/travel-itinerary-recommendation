@@ -354,27 +354,28 @@ class BSO_VRP(object):
                         #swap
                         temp1[i],temp2[j] = temp2[j],temp1[i]
                     
-                    if op[0]>1 and len(solution1)>1:
-                        if i == 1:
-                            temp1[i+1] = [temp1[i+1][1]]
-                        elif i == len(sol1)-1:
-                            temp1[i-1] = [temp1[i-1][0]]
-                        else:
-                            temp1[i-1] = [temp1[i-1][0]]
-                            temp1[i+1] = [temp1[i+1][1]]
-                    
-                    if op[1]>1 and len(solution2)>1:
-                        if j == 1:
-                            temp2[j+1] = [temp2[j+1][1]]
-                        elif j == len(sol2)-1:
-                            temp2[j-1] = [temp2[j-1][0]]
-                        else:
-                            temp2[j-1] = [temp2[j-1][0]]
-                            temp2[j+1] = [temp2[j+1][1]]
-                    
                     #flatten
                     temp1 = sum(temp1,[])
                     temp2 = sum(temp2,[])
+
+                    # unify the node list if op > 1
+                    if op[0]>1:
+                        tabu_nodes = []
+                        temp_nodes = []
+                        for node in temp1:
+                            if node._id not in tabu_nodes:
+                                temp_nodes.append(node)
+                                tabu_nodes.append(node._id)
+                        temp1 = copy.deepcopy(temp_nodes)
+                        
+                    if op[1]>1:
+                        tabu_nodes = []
+                        temp_nodes = []
+                        for node in temp2:
+                            if node._id not in tabu_nodes:
+                                temp_nodes.append(node)
+                                tabu_nodes.append(node._id)
+                        temp2 = copy.deepcopy(temp_nodes)
                     
                     #reset depart and arrive time
                     temp1,status1 = self.reset_depart_arrive_time(temp1)
@@ -772,27 +773,28 @@ class BSO_TSP(object):
                         #swap
                         temp1[i],temp2[j] = temp2[j],temp1[i]
                     
-                    if op[0]>1 and len(solution1)>1:
-                        if i == 1:
-                            temp1[i+1] = [temp1[i+1][1]]
-                        elif i == len(sol1)-1:
-                            temp1[i-1] = [temp1[i-1][0]]
-                        else:
-                            temp1[i-1] = [temp1[i-1][0]]
-                            temp1[i+1] = [temp1[i+1][1]]
-                    
-                    if op[1]>1 and len(solution2)>1:
-                        if j == 1:
-                            temp2[j+1] = [temp2[j+1][1]]
-                        elif j == len(sol2)-1:
-                            temp2[j-1] = [temp2[j-1][0]]
-                        else:
-                            temp2[j-1] = [temp2[j-1][0]]
-                            temp2[j+1] = [temp2[j+1][1]]
-                    
                     #flatten
                     temp1 = sum(temp1,[])
                     temp2 = sum(temp2,[])
+
+                    # unify the node list if op > 1
+                    if op[0]>1:
+                        tabu_nodes = []
+                        temp_nodes = []
+                        for node in temp1:
+                            if node._id not in tabu_nodes:
+                                temp_nodes.append(node)
+                                tabu_nodes.append(node._id)
+                        temp1 = copy.deepcopy(temp_nodes)
+                        
+                    if op[1]>1:
+                        tabu_nodes = []
+                        temp_nodes = []
+                        for node in temp2:
+                            if node._id not in tabu_nodes:
+                                temp_nodes.append(node)
+                                tabu_nodes.append(node._id)
+                        temp2 = copy.deepcopy(temp_nodes)
                     
                     #count fitness
                     temp_fitness = self.MAUT_TSP(self.create_solution_dict_TSP(temp1+temp2))
