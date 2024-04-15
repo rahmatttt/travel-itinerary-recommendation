@@ -846,12 +846,13 @@ class BSO_TSP(object):
         return solution,fitness
     
     def construct_solution(self):
-        solution,fitness = self.TSP()
         day = 1
         final_solution = []
         final_solution_dict = []
         tabu_nodes = []
+        temp_init_solution = copy.deepcopy(self.init_solution)
         while day <= self.travel_days:
+            solution,fitness = self.TSP()
             current_node = self.hotel
             day_solution = []
             day_solution_dict = {"index":[],"waktu":[current_node.depart_time],"rating":[],"tarif":[]}
@@ -868,6 +869,7 @@ class BSO_TSP(object):
                     day_solution_dict['rating'].append(next_node_candidates[i].rating)
                     day_solution_dict['tarif'].append(next_node_candidates[i].tarif)
                     tabu_nodes.append(next_node_candidates[i]._id)
+                    self.init_solution = [node for node in self.init_solution if node._id != next_node_candidates[i]._id] 
                     current_node = next_node_candidates[i]
                 else:
                     break
@@ -879,12 +881,13 @@ class BSO_TSP(object):
                 final_solution.append(day_solution)
                 final_solution_dict.append(day_solution_dict)
             
-            if len(tabu_nodes) == len(self.tour):
+            if len(self.init_solution) == 0:
                 break
             
             day += 1
         
         final_fitness = self.MAUT(final_solution_dict)
+        self.init_solution = copy.deepcopy(temp_init_solution)
         return final_solution,final_solution_dict,final_fitness
     
     

@@ -650,11 +650,12 @@ class ACS_TSP(object):
         return best_solution,best_fitness
     
     def construct_solution(self):
-        solution,fitness = self.TSP()
         day = 1
         final_solution = []
         tabu_nodes = []
+        temp_tour = copy.deepcopy(self.tour)
         while day <= self.travel_days:
+            solution,fitness = self.TSP()
             current_node = self.hotel
             day_solution = {"index":[],"waktu":[current_node.depart_time],"rating":[],"tarif":[]}
             next_node_candidates = [node for node in solution if node._id not in tabu_nodes]
@@ -669,6 +670,7 @@ class ACS_TSP(object):
                     day_solution['rating'].append(next_node_candidates[i].rating)
                     day_solution['tarif'].append(next_node_candidates[i].tarif)
                     tabu_nodes.append(next_node_candidates[i]._id)
+                    self.tour = [node for node in self.tour if node._id != next_node_candidates[i]._id] 
                     current_node = next_node_candidates[i]
                 else:
                     break
@@ -679,10 +681,11 @@ class ACS_TSP(object):
             if len(day_solution['index']) > 0:
                 final_solution.append(day_solution)
             
-            if len(tabu_nodes) == len(self.tour):
+            if len(self.tour) == 0:
                 break
 
             day += 1
         
         final_fitness = self.MAUT(final_solution)
+        self.tour = copy.deepcopy(temp_tour)
         return final_solution,final_fitness
