@@ -368,10 +368,11 @@ class HACO_VRP(object):
                 #mutation
                 if random.uniform(0,1)<=self.q1:
                     rest_nodes = self.get_rest_nodes_from_solution(ant_solution)
-                    ant_mutation = self.mutation(sum(ant_solution,[])+rest_nodes)
-                    ant_mutation_dict = self.create_solution_dict(ant_mutation)
-                    fitness_mutation = self.MAUT(ant_mutation_dict)
-                    all_ant_solution.append({"solution":copy.deepcopy(ant_mutation_dict),"fitness":fitness_mutation})
+                    if len(sum(ant_solution,[])+rest_nodes) > 1:
+                        ant_mutation = self.mutation(sum(ant_solution,[])+rest_nodes)
+                        ant_mutation_dict = self.create_solution_dict(ant_mutation)
+                        fitness_mutation = self.MAUT(ant_mutation_dict)
+                        all_ant_solution.append({"solution":copy.deepcopy(ant_mutation_dict),"fitness":fitness_mutation})
             
             #get top num_ant from all_ant_solution
             all_ant_solution = sorted(all_ant_solution, key=lambda x: x["fitness"], reverse = True)
@@ -759,7 +760,7 @@ class HACO_TSP(object):
                                          "fitness":fitness})
                 
                 #mutation
-                if random.uniform(0,1)<=self.q1:
+                if random.uniform(0,1)<=self.q1 and len(ant_solution)>1:
                     ant_mutation = self.mutation(ant_solution)
                     ant_mutation_dict = self.create_solution_dict_TSP(ant_mutation)
                     fitness_mutation = self.MAUT_TSP(ant_mutation_dict)
