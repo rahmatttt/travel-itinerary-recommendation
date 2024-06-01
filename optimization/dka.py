@@ -438,23 +438,23 @@ class DKA_VRP(object):
         for i in range(self.max_iter):
                         
             #big_males movement
-            for i in range(len(big_males)):
+            for j in range(len(big_males)):
                 new_big_males = []
-                for j in range(len(big_males)):
-                    if i != j:
-                        if big_males[i]['fitness']<big_males[j]['fitness'] or random.uniform(0,1) < 0.5:
-                            new_k,new_fitness = self.edge_construction(big_males[i]['solution'],big_males[j]['solution'])
+                for k in range(len(big_males)):
+                    if j != k:
+                        if big_males[j]['fitness']<big_males[k]['fitness'] or random.uniform(0,1) < 0.5:
+                            new_k,new_fitness = self.edge_construction(big_males[j]['solution'],big_males[k]['solution'])
                             new_big_males.append({'solution':new_k,'fitness':new_fitness})
                         else:
-                            new_k,new_fitness = self.edge_destruction(big_males[i]['solution'],big_males[j]['solution'])
+                            new_k,new_fitness = self.edge_destruction(big_males[j]['solution'],big_males[k]['solution'])
                             new_big_males.append({'solution':new_k,'fitness':new_fitness})
                         
                         new_big_males = sorted(new_big_males, key=lambda x: x["fitness"], reverse = True)
                         if i == 0:
                             if big_males[0]['fitness'] < new_big_males[0]['fitness']:
-                                big_males[i] = new_big_males[0]
+                                big_males[j] = new_big_males[0]
                         else:
-                            big_males[i] = new_big_males[0]
+                            big_males[j] = new_big_males[0]
             
             #female movement
             if random.uniform(0,1) < 0.5:
@@ -471,19 +471,19 @@ class DKA_VRP(object):
                 female['fitness'] = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(female['solution'])))
             
             #small males movement
-            for i in range(len(small_males)):
+            for j in range(len(small_males)):
                 new_small_males = []
-                for j in range(len(big_males)):
+                for k in range(len(big_males)):
                     if random.randint(0,10) <= self.smep:
-                        new_k = self.swap_operator(small_males[i]['solution'])
-                        new_fitness = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(small_males[i]['solution'])))
+                        new_k = self.swap_operator(small_males[j]['solution'])
+                        new_fitness = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(small_males[j]['solution'])))
                         new_small_males.append({'solution':new_k,'fitness':new_fitness})
                     else:
-                        new_k,new_fitness = self.edge_construction(small_males[i]['solution'],big_males[j]['solution'])
+                        new_k,new_fitness = self.edge_construction(small_males[j]['solution'],big_males[k]['solution'])
                         new_small_males.append({'solution':new_k,'fitness':new_fitness})
 
                     new_small_males = sorted(new_small_males, key=lambda x: x["fitness"], reverse = True)
-                    small_males[i] = new_small_males[0]
+                    small_males[j] = new_small_males[0]
             
             # update new komodo_ls
             komodo_ls = big_males + [female] + small_males
