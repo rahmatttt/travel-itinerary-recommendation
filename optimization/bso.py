@@ -171,7 +171,7 @@ class BSO_VRP(object):
             score_poipenalty = (1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty)) * self.degree_poi_penalty
             
             #time penalty
-            penalty_per_day = [max(self.diff_second_between_time(i[-1],self.max_travel_time),0) for i in waktu_ls]
+            penalty_per_day = [max(self.diff_second_between_time(self.max_travel_time,i[-1]),0) for i in waktu_ls]
             sum_time_penalty = sum(penalty_per_day)
             score_timepenalty = (1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty)) * self.degree_time_penalty
         else:
@@ -421,7 +421,7 @@ class BSO_VRP(object):
                 clusters[1]['center'] = self.find_center_index(clusters[1]['list'])
             
             #randomization p1
-            if random.uniform(0,1) < self.p1:
+            if random.uniform(0,1) < self.p1 or (len(clusters)==1 and len(self.rest_nodes)==0):
                 #2-opt
                 cluster_id = random.randint(1,2) if len(solution)>1 else 1
                 
@@ -435,7 +435,7 @@ class BSO_VRP(object):
                 clusters[cluster_id]['list'][itinerary_id] = self.two_opt(clusters[cluster_id]['list'][itinerary_id])
             else:
                 #2-interchange
-                if random.uniform(0,1) < self.p3:
+                if random.uniform(0,1) < self.p3 or (len(clusters)==1 and len(self.node)>0):
                     #interchange a cluster with rest nodes
                     cluster_id = random.randint(1,2) if len(clusters)>1 else 1
                     
@@ -645,7 +645,7 @@ class BSO_TSP(object):
             score_poipenalty = (1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty)) * self.degree_poi_penalty
             
             #time penalty
-            penalty_per_day = [max(self.diff_second_between_time(i[-1],self.max_travel_time),0) for i in waktu_ls]
+            penalty_per_day = [max(self.diff_second_between_time(self.max_travel_time,i[-1]),0) for i in waktu_ls]
             sum_time_penalty = sum(penalty_per_day)
             score_timepenalty = (1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty)) * self.degree_time_penalty
         else:

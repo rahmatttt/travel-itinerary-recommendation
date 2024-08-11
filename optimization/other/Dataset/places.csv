@@ -1,0 +1,188 @@
+id,name,type,latitude,longitude,tarif,durasi,rating
+1,MALIOBORO JOGJAKARTA,location,-7.7925764,110.365843,0,5400,4.8
+2,Tourism Zone Malioboro,location,-7.7982487,110.3652793,0,3600,4.7
+3,Plengkung Gading,location,-7.8137278,110.3629074,0,1800,4.6
+4,Bringin Kembar Yogyakarta,location,-7.8119357,110.363194,0,5400,4.6
+5,Rumah Hantu Malioboro,location,-7.7956378,110.3653538,35000,2700,4.5
+6,Fort Vredeburg Museum,location,-7.800293,110.3661642,3000,7200,4.6
+7,Titik Nol Km Yogyakarta,location,-7.8013966,110.3647641,0,3600,4.8
+8,Museum Sonobudoyo Unit I,location,-7.8022995,110.3643835,3000,7200,4.7
+9,Tarunasura Wijilan Gate,location,-7.8038148,110.3666102,0,1800,4.7
+10,Yogyakarta Northern Square,location,-7.8038975,110.3644232,0,3600,4.6
+11,Pasar Ngasem,location,-7.8082845,110.3602155,0,2700,4.5
+12,Museum Sandi,location,-7.7845549,110.3711548,3000,5400,4.7
+13,Tugu,location,-7.7829218,110.3670757,0,3600,4.8
+14,Desa Wisata Gerabah Kasongan Yogyakarta,location,-7.8455358,110.3379568,0,1800,4.5
+15,Pojok Benteng Wetan,location,-7.8146508,110.3684854,0,1800,4.5
+16,Situs Gua Seluman,location,-7.802813,110.413899,0,3600,4.4
+17,Pojok Benteng Kulon,location,-7.8128408,110.356113,0,2700,4.5
+18,Pakualaman Palace,location,-7.7997354,110.3762182,0,3600,4.5
+19,Museum Perjuangan,location,-7.8164905,110.3718611,10000,5400,4.5
+20,Omah UGM Kotagede Yogyakarta,location,-7.8293112,110.3956256,10000,5400,4.7
+21,Pasar Kotagede,location,-7.8283312,110.3997949,0,900,4.6
+22,Bentara Budaya Yogyakarta (BBY),location,-7.7857242,110.3746954,0,5400,4.5
+23,Panggung Krapyak (Kandang Menjangan),location,-7.8276355,110.3606071,0,1800,4.6
+24,Pusat Kuliner Belut Godean,location,-7.7676636,110.2934028,0,1200,4.4
+25,Kekayon Museum,location,-7.8145939,110.4130604,7000,5400,4.2
+26,Dewi Rawe,location,-7.7514803,110.3352759,0,7200,4.5
+27,Bukit Panguk Kediwung,location,-7.9583695,110.4407622,3000,5400,4.5
+28,Kids Fun,location,-7.7823797,110.3791605,115000,9000,4.4
+29,The Lost World Castle,location,-7.6041648,110.4510042,30000,5400,4.3
+30,Embung Ketingan,location,-7.7443285,110.3313177,20000,7200,3.9
+31,Merapi Park Yogyakarta,location,-7.6209046,110.4216275,20000,7200,4.3
+32,Pasar Beringharjo,location,-7.798812,110.3657371,0,5400,4.5
+33,Taman Kehati,location,-7.7887054,110.3873403,10000,5400,4.6
+34,Grojogan Watu Purbo Gate,location,-7.6309566,110.3404834,0,5400,4.5
+35,House of Chocolate Monggo & Gelato Tirtodipuran,location,-7.8184611,110.3635327,10000,3600,4.6
+36,Dagadu Alun-Alun Utara,location,-7.8031874,110.3657633,0,1500,4.5
+37,Lava Merapi and Alien Stone,location,-7.6023375,110.4552585,5000,1500,4.5
+38,Tlogo Muncar National Garden,location,-7.5916872,110.4339755,8000,5400,4.4
+39,Sermo Reservoir Dam,location,-7.8248171,110.1236396,6000,3600,4.6
+40,Jogja T-Shirt Jethe,location,-7.7624289,110.348049,0,2700,4.3
+41,Museum Ullen Sentalu,location,-7.5978656,110.4233959,50000,7200,4.7
+42,HeHa Sky View,location,-7.8496144,110.478324,20000,7200,4.4
+43,Pasar Sore Malioboro,location,-7.94136080262228,110.4247377097752,0,3600,4.6
+44,Kotagede Heritage Trail,location,-7.8263088,110.398512,0,3600,4.7
+45,Wisata Mangunan,location,-7.9414886,110.4243856,8000,3600,4.7
+46,ALUN ALUN KIDUL YOGYAKARTA,location,-7.7955798,110.3694896,0,5400,5.0
+47,Paintball Jupiter Jogja,location,-7.798217999999999,110.4200702,100000,7200,4.5
+48,History Of Java Museum (HOJM),location,-7.8439029,110.36226099999999,30000,3600,4.5
+49,Pokdarwis Jurug taman sari,location,-7.8290343,110.453198,0,3600,4.0
+50,Vihara Buddha Prabha,location,-7.8018746,110.3694664,0,3600,4.8
+51,Desa Wisata Pentingsari,location,-7.6428597,110.42957539999999,7500,7200,4.5
+52,Miniature Baiturrahman Grand Mosque Aceh Yogyakarta,location,-7.8262101,110.3449539,0,1800,4.8
+53,GOLDEN BIOSKOP VIRTUAL REALITY,location,-7.7955032,110.365309,25000,7200,5.0
+54,Bukit Pangol,location,-7.8353074,110.45896599999999,0,3600,3.7
+55,Plaosan Temple,location,-7.740780699999999,110.50467719999999,5000,3600,4.6
+56,Desa Wisata Brayut,location,-7.701492,110.37390599999999,0,3600,4.5
+57,Omah Oblong,location,-7.7624571,110.3481492,0,3600,4.5
+58,Timang Beach,location,-8.1759266,110.66241959999999,10000,3600,4.5
+59,Paradiso Jogja View,location,-7.8357465,110.4593415,20000,3600,4.6
+60,Museum Kereta Karaton,location,-7.8054476,110.3627375,7000,3600,4.7
+61,Klithikan Pakuncen Market,location,-7.7973552999999995,110.35349959999999,0,3600,4.3
+62,Borobudur Temple,location,-7.607873799999999,110.2037513,50000,3600,4.7
+63,Taman Budaya Yogyakarta,location,-7.8001040999999995,110.3676579,0,3600,4.6
+64,Bukit Rhema Gereja Ayam,location,-7.6057093,110.18048399999999,25000,3600,4.7
+65,Pantai Krakal,location,-8.145102399999999,110.59880059999999,10000,3600,4.6
+66,Jogja City Mall,location,-7.7532423999999995,110.3609091,0,3600,4.5
+67,De Mata Trick Eye Museum,location,-7.816315599999999,110.3871442,30000,3600,4.4
+68,Taman Sari,location,-7.8100673,110.3594581,5000,5400,4.6
+69,The Palace of Yogyakarta,location,-7.8052845,110.3642031,8000,3600,4.6
+70,Taman Pintar Yogyakarta,location,-7.8006715,110.3676551,20000,9000,4.5
+71,Hutan Pinus Pengger,location,-7.8712041,110.45951439999999,5000,7200,4.5
+72,Gembira Loka Zoo,location,-7.8040164999999995,110.397994,75000,5400,4.5
+73,Makam Panembahan Senopati,location,-7.8296224,110.3980162,0,2700,4.8
+74,Tourism Village Mlangi,location,-7.761608,110.3308855,0,5400,4.8
+75,Prambanan Temple,location,-7.7520206,110.49146739999999,50000,7200,4.7
+76,Klenteng Poncowinatan,location,-7.781956399999999,110.3656838,0,2700,4.5
+77,Gedung Agung Yogyakarta,location,-7.8001885,110.36387699999999,0,3600,4.6
+78,Affandi Museum,location,-7.782712999999999,110.396397,25000,7200,4.6
+79,Hutan Pinus Mangunan Dlingo,location,-7.9267837,110.4319967,3000,7200,4.6
+80,Sindu Kusuma Edupark (SKE),location,-7.7672973,110.35424859999999,25000,7200,4.2
+81,1 March 1949 General Offensive Monument,location,-7.801012399999999,110.36533759999999,0,2700,4.6
+82,Museum of Dewantara Kirti Griya,location,-7.8054438,110.3784719,5000,3600,4.6
+83,Taman Pelangi Jogja,location,-7.7503027,110.36949879999999,20000,3600,4.3
+84,Sewu Temple,location,-7.7439217,110.4929095,20000,5400,4.6
+85,XT Square,location,-7.816705499999999,110.3862889,15000,3600,4.4
+86,Mandira Baruga,location,-7.808978799999999,110.3707148,0,3600,4.4
+87,Sasana Wiratama Monument Museum of Prince Diponegoro,location,-7.7865891,110.35144729999999,0,2700,4.4
+88,Jogokariyan Mosque,location,-7.824260799999999,110.3644095,0,3600,4.8
+89,Soko Tunggal Mosque,location,-7.810374599999999,110.3606882,0,5400,4.8
+90,Maritime Museum - Jogja,location,-7.801140599999999,110.3493008,2000,3600,4.4
+91,Indonesian Education Museum,location,-7.774809599999999,110.38720149999999,2500,5400,4.6
+92,KAMPOENG GERABAH KASONGAN,location,-7.845220899999999,110.3374788,0,1800,4.5
+93,Seribu Batu Songgo Langit,location,-7.9310984,110.43091899999999,2500,7200,4.6
+94,Grogol Tourism Village,location,-7.7399571,110.3024078,0,3600,4.3
+95,Kampung Wisata Basen,location,-7.824373899999999,110.40049049999999,0,2700,4.3
+96,Yogyakarta Southern Square,location,-7.8116718999999994,110.363238,0,7200,4.7
+97,CitraGrand Mutiara Waterpark Yogyakarta,location,-7.813734299999999,110.28318379999999,55000,5400,4.3
+98,Cemeti - Institute for Art and Society,location,-7.817791799999999,110.3623492,0,3600,4.6
+99,Selfie Park Jogja,location,-7.816513499999999,110.38660619999999,10000,5400,4.4
+100,Hotel Tentrem Yogyakarta,hotel,-7.7738153,110.3684775,0,0,4.8
+101,The Phoenix Hotel Yogyakarta - MGallery Collection,hotel,-7.782622699999999,110.36850659999999,0,0,4.6
+102,Novotel Suites Yogyakarta Malioboro,hotel,-7.7931709,110.36656289999999,0,0,4.7
+103,Yogyakarta Marriott Hotel,hotel,-7.7615123,110.3984402,0,0,4.7
+104,Meliá Purosani Yogyakarta,hotel,-7.7973538,110.3689898,0,0,4.6
+105,éL Hotel Royale Yogyakarta Malioboro,hotel,-7.7938589,110.3649049,0,0,4.5
+106,Swiss-Belboutique Yogyakarta,hotel,-7.782607499999999,110.37423779999999,0,0,4.8
+107,Aveta Hotel Malioboro,hotel,-7.7938902,110.36581659999999,0,0,4.4
+108,Gaia Cosmo Hotel,hotel,-7.7989469,110.3929241,0,0,4.6
+109,Grand Mercure Yogyakarta Adi Sucipto,hotel,-7.7837159,110.3923981,0,0,4.6
+110,Malioboro Prime Hotel Yogyakarta,hotel,-7.790049,110.36519,0,0,4.2
+111,Grand Zuri Malioboro Hotel,hotel,-7.787678,110.36669839999999,0,0,4.6
+112,ARTOTEL Suites Bianti - Yogyakarta,hotel,-7.782889399999999,110.38191619999999,0,0,4.7
+113,Lynn Hotel By Horison,hotel,-7.824458699999999,110.36685349999999,0,0,4.3
+114,The Alana Hotel & Conference Center Malioboro,hotel,-7.8152832,110.36558529999999,0,0,4.5
+115,The Manohara Hotel Yogyakarta,hotel,-7.774500499999999,110.38917359999999,0,0,4.7
+116,THE 1O1 Yogyakarta Tugu,hotel,-7.7841438,110.3667813,0,0,4.6
+117,Patra Malioboro Hotel,hotel,-7.7917305,110.3637213,0,0,4.8
+118,D'Senopati Malioboro Grand Hotel,hotel,-7.801747199999999,110.37002779999999,0,0,4.4
+119,Hotel Santika Premiere Jogja,hotel,-7.7824228,110.3697363,0,0,4.6
+120,Harper Malioboro Yogyakarta,hotel,-7.784761199999999,110.36722999999999,0,0,4.6
+121,Hotel New Saphir Yogyakarta,hotel,-7.783555,110.391437,0,0,4.5
+122,KJ Hotel Yogyakarta,hotel,-7.8224427,110.3673455,0,0,4.5
+123,Arte Hotel Malioboro,hotel,-7.7899967,110.3622553,0,0,4.4
+124,ibis Styles Yogyakarta,hotel,-7.7938979999999995,110.3614602,0,0,4.4
+125,Kotta GO Hotel Yogyakarta,hotel,-7.783135,110.3628832,0,0,4.7
+126,Tasneem Hotel and Convention Yogyakarta,hotel,-7.8087447999999995,110.3711512,0,0,4.3
+127,Grand Serela Yogyakarta,hotel,-7.768796,110.361195,0,0,4.3
+128,Grand Rohan Jogja,hotel,-7.798237899999999,110.4051231,0,0,4.7
+129,Amaris Hotel Malioboro Jogja,hotel,-7.796214399999999,110.3646619,0,0,4.3
+130,Whiz Hotel Malioboro Yogyakarta,hotel,-7.7937804999999996,110.3648101,0,0,4.1
+131,Horison Ultima Riss Malioboro Yogyakarta,hotel,-7.7876435,110.3644008,0,0,4.5
+132,PORTA by The Ambarrukmo,hotel,-7.776762199999999,110.38233659999999,0,0,4.7
+133,KHAS Malioboro Hotel Yogyakarta,hotel,-7.7982187,110.3633193,0,0,4.5
+134,Malioboro Garden Hotel,hotel,-7.7942029999999995,110.366817,0,0,4.2
+135,Horaios Malioboro Hotel,hotel,-7.7874194999999995,110.3636363,0,0,4.3
+136,Museum Batik Yogyakarta,hotel,-7.7955906,110.3772754,0,0,4.2
+137,Nueve Malioboro Hotel Yogyakarta,hotel,-7.7959233999999995,110.3688956,0,0,4.3
+138,Hotel Zamrud Sosrokusuman,hotel,-7.7937897,110.3672539,0,0,4.6
+139,Sahid Raya Hotel & Convention Yogyakarta,hotel,-7.779761199999999,110.4139668,0,0,4.3
+140,Le Krasak Boutique Hotel,hotel,-7.7887602,110.37275629999999,0,0,4.3
+141,Cavinton Hotel Yogyakarta by Tritama Hospitality,hotel,-7.8008378,110.35603499999999,0,0,4.4
+142,The Jayakarta Yogyakarta Hotel & Spa,hotel,-7.7839979999999995,110.4197006,0,0,4.4
+143,Yellow Star Hotel - Ambarrukmo,hotel,-7.7834794,110.3975966,0,0,4.3
+144,Summer Quest Hotel,hotel,-7.792075799999999,110.36449929999999,0,0,4.1
+145,Burza Hotel Yogyakarta,hotel,-7.8237862,110.3666306,0,0,4.4
+146,The Alana Yogyakarta Hotel & Convention Center,hotel,-7.7393398,110.37719589999999,0,0,4.6
+147,Agung Mas Hotel Yogyakarta,hotel,-7.791444899999999,110.35396019999999,0,0,4.3
+148,All Nite & Day Hotel Gejayan Yogyakarta,hotel,-7.7802114,110.3879623,0,0,4.1
+149,Tara Hotel Yogyakarta,hotel,-7.771604,110.3608098,0,0,4.4
+150,POP! Hotel Timoho - Yogyakarta,hotel,-7.7986173999999995,110.3914401,0,0,4.3
+151,Grand Puri Saron Hotel Malioboro,hotel,-7.791408499999999,110.3629208,0,0,4.3
+152,Uniq Hotel Yogyakarta,hotel,-7.7775981,110.3607775,0,0,4.3
+153,Hotel Citradream Yogyakarta,hotel,-7.7801874,110.36768389999999,0,0,4.3
+154,The Rich Jogja Hotel,hotel,-7.7524542,110.36108229999999,0,0,4.5
+155,The Victoria Hotel Yogyakarta,hotel,-7.7796239,110.40378869999999,0,0,4.4
+156,Abadi Malioboro Jogja by Tritama Hospitality,hotel,-7.7903142999999995,110.3632615,0,0,4.4
+157,Hotel Indah Palace Yogyakarta,hotel,-7.8185351,110.3729171,0,0,4.3
+158,Hotel Dafam Fortuna Malioboro Yogyakarta,hotel,-7.7933718999999995,110.36297309999999,0,0,4.4
+159,Indonesia Hotel,hotel,-7.7917673999999995,110.3651953,0,0,4.2
+160,Duta Garden Hotel and Boutique Villa,hotel,-7.8167503,110.3695223,0,0,4.4
+161,Hotel Grand Rosela,hotel,-7.819400699999999,110.37123989999999,0,0,4.2
+162,Kalya Hotel,hotel,-7.8135292,110.40140749999999,0,0,4.3
+163,Top Malioboro Hotel Jogja,hotel,-7.7912164,110.35327199999999,0,0,4.1
+164,Hotel Dafam Fortuna Seturan,hotel,-7.7658154999999995,110.4108134,0,0,4.4
+165,Royal Brongto Hotel,hotel,-7.817778,110.3599488,0,0,4.4
+166,Satoria Hotel Yogyakarta,hotel,-7.7836064,110.42206499999999,0,0,4.5
+167,Prime Cailendra Hotel RedPartner near Malioboro Yogyakarta,hotel,-7.810461999999999,110.37723799999999,0,0,4.6
+168,POP! Hotel Malioboro - Yogyakarta,hotel,-7.7907481999999995,110.3620009,0,0,4.1
+169,@HOM Premiere Timoho By Horison,hotel,-7.7985481,110.3927832,0,0,4.5
+170,Tab Hotel Malioboro Jogja,hotel,-7.7922148,110.3601348,0,0,4.6
+171,POP! Hotel Sangaji,hotel,-7.7813117,110.367661,0,0,4.2
+172,Ceria Hotel @Alun Alun Yogyakarta,hotel,-7.8035485,110.368612,0,0,4.3
+173,Grand Sarila,hotel,-7.7589596,110.3959946,0,0,4.2
+174,Urban Nurdiono Hotel,hotel,-7.795883099999999,110.39088679999999,0,0,4.6
+175,Hotel Madina Inn Yogyakarta,hotel,-7.8072349,110.3773569,0,0,4.8
+176,Front One Cabin Malioboro Jogja,hotel,-7.7970350999999996,110.3704515,0,0,4.6
+177,Pawon Cokelat,hotel,-7.790546699999999,110.3654284,0,0,4.2
+178,YezYezYez Yogyakarta,hotel,-7.8180361,110.3699946,0,0,4.5
+179,Tickle Hotel,hotel,-7.7829118,110.3853717,0,0,4.2
+180,Happy Family Hotel /dekat Malioboro Yogya/Diy.,hotel,-7.7908228,110.3604696,0,0,4.1
+181,h-Boutique Hotel Jogjakarta,hotel,-7.781765,110.3790782,0,0,4.3
+182,Malioboro Inn Hotel,hotel,-7.7918185,110.3642496,0,0,4.2
+183,Forriz Hotel Yogyakarta,hotel,-7.7954415,110.3535053,0,0,4.4
+184,Hotel Radyoharto Malioboro Yogyakarta,hotel,-7.795443799999999,110.3621311,0,0,4.3
+185,Grand Tjokro Yogyakarta,hotel,-7.7669396,110.39149909999999,0,0,4.4
+186,Grage Bussines Hotel Yogyakarta,hotel,-7.7913443,110.3622759,0,0,4.3
+187,Hotel Laxston Jl. Magelang,hotel,-7.7801399,110.36065669999999,0,0,4.2

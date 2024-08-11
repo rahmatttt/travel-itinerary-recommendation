@@ -1,0 +1,5 @@
+id,name,url
+1,Ant Colony System (ACS) - VRP,ant-colony-system-acs-vrp
+2,Ant Colony System (ACS) - TSP,ant-colony-system-acs-tsp
+3,Ant Colony Optimization (ACO) - VRP,ant-colony-optimization-aco-vrp
+5,Ant Colony Optimization (ACO) - TSP,ant-colony-optimization-aco-tsp

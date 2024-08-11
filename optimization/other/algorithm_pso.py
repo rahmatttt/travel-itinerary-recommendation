@@ -1,0 +1,134 @@
+import math
+import random
+from optimization.other.algorithm import Algorithm
+import matplotlib.pyplot as plt
+import numpy as np
+
+DIMENSIONS = 2              # Number of dimensions
+GLOBAL_BEST = 0             # Global Best of Cost function
+
+POPULATION = 50             # Number of particles in the swarm
+V_MAX = 0.1                 # Maximum velocity value
+PERSONAL_C = 2.0            # Personal coefficient factor
+SOCIAL_C = 2.0              # Social coefficient factor
+CONVERGENCE = 0.001         # Convergence value
+MAX_ITER = 50              # Maximum number of iterrations
+
+
+# Particle class
+class Particle:
+    def __init__(self, vector, z, velocity):
+        self.pos = vector
+        self.pos_z = z
+        self.velocity = velocity
+        self.best_pos = self.pos.copy()
+
+
+class Swarm:
+    def __init__(self, pop, v_max, fitness_function, agent_length):
+        self.particles = []             # List of particles in the swarm
+        self.best_pos = None            # Best particle of the swarm
+        self.best_pos_z = math.inf      # Best particle of the swarm
+
+        for _ in range(pop):
+            vector = [random.random() * 10 for _ in range(agent_length)]
+            z = fitness_function(vector)
+            velocity = np.random.rand(agent_length) * v_max
+            particle = Particle(vector, z, velocity)
+            self.particles.append(particle)
+            if self.best_pos != None and particle.pos_z < self.best_pos_z:
+                self.best_pos = particle.pos.copy()
+                self.best_pos_z = particle.pos_z
+            else:
+                self.best_pos = particle.pos.copy()
+                self.best_pos_z = particle.pos_z
+
+
+# Evaluate objective/cost function (Ackley)
+def cost_function(x, y, a=20, b=0.2, c=2*math.pi):
+    term_1 = np.exp((-b * np.sqrt(0.5 * (x ** 2 + y ** 2))))
+    term_2 = np.exp((np.cos(c * x) + np.cos(c * y)) / 2)
+    return -1 * a * term_1 - term_2 + a + np.exp(1)
+
+
+def particle_swarm_optimization(fitness_function, agent_length, B_LO, B_HI):
+    print('Begin PSO')
+    # Initialize plotting variables
+    # x = np.linspace(B_LO, B_HI, 50)
+    # y = np.linspace(B_LO, B_HI, 50)
+    # X, Y = np.meshgrid(x, y)
+    # fig = plt.figure("Particle Swarm Optimization")
+
+    # Initialize swarm
+    swarm = Swarm(POPULATION, V_MAX, fitness_function, agent_length)
+
+    # Initialize inertia weight
+    inertia_weight = 0.5 + (np.random.rand()/2)
+
+    curr_iter = 0
+    while curr_iter < MAX_ITER:
+        print('Iteration {}'.format(curr_iter))
+        for particle in swarm.particles:
+
+            for i in range(0, agent_length):
+                r1 = np.random.uniform(0, 1)
+                r2 = np.random.uniform(0, 1)
+
+                # Update particle's velocity
+                personal_coefficient = PERSONAL_C * r1 * (particle.best_pos[i] - particle.pos[i])
+                social_coefficient = SOCIAL_C * r2 * (swarm.best_pos[i] - particle.pos[i])
+                new_velocity = inertia_weight * particle.velocity[i] + personal_coefficient + social_coefficient
+
+                # Check if velocity is exceeded
+                if new_velocity > V_MAX:
+                    particle.velocity[i] = V_MAX
+                elif new_velocity < -V_MAX:
+                    particle.velocity[i] = -V_MAX
+                else:
+                    particle.velocity[i] = new_velocity
+
+            # Update particle's current position
+            particle.pos += particle.velocity
+            particle.pos_z = fitness_function(particle.pos)
+
+            # Check if particle is within boundaries
+            for i in range(agent_length):
+                if particle.pos[i] > B_HI:
+                    particle.pos[i] = np.random.uniform(B_LO, B_HI)
+                    particle.pos_z = fitness_function(particle.pos)
+                elif particle.pos[i] < B_LO:
+                    particle.pos[i] = np.random.uniform(B_LO, B_HI)
+                    particle.pos_z = fitness_function(particle.pos)
+
+            # Update particle's best known position
+            if particle.pos_z > fitness_function(particle.best_pos):
+                particle.best_pos = particle.pos.copy()
+
+                # Update swarm's best known position
+                if particle.pos_z > swarm.best_pos_z:
+                    swarm.best_pos = particle.pos.copy()
+                    swarm.best_pos_z = particle.pos_z
+        curr_iter += 1
+    return swarm.best_pos
+
+
+class PSO_VRP(Algorithm):
+    def run_PSO(self):
+        dim = len(selected_poi)
+        fitness = self.fitness_function
+        best_position = particle_swarm_optimization(fitness, dim, 0, 10)
+        return best_position
+
+    def construct_solution(self):
+        x_best = self.run_PSO()
+        output = self.get_output([x_best])
+
+class PSO_TSP(PSO_VRP):
+    def run_PSO(self):
+        dim = len(selected_poi)
+        fitness = self.tsp_fitness_function
+        best_position = particle_swarm_optimization(fitness, dim, 0, 10)
+        return best_position
+
+
+
