@@ -259,9 +259,8 @@ class VNS_VRP(object):
                 if fitness > best_fitness:
                     best_found_solution = solution
                     best_found_fitness = fitness
-                    k = 1
-                else:
-                    k += 1
+                
+                k += 1
             
             if best_found_fitness > best_fitness:
                 best_solution = copy.deepcopy(best_found_solution)
