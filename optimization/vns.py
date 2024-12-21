@@ -1,4 +1,4 @@
-# GENETIC ALGORITHM
+# VARIABLE NEIGHBORHOOD SEARCH 
 from optimization.koneksi import ConDB
 import random
 import math
@@ -8,20 +8,13 @@ import json
 import datetime
 import numpy as np
 
-class GA_VRP(object):
-    def __init__(self,population_size = 50,crossover_rate=0.8,mutation_rate=0.2,max_iter = 300,max_idem = 15,random_state=None):
+class VNS_VRP(object):
+    def __init__(self,max_iter = 200,max_idem = 20,random_state=None):
         self.db = ConDB()
         
         # parameter setting
-        self.population_size = population_size #max size of population
-        self.crossover_rate = crossover_rate
-        self.mutation_rate = mutation_rate
-        self.max_iter = max_iter #max iteration of tabu search
+        self.max_iter = max_iter #max iteration
         self.max_idem = max_idem #stop if the best fitness doesn't increase for max_idem iteration
-
-        # set initial solution
-        self.init_solution = [] #2D list of nodes, [[node1,node2,....],[node4,node5,....]]
-        self.rest_nodes = [] #1D list of nodes, [node1,node2,node4,node5,....]
 
         # data model setting
         self.tour = None #POI yang dipilih oleh user untuk dikunjungi
@@ -55,6 +48,7 @@ class GA_VRP(object):
         #set random seed
         if random_state != None:
             random.seed(random_state)
+            np.random.seed(random_state)
     
     def set_model(self,tour,hotel,timematrix,init_solution=[],travel_days = 3, depart_time = datetime.time(8,0,0),max_travel_time = datetime.time(20,0,0),degree_waktu = 1,degree_tarif = 1,degree_rating = 1):
         #initiate model
@@ -81,6 +75,12 @@ class GA_VRP(object):
         self.max_poi_penalty = len(self.tour)
         self.min_time_penalty = 0
         self.max_time_penalty = ((24*3600)-self.diff_second_between_time(max_travel_time,depart_time))*travel_days
+        
+        # inital solution
+        if len(init_solution) > 0:
+            self.init_solution = init_solution
+        else:
+            self.init_solution = self.generate_init_solution()
     
     def set_max_iter(self,max_iter):
         self.max_iter = max_iter
@@ -158,13 +158,6 @@ class GA_VRP(object):
         maut = pembilang/penyebut
         return maut
     
-    def MAUT_between_two_nodes(self,current_node,next_node):
-        score_rating = self.degree_rating * self.min_max_scaler(self.min_rating,self.max_rating,next_node.rating)
-        score_tarif = self.degree_tarif * (1-self.min_max_scaler(self.min_tarif,self.max_tarif,next_node.rating))
-        score_waktu = self.degree_waktu * (1-self.min_max_scaler(self.min_waktu,self.max_waktu,self.timematrix[current_node._id][next_node._id]['waktu']))
-        maut = (score_rating+score_tarif+score_waktu)/(self.degree_rating+self.degree_tarif+self.degree_waktu)
-        return maut
-    
     def next_node_check(self,current_node,next_node):
         time_needed = self.time_to_second(current_node.depart_time)+self.timematrix[current_node._id][next_node._id]["waktu"]+next_node.waktu_kunjungan
         time_limit = self.time_to_second(self.max_travel_time)
@@ -195,6 +188,11 @@ class GA_VRP(object):
             solution_dict.append(day_solution)
         return solution_dict
     
+    def generate_init_solution(self):
+        solution = list(copy.deepcopy(self.tour))
+        random.shuffle(solution)
+        return solution
+    
     def split_itinerary(self,init_itinerary):
         final_solution = [] #2d list of nodes
         day = 1
@@ -219,77 +217,59 @@ class GA_VRP(object):
             day += 1
         return final_solution
     
-    def partially_mapped_crossover(self,parent1,parent2): #PMX
-        start,end = sorted(random.sample(range(len(parent1)), 2))
-        child1 = [None] * len(parent1)
-        child2 = copy.deepcopy(child1)
-        mapping1 = {parent1[i]._id:parent2[i] for i in range(start,end+1)}
-        mapping2 = {parent2[i]._id:parent1[i] for i in range(start,end+1)}
-
-        for i in range(len(parent1)):
-            if start <= i <= end:
-                child1[i],child2[i] = parent1[i],parent2[i] 
-            else:
-                gene1,gene2 = parent2[i],parent1[i]
-                while gene1._id in mapping1:
-                    gene1 = mapping1[gene1._id]
-                while gene2._id in mapping2:
-                    gene2 = mapping2[gene2._id]
-                child1[i],child2[i] = gene1,gene2
-
-        return child1,child2
+    def n1(self,solution):
+        sol = copy.deepcopy(solution)
+        pos1,pos2 = sorted(random.sample(range(len(sol)),2))
+        sol[pos1:pos2] = reversed(sol[pos1:pos2])
+        return sol
     
-    def swap_mutation(self,individual):
-        individu = copy.deepcopy(individual)
-        pos1,pos2 = random.sample(range(len(individu)),2)
-        individu[pos1],individu[pos2] = individu[pos2],individu[pos1]
-        return individu
+    def n2(self,solution):
+        sol = copy.deepcopy(solution)
+        pos1,pos2,pos3 = sorted(random.sample(range(len(sol)),3))
+        sol[pos1:pos2] = reversed(sol[pos1:pos2])
+        sol[pos1:pos3] = reversed(sol[pos1:pos3])
+        sol[pos2:pos3] = reversed(sol[pos2:pos3])
+        return sol
+    
+    def n3(self,solution):
+        sol = copy.deepcopy(solution)
+        pos1,pos2 = random.sample(range(len(sol)),2)
+        sol[pos1],sol[pos2] = sol[pos2],sol[pos1]
+        return sol
     
     def construct_solution(self):
-        solution_dict = {}
-        fitness = 0
+        best_solution = copy.deepcopy(self.init_solution)
+        best_fitness = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(best_solution)))
+        
+        best_found_solution = copy.deepcopy(best_solution)
+        best_found_fitness = best_fitness
         
         idem_counter = 0
-        population = [random.sample(self.tour,len(self.tour)) for i in range(self.population_size)]
+        
         for i in range(self.max_iter):
-                        
-            #crossover and mutation
-            offspring = []
-            for ind in range(0,self.population_size,2):
-                parent1,parent2 = population[ind],population[ind+1]
-
-                #crossover
-                if random.uniform(0,1) < self.crossover_rate:
-                    child1,child2 = self.partially_mapped_crossover(parent1,parent2)
+            k = 1
+            while k<=3:
+                if k == 1:
+                    solution = self.n1(best_found_solution)
+                elif k == 2:
+                    solution = self.n2(best_found_solution)
                 else:
-                    child1,child2 = copy.deepcopy(parent1),copy.deepcopy(parent2)
-                
-                #mutation
-                if random.uniform(0,1) < self.mutation_rate:
-                    child1 = self.swap_mutation(child1)
-                if random.uniform(0,1) < self.mutation_rate:
-                    child2 = self.swap_mutation(child2)
-                
-                offspring.append(child1)
-                offspring.append(child2)
+                    solution = self.n3(best_found_solution)
+                fitness = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(solution)))
+                if fitness > best_fitness:
+                    best_found_solution = solution
+                    best_found_fitness = fitness
+                    k = 1
+                else:
+                    k += 1
             
-            #selection roulette wheel
-            all_individuals = population + offspring
-            fitness_values = [self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(individual))) for individual in all_individuals]
-            
-            population = random.choices(all_individuals,weights=np.array(fitness_values)/sum(fitness_values),k=self.population_size)
-
-            best_solution = max(population,key=lambda x: self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(x))))
-            best_solution_dict = self.solution_list_of_nodes_to_dict(self.split_itinerary(best_solution))
-            best_fitness = self.MAUT(best_solution_dict)
-            
-            if fitness < best_fitness:
-                fitness = best_fitness
-                solution_dict = best_solution_dict
+            if best_found_fitness > best_fitness:
+                best_solution = copy.deepcopy(best_found_solution)
+                best_fitness = best_found_fitness
                 idem_counter = 0
             else:
                 idem_counter += 1
                 if idem_counter > self.max_idem:
-                    return solution_dict,fitness
-        
-        return solution_dict,fitness
+                    return self.solution_list_of_nodes_to_dict(self.split_itinerary(best_solution)),best_fitness
+            
+        return self.solution_list_of_nodes_to_dict(self.split_itinerary(best_solution)),best_fitness

@@ -1,3 +1,4 @@
+# ANT COLONY OPTIMIZATION
 from optimization.koneksi import ConDB
 import random
 import math

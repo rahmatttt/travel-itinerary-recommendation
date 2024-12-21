@@ -1,3 +1,4 @@
+# HYBRID ANT COLONY OPTIMIZATION
 from optimization.koneksi import ConDB
 import random
 import math
@@ -8,6 +9,7 @@ import datetime
 import numpy as np
 
 class HACO_VRP(object):
+    #CLASSIC HACO (WITH MUTATION)
     def __init__(self,alpha = 1,beta = 4,q0 = 0.4,q1=0.6,q2=0.3,q3=0.6,init_pheromone = 0.5,rho = 0.7,num_ant = 30,max_iter = 100,max_idem=50,random_state=None):
         self.db = ConDB()
         
@@ -401,6 +403,7 @@ class HACO_VRP(object):
         return best_solution,best_fitness
 
 class HACO_VRP2(object):
+    #HACO WITH SWAP OPERATOR INSTEAD OF MUTATION
     def __init__(self,alpha = 1,beta = 4,q0 = 0.4,q1=0.6,q2=0.3,q3=0.6,init_pheromone = 0.5,rho = 0.7,num_ant = 30,max_iter = 100,max_idem=50,random_state=None):
         self.db = ConDB()
         
