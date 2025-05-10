@@ -9,7 +9,7 @@ import datetime
 import numpy as np
 
 class DKA_VRP(object):
-    def __init__(self,n = 5,p=0.5,smep=5,max_iter = 1000,max_idem = 20,random_state=None):
+    def __init__(self,n = 5,p=0.5,smep=5,max_iter = 1000,max_idem = 20,random_state=None, return_fitness_history=False):
         self.db = ConDB()
         
         # parameter setting
@@ -51,6 +51,8 @@ class DKA_VRP(object):
         #set random seed
         if random_state != None:
             random.seed(random_state)
+
+        self.return_fitness_history = return_fitness_history
     
     def set_model(self,tour,hotel,timematrix,init_solution=[],travel_days = 3, depart_time = datetime.time(8,0,0),max_travel_time = datetime.time(20,0,0),degree_waktu = 1,degree_tarif = 1,degree_rating = 1):
         #initiate model
@@ -365,66 +367,72 @@ class DKA_VRP(object):
             return result,fitness
     
     def edge_destruction(self,komodo,komodo_target):
-        # find distance
+        # find similars
         similars = self.similar_edge_between_komodo(komodo,komodo_target)
-        selected_edge = similars[random.randint(0,len(distances)-1)]
-        
-        # create segment
-        segment_a,segment_x,segment_b,segment_y,segment_c = self.find_segment(komodo,komodo_target,selected_edge)
-        nodes_a = [] if segment_a == -1 else copy.deepcopy(komodo[segment_a[0]:segment_a[1]])
-        nodes_x = copy.deepcopy(komodo[segment_x[0]:segment_x[1]])
-        nodes_y = copy.deepcopy(komodo[segment_y[0]:segment_y[1]])
-        nodes_c = [] if segment_c == -1 else copy.deepcopy(komodo[segment_c[0]:segment_c[1]])
-        
-        #operator 1 (nodes_a != [])
-        if nodes_a != []:
-            result1 = nodes_x + nodes_a + nodes_y + nodes_c
-            fitness1 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result1)))
-        else:
-            fitness1 = -999 #eliminate this operator
+
+        if len(similars) > 0:
+            selected_edge = similars[random.randint(0,len(similars)-1)] if len(similars) > 1 else similars[0]
             
-        #operator 2
-        result2 = nodes_a + nodes_y + nodes_x + nodes_c
-        fitness2 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result2)))
-        
-        #operator 3
-        result3 = nodes_a + nodes_x[::-1] + nodes_y[::-1] + nodes_c
-        fitness3 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result3)))
-        
-        #operator 4 (len(nodes_x)>1)
-        if len(nodes_X)>1:
-            result4 = nodes_a + nodes_x[::-1] + nodes_y + nodes_c
-            fitness4 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result4)))
-        else:
-            fitness4 = -999 #eliminate this operator
+            # create segment
+            segment_a,segment_x,segment_b,segment_y,segment_c = self.find_segment(komodo,komodo_target,selected_edge)
+            nodes_a = [] if segment_a == -1 else copy.deepcopy(komodo[segment_a[0]:segment_a[1]])
+            nodes_x = copy.deepcopy(komodo[segment_x[0]:segment_x[1]])
+            nodes_y = copy.deepcopy(komodo[segment_y[0]:segment_y[1]])
+            nodes_c = [] if segment_c == -1 else copy.deepcopy(komodo[segment_c[0]:segment_c[1]])
             
-        #operator 5 (len(nodes_y)>1)
-        if len(nodes_y)>1:
-            result5 = nodes_a + nodes_x + nodes_y[::-1] + nodes_c
-            fitness5 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result5)))
-        else:
-            fitness5 = -999 #eliminate this operator
-        
-        #operator 6 (nodes_c != [])
-        if nodes_c != []:
-            result6 = nodes_a + nodes_x + nodes_c + nodes_y
-            fitness6 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result6)))
-        else:
-            fitness6 = -999 #eliminate this operator
+            #operator 1 (nodes_a != [])
+            if nodes_a != []:
+                result1 = nodes_x + nodes_a + nodes_y + nodes_c
+                fitness1 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result1)))
+            else:
+                fitness1 = -999 #eliminate this operator
+                
+            #operator 2
+            result2 = nodes_a + nodes_y + nodes_x + nodes_c
+            fitness2 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result2)))
             
-        best_operator = np.argmax([fitness1,fitness2,fitness3,fitness4,fitness5,fitness6]) + 1
-        if best_operator == 1:
-            return result1,fitness1
-        elif best_operator == 2:
-            return result2,fitness2
-        elif best_operator == 3:
-            return result3,fitness3
-        elif best_operator == 4:
-            return result4,fitness4
-        elif best_operator == 5:
-            return result5,fitness5
+            #operator 3
+            result3 = nodes_a + nodes_x[::-1] + nodes_y[::-1] + nodes_c
+            fitness3 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result3)))
+            
+            #operator 4 (len(nodes_x)>1)
+            if len(nodes_x)>1:
+                result4 = nodes_a + nodes_x[::-1] + nodes_y + nodes_c
+                fitness4 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result4)))
+            else:
+                fitness4 = -999 #eliminate this operator
+                
+            #operator 5 (len(nodes_y)>1)
+            if len(nodes_y)>1:
+                result5 = nodes_a + nodes_x + nodes_y[::-1] + nodes_c
+                fitness5 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result5)))
+            else:
+                fitness5 = -999 #eliminate this operator
+            
+            #operator 6 (nodes_c != [])
+            if nodes_c != []:
+                result6 = nodes_a + nodes_x + nodes_c + nodes_y
+                fitness6 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result6)))
+            else:
+                fitness6 = -999 #eliminate this operator
+                
+            best_operator = np.argmax([fitness1,fitness2,fitness3,fitness4,fitness5,fitness6]) + 1
+            if best_operator == 1:
+                return result1,fitness1
+            elif best_operator == 2:
+                return result2,fitness2
+            elif best_operator == 3:
+                return result3,fitness3
+            elif best_operator == 4:
+                return result4,fitness4
+            elif best_operator == 5:
+                return result5,fitness5
+            else:
+                return result6,fitness6
         else:
-            return result6,fitness6
+            result = komodo
+            fitness = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(komodo)))
+            return result,fitness
     
     def construct_solution(self):
         best_solution = None
@@ -434,6 +442,8 @@ class DKA_VRP(object):
         komodo_ls = [random.sample(self.tour,len(self.tour)) for i in range(self.n)]
         
         big_males,female,small_males = self.cluster_komodo(komodo_ls)
+
+        fitness_history = []
         
         for i in range(self.max_iter):
                         
@@ -491,6 +501,9 @@ class DKA_VRP(object):
             
             # update cluster komodo
             big_males,female,small_males = self.cluster_komodo(komodo_ls)
+
+            if self.return_fitness_history == True:
+                fitness_history.append(big_males[0]['fitness'])
             
             # check best solution
             if best_fitness < big_males[0]['fitness']:
@@ -500,6 +513,12 @@ class DKA_VRP(object):
             else:
                 idem_counter += 1
                 if idem_counter > self.max_idem:
-                    return best_solution,best_fitness
+                    if self.return_fitness_history == True:
+                        return best_solution,best_fitness,fitness_history
+                    else:
+                        return best_solution,best_fitness
         
-        return best_solution,best_fitness
+        if self.return_fitness_history == True:
+            return best_solution,best_fitness,fitness_history
+        else:
+            return best_solution,best_fitness
