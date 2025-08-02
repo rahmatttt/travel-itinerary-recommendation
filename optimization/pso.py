@@ -8,13 +8,6 @@ import json
 import datetime
 import numpy as np
 
-class particles(object):
-    def __init__(self,vector,velocity):
-        self.position = vector
-        self.velocity = velocity
-        self.best_position = list(self.position)
-        self.best_distance = float('inf')
-
 class PSO_VRP(object):
     def __init__(self,n = 30, w = 0.7,c1 = 1.5,c2 = 1.5,max_iter = 200,max_idem = 20,random_state=None):
         self.db = ConDB()

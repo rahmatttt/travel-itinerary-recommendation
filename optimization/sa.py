@@ -18,7 +18,6 @@ class SA_VRP(object):
         
         # set initial solution
         self.init_solution = [] #2D list of nodes, [[node1,node2,....],[node4,node5,....]]
-        self.rest_nodes = [] #1D list of nodes, [node1,node2,node4,node5,....]
 
         # data model setting
         self.tour = None #POI yang dipilih oleh user untuk dikunjungi
@@ -61,6 +60,7 @@ class SA_VRP(object):
         self.hotel.depart_time = depart_time
         self.max_travel_time = max_travel_time
         self.timematrix = copy.deepcopy(timematrix)
+        self.init_solution = init_solution
         
         self.degree_waktu = degree_waktu
         self.degree_tarif = degree_tarif
@@ -216,6 +216,11 @@ class SA_VRP(object):
             day += 1
         return final_solution
     
+    def get_rest_nodes_from_solution(self,solution_nodes):
+        solution_id = [node._id for node in sum(solution_nodes,[])]
+        rest_nodes = [node for node in self.tour if node._id not in solution_id]
+        return rest_nodes
+
     def swap_operation(self,solution):
         sol = copy.deepcopy(solution)
         pos1,pos2 = random.sample(range(len(sol)),2)
@@ -223,7 +228,7 @@ class SA_VRP(object):
         return sol
     
     def construct_solution(self):
-        solution = random.sample(self.tour,len(self.tour))
+        solution = random.sample(self.tour,len(self.tour)) if len(self.init_solution) <= 0 else copy.deepcopy(sum(self.init_solution,[])+self.get_rest_nodes_from_solution(self.init_solution))
         solution_dict = self.solution_list_of_nodes_to_dict(self.split_itinerary(solution))
         fitness = self.MAUT(solution_dict)
         while self.temperature >= self.stopping_temperature:

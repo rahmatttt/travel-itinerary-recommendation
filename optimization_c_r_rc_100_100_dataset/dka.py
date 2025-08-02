@@ -1,4 +1,4 @@
-# DISCRETE KOMODO ALGORITHM 
+# GENETIC ALGORITHM
 from optimization.koneksi import ConDB
 import random
 import math
@@ -8,10 +8,8 @@ import json
 import datetime
 import numpy as np
 
-class DKA_VRP(object):
+class DKA(object):
     def __init__(self,n = 5,p=0.5,smep=5,max_iter = 1000,max_idem = 20,random_state=None, return_fitness_history=False):
-        self.db = ConDB()
-        
         # parameter setting
         self.n = n #number of komodo
         self.p = p #portion of big male komodo
@@ -19,208 +17,86 @@ class DKA_VRP(object):
         self.max_iter = max_iter #max iteration of tabu search
         self.max_idem = max_idem #stop if the best fitness doesn't increase for max_idem iteration
 
+        # set initial solution
+        self.init_solution = [] #2D list of nodes, [[node1,node2,....],[node4,node5,....]]
+        self.rest_nodes = [] #1D list of nodes, [node1,node2,node4,node5,....]
+        
         # data model setting
-        self.tour = None #POI yang dipilih oleh user untuk dikunjungi
-        self.hotel = None #hotel yang dipilih oleh user
-        self.timematrix = None
+        self.nodes = None #node yang dipilih oleh user untuk dikunjungi
+        self.depot = None #depot: starting and end point
         self.max_travel_time = None
-        self.travel_days = None
-        
-        #degree of interest (DOI for MAUT) setting
-        self.degree_waktu = 1
-        self.degree_tarif = 1
-        self.degree_rating = 1
-        self.degree_poi = 1
-        self.degree_poi_penalty = 1
-        self.degree_time_penalty = 1
-        
-        #scaler setting
-        self.min_rating = None
-        self.max_rating = None
-        self.min_tarif = None
-        self.max_tarif = None
-        self.min_waktu = None
-        self.max_waktu = None
-        self.min_poi = None
-        self.max_poi = None
-        self.min_poi_penalty = None
-        self.max_poi_penalty = None
-        self.min_time_penalty = None
-        self.max_time_penalty = None
-        
+        self.num_vehicle = None
+    
         #set random seed
         if random_state != None:
             random.seed(random_state)
-
+            
         self.return_fitness_history = return_fitness_history
     
-    def set_model(self,tour,hotel,timematrix,travel_days = 3, depart_time = datetime.time(8,0,0),max_travel_time = datetime.time(20,0,0),degree_waktu = 1,degree_tarif = 1,degree_rating = 1):
+    def set_model(self,nodes,depot,num_vehicle=3):
         #initiate model
-        self.tour = copy.deepcopy(tour)
-        self.hotel = copy.deepcopy(hotel)
-        self.travel_days = travel_days
-        self.hotel.depart_time = depart_time
-        self.max_travel_time = max_travel_time
-        self.timematrix = copy.deepcopy(timematrix)
+        self.nodes = copy.deepcopy(nodes)
+        self.depot = copy.deepcopy(depot)
+        self.num_vehicle = num_vehicle
+        self.max_travel_time = depot["C"]
         
         self.n_big_male = int(np.floor((self.p*self.n)-1))
         self.n_big_male = 1 if self.n_big_male == 0 else self.n_big_male
         self.n_female = 1
         self.n_small_male = int(self.n - (self.n_big_male+self.n_female))
-        
-        self.degree_waktu = degree_waktu
-        self.degree_tarif = degree_tarif
-        self.degree_rating = degree_rating
-        
-        self.min_rating = min([node.rating for node in self.tour])
-        self.max_rating = max([node.rating for node in self.tour])
-        self.min_tarif = min([node.tarif for node in self.tour])
-        self.max_tarif = sum([node.tarif for node in self.tour])
-        self.min_waktu = 0
-        self.max_waktu = (self.diff_second_between_time(depart_time,max_travel_time))*self.travel_days
-        self.min_poi = 0
-        self.max_poi = len(self.tour)
-        self.min_poi_penalty = 0
-        self.max_poi_penalty = len(self.tour)
-        self.min_time_penalty = 0
-        self.max_time_penalty = ((24*3600)-self.diff_second_between_time(max_travel_time,depart_time))*travel_days
     
-    def set_max_iter(self,max_iter):
-        self.max_iter = max_iter
+    def fitness(self,solution):
+        return sum([sol["S"] for sol in sum(solution,[])])
     
-    def time_to_second(self,time):
-        return (time.hour*3600)+(time.minute*60)+time.second
+    def fitness_between_two_nodes(self,current_node,next_node):
+        return current_node["S"]+next_node["S"]
     
-    def second_to_time(self,second):
-        second = int(second)
-        return datetime.time(second//3600,(second//60)%60,0) #ignore second detail
+    def euclidean(self,solution1,solution2):
+        return np.sqrt(((solution1["x"] - solution2["x"])**2 + (solution1["y"] - solution2["y"])**2))
     
-    def diff_second_between_time(self,time_a,time_b):
-        #input: time_a and time_b, datetime.time()
-        #output: time_b - time_a, seconds (int)
-        return self.time_to_second(time_b) - self.time_to_second(time_a)
-    
-    def min_max_scaler(self,min_value,max_value,value):
-        if max_value-min_value == 0:
-            return 0
-        else:
-            return (value-min_value)/(max_value-min_value)
-    
-    def MAUT(self,solutions,consider_total_poi = True,use_penalty = True):
-        #input: optimization solutions, format = [{"index":[],"waktu":[],"rating":[],"tarif":[]},...]
-        #output: fitness value calculated using MAUT
-        
-        #concat all attribute lists (except for waktu)
-        index_ls = sum([i['index'] for i in solutions],[])
-        rating_ls = sum([i['rating'] for i in solutions],[])
-        tarif_ls = sum([i['tarif'] for i in solutions],[])
-        
-        waktu_ls = [i['waktu'] for i in solutions]
-        
-        #rating
-        avg_rating = sum(rating_ls)/len(rating_ls)
-        score_rating = self.min_max_scaler(self.min_rating,self.max_rating,avg_rating)*self.degree_rating
-        
-        #tarif
-        sum_tarif = sum(tarif_ls)
-        score_tarif = (1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif)) * self.degree_tarif
-        
-        #waktu
-        waktu_per_day = [self.diff_second_between_time(i[0],i[-1]) for i in waktu_ls]
-        sum_waktu = sum(waktu_per_day)
-        score_waktu = (1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu))*self.degree_waktu
-        
-        #poi
-        count_poi = len(index_ls)
-        score_poi = self.min_max_scaler(self.min_poi,self.max_poi,count_poi) if consider_total_poi == True else 0
-        
-        if use_penalty==True:
-            #poi penalty
-            penalty_index = [node._id for node in self.tour if node._id not in index_ls]
-            count_penalty = len(penalty_index)
-            score_poipenalty = (1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty)) * self.degree_poi_penalty
-            
-            #time penalty
-            penalty_per_day = [max(self.diff_second_between_time(self.max_travel_time,i[-1]),0) for i in waktu_ls]
-            sum_time_penalty = sum(penalty_per_day)
-            score_timepenalty = (1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty)) * self.degree_time_penalty
-        else:
-            score_poipenalty = 0
-            score_timepenalty = 0
-            
-        #MAUT
-        degree_rating = self.degree_rating
-        degree_tarif = self.degree_tarif
-        degree_waktu = self.degree_waktu
-        degree_poi = self.degree_poi if consider_total_poi == True else 0
-        degree_poi_penalty = self.degree_poi_penalty if use_penalty == True else 0
-        degree_time_penalty = self.degree_time_penalty if use_penalty == True else 0
-
-        pembilang = score_rating+score_tarif+score_waktu+score_poi+score_poipenalty+score_timepenalty
-        penyebut = degree_rating+degree_tarif+degree_waktu+degree_poi+degree_poi_penalty+degree_time_penalty
-        maut = pembilang/penyebut
-        return maut
-    
-    def MAUT_between_two_nodes(self,current_node,next_node):
-        score_rating = self.degree_rating * self.min_max_scaler(self.min_rating,self.max_rating,next_node.rating)
-        score_tarif = self.degree_tarif * (1-self.min_max_scaler(self.min_tarif,self.max_tarif,next_node.rating))
-        score_waktu = self.degree_waktu * (1-self.min_max_scaler(self.min_waktu,self.max_waktu,self.timematrix[current_node._id][next_node._id]['waktu']))
-        maut = (score_rating+score_tarif+score_waktu)/(self.degree_rating+self.degree_tarif+self.degree_waktu)
-        return maut
-    
-    def next_node_check(self,current_node,next_node):
-        time_needed = self.time_to_second(current_node.depart_time)+self.timematrix[current_node._id][next_node._id]["waktu"]+next_node.waktu_kunjungan
-        time_limit = self.time_to_second(self.max_travel_time)
-        if (time_needed <= time_limit) and (time_needed <= self.time_to_second(next_node.jam_tutup)):
+    def next_node_check(self,current_node,next_node,current_time):
+        travel_time = self.euclidean(current_node,next_node)
+        arrival_time = current_time + travel_time
+        finish_time = max(arrival_time,next_node["O"])+next_node["d"]
+        return_to_depot_time = self.euclidean(next_node,self.depot)
+        if (arrival_time <= next_node["C"]) and (finish_time + return_to_depot_time <= self.max_travel_time):
             return True
         else:
             return False
     
-    def set_next_node_depart_arrive_time(self,current_node,next_node):
-        arrive_time = self.time_to_second(current_node.depart_time)+self.timematrix[current_node._id][next_node._id]["waktu"]
-        arrive_time = max([arrive_time,self.time_to_second(next_node.jam_buka)])
-        next_node.arrive_time = self.second_to_time(arrive_time)
-        if next_node.tipe.lower() != "hotel":
-            next_node.depart_time = self.second_to_time(arrive_time+next_node.waktu_kunjungan)
-        return next_node
-    
-    def solution_list_of_nodes_to_dict(self, solutions):
-        solution_dict = []
-        for day in solutions:
-            day_solution = {"index":[],"waktu":[self.hotel.depart_time],"rating":[],"tarif":[]}
-            day_solution['index'] = [i._id for i in day]
-            day_solution['rating'] = [i.rating for i in day]
-            day_solution['tarif'] = [i.tarif for i in day]
+    def split_itinerary(self,solution):
+        routes = []
+        
+        vehicle = 1
+        tabu_nodes = []
+        
+        while vehicle <= self.num_vehicle:
+            current_loc = self.depot
+            current_time = self.depot["O"]
+            route = []
+            next_node_candidates = [node for node in solution if node["id"] not in tabu_nodes]
+            for next_node in next_node_candidates:
+                travel_time = self.euclidean(current_loc,next_node)
+                arrival_time = current_time + travel_time
+                finish_time = max(arrival_time,next_node["O"])+next_node["d"]
+                return_to_depot_time = self.euclidean(next_node,self.depot)
+                if (arrival_time <= next_node["C"]) and (finish_time + return_to_depot_time <= self.max_travel_time):
+                    route.append(next_node)
+                    tabu_nodes.append(next_node["id"])
+                    current_loc = next_node
+                    current_time = finish_time
+                else:
+                    continue
             
-            last_waktu = self.time_to_second(day[-1].depart_time) + self.timematrix[day[-1]._id][self.hotel._id]['waktu']
-            day_solution['waktu'].extend([i.arrive_time for i in day] + [self.second_to_time(last_waktu)])
+            if len(route) > 0:
+                routes.append(route)
             
-            solution_dict.append(day_solution)
-        return solution_dict
-    
-    def split_itinerary(self,init_itinerary):
-        final_solution = [] #2d list of nodes
-        day = 1
-        tabu_nodes = [] #list of tabu node's id
-        while day <= self.travel_days:
-            current_node = self.hotel
-            day_solution = [] #list of nodes
-            next_node_candidates = [node for node in init_itinerary if node._id not in tabu_nodes]
-            for i in range(len(next_node_candidates)):
-                if self.next_node_check(current_node,next_node_candidates[i]):
-                    next_node_candidates[i] = self.set_next_node_depart_arrive_time(current_node,next_node_candidates[i])
-                    day_solution.append(next_node_candidates[i])
-                    tabu_nodes.append(next_node_candidates[i]._id)
-                    current_node = next_node_candidates[i]
-            
-            if len(day_solution) > 0:
-                final_solution.append(day_solution)
-            
-            if len(tabu_nodes) == len(self.tour):
+            if len(tabu_nodes) == len(self.nodes):
                 break
             
-            day += 1
-        return final_solution
+            vehicle += 1
+        
+        return routes
     
     def swap_operator(self,komodo):
         k = copy.deepcopy(komodo)
@@ -230,7 +106,7 @@ class DKA_VRP(object):
     
     def cluster_komodo(self,komodo_ls):
         komodo_dict = [{'solution':i,
-                       'fitness':self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(i)))} for i in komodo_ls]
+                       'fitness':self.fitness(self.split_itinerary(i))} for i in komodo_ls]
         komodo_dict = sorted(komodo_dict, key=lambda x: x["fitness"], reverse = True)
         big_males = copy.deepcopy(komodo_dict[:self.n_big_male])
         female = copy.deepcopy(komodo_dict[self.n_big_male])
@@ -239,10 +115,10 @@ class DKA_VRP(object):
     
     def distance_between_komodo(self,komodo,komodo_target):
         #distance between komodo is the edges in komodo_target that not exist in komodo
-        k = [i._id for i in komodo]
+        k = [i["id"] for i in komodo]
         k_edge = [[k[i-1],k[i]] for i in range(1,len(k))]
         
-        k_target = [i._id for i in komodo_target]
+        k_target = [i["id"] for i in komodo_target]
         k_target_edge = [[k_target[i-1],k_target[i]] for i in range(1,len(k_target))]
         
         distance = [i for i in k_target_edge if i not in k_edge]
@@ -250,19 +126,19 @@ class DKA_VRP(object):
     
     def similar_edge_between_komodo(self,komodo,komodo_target):
         #distance between komodo is the edges in komodo_target that not exist in komodo
-        k = [i._id for i in komodo]
+        k = [i["id"] for i in komodo]
         k_edge = [[k[i-1],k[i]] for i in range(1,len(k))]
         
-        k_target = [i._id for i in komodo_target]
+        k_target = [i["id"] for i in komodo_target]
         k_target_edge = [[k_target[i-1],k_target[i]] for i in range(1,len(k_target))]
         
         similar = [i for i in k_target_edge if i in k_edge]
         return similar
     
     def find_segment(self,komodo,komodo_target,edge_target):
-        k = [i._id for i in komodo]
+        k = [i["id"] for i in komodo]
         
-        k_target = [i._id for i in komodo_target]
+        k_target = [i["id"] for i in komodo_target]
         k_target_edge = [[k_target[i-1],k_target[i]] for i in range(1,len(k_target))]
         if k.index(edge_target[0]) < k.index(edge_target[1]):
             x = edge_target[0]
@@ -328,30 +204,30 @@ class DKA_VRP(object):
             if nodes_b != []:
                 #operator 1
                 result1 = nodes_a + nodes_b + nodes_x + nodes_y + nodes_c
-                fitness1 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result1)))
+                fitness1 = self.fitness(self.split_itinerary(result1))
 
                 #operator 2
                 result2 = nodes_a + nodes_b + nodes_y[::-1] + nodes_x[::-1] + nodes_c
-                fitness2 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result2)))
+                fitness2 = self.fitness(self.split_itinerary(result2))
 
                 #operator 3
                 result3 = nodes_a + nodes_y[::-1] + nodes_x[::-1] + nodes_b + nodes_c
-                fitness3 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result3)))
+                fitness3 = self.fitness(self.split_itinerary(result3))
 
                 #operator 4
                 result4 = nodes_a + nodes_x + nodes_y + nodes_b + nodes_c
-                fitness4 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result4)))
+                fitness4 = self.fitness(self.split_itinerary(result4))
                 
                 best_operator = np.argmax([fitness1,fitness2,fitness3,fitness4]) + 1
             else:
                 #operator 1
                 result1 = nodes_a + nodes_y[::-1] + nodes_x[::-1] + nodes_c
-                fitness1 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result1)))
+                fitness1 = self.fitness(self.split_itinerary(result1))
                 
                 #operator 2
                 result2 = nodes_a + nodes_x + nodes_y + nodes_c
                 result2[segment_x[1]],result2[segment_y[0]] = result2[segment_y[0]],result2[segment_x[1]]
-                fitness2 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result2)))
+                fitness2 = self.fitness(self.split_itinerary(result2))
                 best_operator = np.argmax([fitness1,fitness2]) + 1
             
             if best_operator == 1:
@@ -364,9 +240,9 @@ class DKA_VRP(object):
                 return result4,fitness4
         else:
             result = komodo
-            fitness = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(komodo)))
+            fitness = self.fitness(self.split_itinerary(komodo))
             return result,fitness
-    
+        
     def edge_destruction(self,komodo,komodo_target):
         # find similars
         similars = self.similar_edge_between_komodo(komodo,komodo_target)
@@ -384,36 +260,36 @@ class DKA_VRP(object):
             #operator 1 (nodes_a != [])
             if nodes_a != []:
                 result1 = nodes_x + nodes_a + nodes_y + nodes_c
-                fitness1 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result1)))
+                fitness1 = self.fitness(self.split_itinerary(result1))
             else:
                 fitness1 = -999 #eliminate this operator
                 
             #operator 2
             result2 = nodes_a + nodes_y + nodes_x + nodes_c
-            fitness2 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result2)))
+            fitness2 = self.fitness(self.split_itinerary(result2))
             
             #operator 3
             result3 = nodes_a + nodes_x[::-1] + nodes_y[::-1] + nodes_c
-            fitness3 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result3)))
+            fitness3 = self.fitness(self.split_itinerary(result3))
             
             #operator 4 (len(nodes_x)>1)
             if len(nodes_x)>1:
                 result4 = nodes_a + nodes_x[::-1] + nodes_y + nodes_c
-                fitness4 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result4)))
+                fitness4 = self.fitness(self.split_itinerary(result4))
             else:
                 fitness4 = -999 #eliminate this operator
                 
             #operator 5 (len(nodes_y)>1)
             if len(nodes_y)>1:
                 result5 = nodes_a + nodes_x + nodes_y[::-1] + nodes_c
-                fitness5 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result5)))
+                fitness5 = self.fitness(self.split_itinerary(result5))
             else:
                 fitness5 = -999 #eliminate this operator
             
             #operator 6 (nodes_c != [])
             if nodes_c != []:
                 result6 = nodes_a + nodes_x + nodes_c + nodes_y
-                fitness6 = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(result6)))
+                fitness6 = self.fitness(self.split_itinerary(result6))
             else:
                 fitness6 = -999 #eliminate this operator
                 
@@ -432,7 +308,7 @@ class DKA_VRP(object):
                 return result6,fitness6
         else:
             result = komodo
-            fitness = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(komodo)))
+            fitness = self.fitness(self.split_itinerary(komodo))
             return result,fitness
     
     def construct_solution(self):
@@ -440,7 +316,7 @@ class DKA_VRP(object):
         best_fitness = 0
         
         idem_counter = 0
-        komodo_ls = [random.sample(self.tour,len(self.tour)) for i in range(self.n)]
+        komodo_ls = [random.sample(self.nodes,len(self.nodes)) for i in range(self.n)]
         
         big_males,female,small_males = self.cluster_komodo(komodo_ls)
 
@@ -479,7 +355,7 @@ class DKA_VRP(object):
                     female['fitness'] = fitness2
             else:
                 female['solution'] = self.swap_operator(female['solution'])
-                female['fitness'] = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(female['solution'])))
+                female['fitness'] = self.fitness(self.split_itinerary(female['solution']))
             
             #small males movement
             for j in range(len(small_males)):
@@ -487,7 +363,7 @@ class DKA_VRP(object):
                 for k in range(len(big_males)):
                     if random.randint(0,10) <= self.smep:
                         new_k = self.swap_operator(small_males[j]['solution'])
-                        new_fitness = self.MAUT(self.solution_list_of_nodes_to_dict(self.split_itinerary(small_males[j]['solution'])))
+                        new_fitness = self.fitness(self.split_itinerary(small_males[j]['solution']))
                         new_small_males.append({'solution':new_k,'fitness':new_fitness})
                     else:
                         new_k,new_fitness = self.edge_construction(small_males[j]['solution'],big_males[k]['solution'])
@@ -508,7 +384,7 @@ class DKA_VRP(object):
             
             # check best solution
             if best_fitness < big_males[0]['fitness']:
-                best_solution = self.solution_list_of_nodes_to_dict(self.split_itinerary(big_males[0]['solution']))
+                best_solution = self.split_itinerary(big_males[0]['solution'])
                 best_fitness = big_males[0]['fitness']
                 idem_counter = 0
             else:

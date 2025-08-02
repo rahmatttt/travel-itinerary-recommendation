@@ -284,45 +284,45 @@ class BSO_VRP(object):
         n = len(solution)
         
         if self.two_opt_method == "first": #first improvement
-        	improved = False
-	        for i in range(1,n-2):
-	            for j in range(i+2,n-1):
-	                if j-i == 1:
-	                    continue
-	                temp_solution = copy.deepcopy(solution)
-	                temp_solution[i+1:j+1] = reversed(temp_solution[i+1:j+1])
-	                temp_solution[1:-1],status = self.reset_depart_arrive_time(temp_solution[1:-1])
-	                if status:
-	                    temp_fitness = self.MAUT(self.solution_list_of_nodes_to_dict([temp_solution[1:-1]]),use_penalty=False)
-	                    if temp_fitness > fitness:
-	                        solution = copy.deepcopy(temp_solution)
-	                        fitness = temp_fitness
-	                        improved = True
-	                        return solution[1:-1] #first improvement
+            improved = False
+            for i in range(1,n-2):
+                for j in range(i+2,n-1):
+                    if j-i == 1:
+                        continue
+                    temp_solution = copy.deepcopy(solution)
+                    temp_solution[i+1:j+1] = reversed(temp_solution[i+1:j+1])
+                    temp_solution[1:-1],status = self.reset_depart_arrive_time(temp_solution[1:-1])
+                    if status:
+                        temp_fitness = self.MAUT(self.solution_list_of_nodes_to_dict([temp_solution[1:-1]]),use_penalty=False)
+                        if temp_fitness > fitness:
+                            solution = copy.deepcopy(temp_solution)
+                            fitness = temp_fitness
+                            improved = True
+                            return solution[1:-1] #first improvement
         else: #best improvement
-	        improved = True
-	        while improved:
-	            improved = False
-	            for i in range(1,n-2):
-	                for j in range(i+2,n-1):
-	                    if j-i == 1:
-	                        continue
-	                    temp_solution = copy.deepcopy(solution)
-	                    temp_solution[i+1:j+1] = reversed(temp_solution[i+1:j+1])
-	                    temp_solution[1:-1],status = self.reset_depart_arrive_time(temp_solution[1:-1])
-	                    if status:
-	                        temp_fitness = self.MAUT(self.solution_list_of_nodes_to_dict([temp_solution[1:-1]]),use_penalty=False)
-	                        if temp_fitness > fitness:
-	                            solution = copy.deepcopy(temp_solution)
-	                            fitness = temp_fitness
-	                            improved = True
+            improved = True
+            while improved:
+                improved = False
+                for i in range(1,n-2):
+                    for j in range(i+2,n-1):
+                        if j-i == 1:
+                            continue
+                        temp_solution = copy.deepcopy(solution)
+                        temp_solution[i+1:j+1] = reversed(temp_solution[i+1:j+1])
+                        temp_solution[1:-1],status = self.reset_depart_arrive_time(temp_solution[1:-1])
+                        if status:
+                            temp_fitness = self.MAUT(self.solution_list_of_nodes_to_dict([temp_solution[1:-1]]),use_penalty=False)
+                            if temp_fitness > fitness:
+                                solution = copy.deepcopy(temp_solution)
+                                fitness = temp_fitness
+                                improved = True
 
         return solution[1:-1] #return best or return unchanged
     
     def two_interchange(self,itinerary1,itinerary2, rest_nodes = False):
         operator = [(0,1),(1,0),(1,1),(1,2),(2,0),(2,1),(2,2)]
         solution1 = copy.deepcopy(itinerary1)
-        solution2 = copy.deepcopy(itinerary2)
+        solution2 = copy.deepcopy(itinerary2) #rest nodes if rest_nodes == True
         if rest_nodes == False:
             fitness = self.MAUT(self.solution_list_of_nodes_to_dict([solution1,solution2]),use_penalty=False)
         else:
