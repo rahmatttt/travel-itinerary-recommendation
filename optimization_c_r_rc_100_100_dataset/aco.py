@@ -1,4 +1,4 @@
-# GENETIC ALGORITHM
+# ANT COLONY OPTIMIZATION
 from optimization.koneksi import ConDB
 import random
 import math
@@ -55,8 +55,8 @@ class ACO(object):
     def fitness_between_two_nodes(self,current_node,next_node):
         return current_node["S"]+next_node["S"]
     
-    def euclidean(self,solution1,solution2):
-        return np.sqrt(((solution1["x"] - solution2["x"])**2 + (solution1["y"] - solution2["y"])**2))
+    def euclidean(self,node1,node2):
+        return np.sqrt(((node1["x"] - node2["x"])**2 + (node1["y"] - node2["y"])**2))
     
     def exploitation(self,current_node,next_node_candidates,local_pheromone_matrix):
         max_pos = np.argmax([(local_pheromone_matrix[current_node["id"]][next_node["id"]]["pheromone"]**self.alpha)*(self.fitness_between_two_nodes(current_node,next_node)**self.beta) for next_node in next_node_candidates])

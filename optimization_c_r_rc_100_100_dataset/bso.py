@@ -1,4 +1,4 @@
-# GENETIC ALGORITHM
+# BRAINSTORM OPTIMIZATION
 from optimization.koneksi import ConDB
 import random
 import math
@@ -60,8 +60,8 @@ class BSO(object):
     def fitness(self,solution):
         return sum([sol["S"] for sol in sum(solution,[])])
     
-    def euclidean(self,solution1,solution2):
-        return np.sqrt(((solution1["x"] - solution2["x"])**2 + (solution1["y"] - solution2["y"])**2))
+    def euclidean(self,node1,node2):
+        return np.sqrt(((node1["x"] - node2["x"])**2 + (node1["y"] - node2["y"])**2))
     
     def next_node_check(self,current_node,next_node,current_time):
         travel_time = self.euclidean(current_node,next_node)
