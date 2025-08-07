@@ -4,13 +4,16 @@ import datetime
 
 class ConDB:
 
-    def connect(self):
-        con = mdb.connect(host='127.0.0.1',port=3306,user='root',password='',db='rekomendasi_wisata')
+    def connect(self,db='rekomendasi_wisata'):
+        #db bandung = rekomendasi_wisata_2
+        #db yogyakarta = rekomendasi_wisata
+        # thats the db name in my local
+        con = mdb.connect(host='127.0.0.1',port=3306,user='root',password='',db=db)
         return con
 
-    def select(self,table):
+    def select(self,table,db='rekomendasi_wisata'):
         #get all data from specific table
-        con = self.connect()
+        con = self.connect(db=db)
         cur = con.cursor()
         sql = "SELECT * from "+table
         cur.execute(sql)
@@ -18,9 +21,9 @@ class ConDB:
         con.close()
         return wisata
 
-    def getJadwal(self,index,hari="minggu"):
+    def getJadwal(self,index,hari="minggu",db='rekomendasi_wisata'):
         #get jam buka dan jam tutup untuk destinasi wisata tertentu di hari tertentu
-        con = self.connect()
+        con = self.connect(db=db)
         cur = con.cursor()
         sql = f"""SELECT
                       pj_id_tempat, pj_jam_buka,pj_jam_tutup
@@ -34,10 +37,10 @@ class ConDB:
         con.close()
         return jadwal[1],jadwal[2]
 
-    def WisatabyID(self,idwisata):
+    def WisatabyID(self,idwisata,db='rekomendasi_wisata'):
         #get detail destinasi wisata
         tour = []
-        con = self.connect()
+        con = self.connect(db=db)
         cur = con.cursor()
         in_p=', '.join(map(lambda x: '%s', idwisata))
         sql = f"""SELECT
@@ -66,9 +69,9 @@ class ConDB:
             tour.append(node)
         return tour
 
-    def HotelbyID(self,idHotel):
+    def HotelbyID(self,idHotel,db='rekomendasi_wisata'):
         #get detail hotel
-        con = self.connect()
+        con = self.connect(db=db)
         cur = con.cursor()
         sql = f"""SELECT
                       post_id,
@@ -91,7 +94,8 @@ class ConDB:
 
     def TimeMatrixbyID(self,idHotel,idmatrix):
         #create time matrix dalam bentuk dictionary
-        con = self.connect()
+        print(idHotel)
+        con = self.connect(db='rekomendasi_wisata')
         cur = con.cursor()
         sql = f"""SELECT 
                       pt_id, pt_a, pt_b, pt_waktu 
@@ -100,6 +104,58 @@ class ConDB:
                   WHERE 
                       pt_a IN {str(tuple(idmatrix+[idHotel]))}  
                       and pt_b IN {str(tuple(idmatrix+[idHotel]))}
+               """
+        cur.execute(sql)
+        matrix = cur.fetchall()
+        con.close()
+        
+        timematrix = {}
+        for m in matrix:
+            if m[1] not in timematrix:
+                timematrix[m[1]] = {}
+            timematrix[m[1]][m[2]] = {"waktu":m[3]}
+        
+        return timematrix
+
+    def TimeMatrixbyID_bdg(self,idHotel,idmatrix):
+        #create time matrix dalam bentuk dictionary
+        con = self.connect(db='rekomendasi_wisata_2') #db bandung in my local
+        cur = con.cursor()
+        sql = f"""SELECT DISTINCT
+                      pt_id, pt_a, pt_b, pt_waktu 
+                  FROM 
+                      posts_timematrix 
+                  WHERE 
+                      pt_a IN {str(tuple(idmatrix))}  
+                      and pt_b IN {str(tuple(idmatrix))}
+                  UNION
+                  SELECT 
+                      pt_id, pt_a, pt_b, pt_waktu 
+                  FROM 
+                      (SELECT
+                          pth_id AS pt_id,
+                          pth_id_location AS pt_a,
+                          pth_id_hotel AS pt_b,
+                          pth_loc2hotel AS pt_waktu
+                      FROM
+                          posts_timematrix_hotel) loc_to_hotel
+                  WHERE 
+                      pt_a IN {str(tuple(idmatrix))}  
+                      and pt_b = {idHotel}
+                  UNION
+                  SELECT 
+                      pt_id, pt_a, pt_b, pt_waktu 
+                  FROM 
+                      (SELECT
+                          pth_id AS pt_id,
+                          pth_id_hotel AS pt_a,
+                          pth_id_location AS pt_b,
+                          pth_hotel2loc AS pt_waktu
+                      FROM
+                          posts_timematrix_hotel) hotel_to_loc
+                  WHERE 
+                      pt_a = {idHotel}
+                      and pt_b IN {str(tuple(idmatrix))}
                """
         cur.execute(sql)
         matrix = cur.fetchall()
