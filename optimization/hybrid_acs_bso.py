@@ -1,19 +1,14 @@
 # HYBRID ACS - BSO
-from optimization.koneksi import ConDB
 import random
-import math
 import copy
-import time
-import json
 import datetime
-import numpy as np
-import time
 from optimization.bso import BSO_VRP,BSO_TSP
+from optimization.base import BaseACS
 
-class ACSBSO_VRP(object):
+class ACSBSO_VRP(BaseACS):
     def __init__(self,alpha_t = 1,beta = 1,q0 = 0.1,init_pheromone = 0.1,rho = 0.1,alpha = 0.1,num_ant = 30,max_iter_acs = 200,max_iter_bso=15,p0=0.5,p1=0.4,p2=0.4,p3=0.5,p4=0.5,max_idem_acs=30,max_idem_bso=10,random_state=None):
-        self.db = ConDB()
-        
+        super().__init__()
+
         #ACS parameter setting
         self.alpha_t = alpha_t #relative value for pheromone (in transition rule)
         self.beta = beta #relative value for heuristic value (in transition rule)
@@ -40,231 +35,9 @@ class ACSBSO_VRP(object):
                                 max_iter=self.max_iter_bso,max_idem=self.max_idem_bso,
                                 two_opt_method = "first",random_state=random_state)
 
-        # data model setting
-        self.tour = None #POI yang dipilih oleh user untuk dikunjungi
-        self.hotel = None #hotel yang dipilih oleh user
-        self.timematrix = None
-        self.max_travel_time = None
-        self.travel_days = None
-        
-        #degree of interest (DOI for MAUT) setting
-        self.degree_waktu = 1
-        self.degree_tarif = 1
-        self.degree_rating = 1
-        self.degree_poi = 1
-        self.degree_poi_penalty = 1
-        self.degree_time_penalty = 1
-        
-        #scaler setting
-        self.min_rating = None
-        self.max_rating = None
-        self.min_tarif = None
-        self.max_tarif = None
-        self.min_waktu = None
-        self.max_waktu = None
-        self.min_poi = None
-        self.max_poi = None
-        self.min_poi_penalty = None
-        self.max_poi_penalty = None
-        self.min_time_penalty = None
-        self.max_time_penalty = None
-        
         #set random seed
         self.random_state = random_state
         random.seed(self.random_state)
-    
-    def set_model(self,tour,hotel,timematrix,travel_days = 3, depart_time = datetime.time(8,0,0),max_travel_time = datetime.time(20,0,0),degree_waktu = 1,degree_tarif = 1,degree_rating = 1):
-        #initiate model
-        self.tour = copy.deepcopy(tour)
-        self.hotel = copy.deepcopy(hotel)
-        self.travel_days = travel_days
-        self.hotel.depart_time = depart_time
-        self.max_travel_time = max_travel_time
-        self.timematrix = self.add_pheromone_to_timematrix(copy.deepcopy(timematrix))
-        
-        self.degree_waktu = degree_waktu
-        self.degree_tarif = degree_tarif
-        self.degree_rating = degree_rating
-        
-        self.min_rating = min([node.rating for node in self.tour])
-        self.max_rating = max([node.rating for node in self.tour])
-        self.min_tarif = min([node.tarif for node in self.tour])
-        self.max_tarif = sum([node.tarif for node in self.tour])
-        self.min_waktu = 0
-        self.max_waktu = (self.diff_second_between_time(depart_time,max_travel_time))*self.travel_days
-        self.min_poi = 0
-        self.max_poi = len(self.tour)
-        self.min_poi_penalty = 0
-        self.max_poi_penalty = len(self.tour)
-        self.min_time_penalty = 0
-        self.max_time_penalty = ((24*3600)-self.diff_second_between_time(max_travel_time,depart_time))*travel_days
-            
-    def set_max_iter_acs(self,max_iter_acs):
-        self.max_iter_acs = max_iter_acs
-
-    def time_to_second(self,time):
-        return (time.hour*3600)+(time.minute*60)+time.second
-    
-    def second_to_time(self,second):
-        second = int(second)
-        return datetime.time(second//3600,(second//60)%60,0) #ignore second detail
-    
-    def diff_second_between_time(self,time_a,time_b):
-        #input: time_a and time_b, datetime.time()
-        #output: time_b - time_a, seconds (int)
-        return self.time_to_second(time_b) - self.time_to_second(time_a)
-    
-    def add_pheromone_to_timematrix(self, timematrix):
-        for i in timematrix:
-            for j in timematrix[i]:
-                timematrix[i][j]['pheromone'] = self.init_pheromone
-        return timematrix
-    
-    def min_max_scaler(self,min_value,max_value,value):
-        if max_value-min_value == 0:
-            return 0
-        else:
-            return (value-min_value)/(max_value-min_value)
-    
-    def MAUT(self,solutions,consider_total_poi = True,use_penalty = True):
-        #input: optimization solutions, format = [{"index":[],"waktu":[],"rating":[],"tarif":[]},...]
-        #output: fitness value calculated using MAUT
-        
-        #concat all attribute lists (except for waktu)
-        index_ls = sum([i['index'] for i in solutions],[])
-        rating_ls = sum([i['rating'] for i in solutions],[])
-        tarif_ls = sum([i['tarif'] for i in solutions],[])
-        
-        waktu_ls = [i['waktu'] for i in solutions]
-        
-        #rating
-        avg_rating = sum(rating_ls)/len(rating_ls)
-        score_rating = self.min_max_scaler(self.min_rating,self.max_rating,avg_rating)*self.degree_rating
-        
-        #tarif
-        sum_tarif = sum(tarif_ls)
-        score_tarif = (1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif)) * self.degree_tarif
-        
-        #waktu
-        waktu_per_day = [self.diff_second_between_time(i[0],i[-1]) for i in waktu_ls]
-        sum_waktu = sum(waktu_per_day)
-        score_waktu = (1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu))*self.degree_waktu
-        
-        #poi
-        count_poi = len(index_ls)
-        score_poi = self.min_max_scaler(self.min_poi,self.max_poi,count_poi) if consider_total_poi == True else 0
-        
-        if use_penalty==True:
-            #poi penalty
-            penalty_index = [node._id for node in self.tour if node._id not in index_ls]
-            count_penalty = len(penalty_index)
-            score_poipenalty = (1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty)) * self.degree_poi_penalty
-            
-            #time penalty
-            penalty_per_day = [max(self.diff_second_between_time(self.max_travel_time,i[-1]),0) for i in waktu_ls]
-            sum_time_penalty = sum(penalty_per_day)
-            score_timepenalty = (1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty)) * self.degree_time_penalty
-        else:
-            score_poipenalty = 0
-            score_timepenalty = 0
-            
-        #MAUT
-        degree_rating = self.degree_rating
-        degree_tarif = self.degree_tarif
-        degree_waktu = self.degree_waktu
-        degree_poi = self.degree_poi if consider_total_poi == True else 0
-        degree_poi_penalty = self.degree_poi_penalty if use_penalty == True else 0
-        degree_time_penalty = self.degree_time_penalty if use_penalty == True else 0
-
-        pembilang = score_rating+score_tarif+score_waktu+score_poi+score_poipenalty+score_timepenalty
-        penyebut = degree_rating+degree_tarif+degree_waktu+degree_poi+degree_poi_penalty+degree_time_penalty
-        maut = pembilang/penyebut
-        return maut
-    
-    def MAUT_between_two_nodes(self,current_node,next_node):
-        score_rating = self.degree_rating * self.min_max_scaler(self.min_rating,self.max_rating,next_node.rating)
-        score_tarif = self.degree_tarif * (1-self.min_max_scaler(self.min_tarif,self.max_tarif,next_node.rating))
-        score_waktu = self.degree_waktu * (1-self.min_max_scaler(self.min_waktu,self.max_waktu,self.timematrix[current_node._id][next_node._id]['waktu']))
-        maut = (score_rating+score_tarif+score_waktu)/(self.degree_rating+self.degree_tarif+self.degree_waktu)
-        return maut
-    
-    def exploitation(self,current_node,next_node_candidates,local_pheromone_matrix):
-        max_pos = np.argmax([local_pheromone_matrix[current_node._id][next_node._id]['pheromone']*(self.MAUT_between_two_nodes(current_node,next_node)**self.beta) for next_node in next_node_candidates])
-        next_node = next_node_candidates[max_pos]
-        return next_node
-    
-    def exploration(self,current_node,next_node_candidates,local_pheromone_matrix):
-        #penyebut
-        sum_sample = 0
-        for next_node in next_node_candidates:
-            pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha_t
-            heuristic_val = self.MAUT_between_two_nodes(current_node,next_node)**self.beta
-            sum_sample += pheromone_in_edge*heuristic_val
-        
-        #probability
-        sum_sample = 0.0001 if sum_sample == 0 else sum_sample
-        next_node_prob = []
-        for next_node in next_node_candidates:
-            pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha_t
-            heuristic_val = self.MAUT_between_two_nodes(current_node,next_node)**self.beta
-            node_prob = (pheromone_in_edge*heuristic_val)/sum_sample
-            node_prob = 0.0001 if node_prob == 0 else node_prob
-            next_node_prob.append(node_prob)
-        
-        next_node = random.choices(next_node_candidates,next_node_prob,k=1)
-        return next_node[0]
-    
-    def transition_rule(self,current_node,next_node_candidates,local_pheromone_matrix):
-        q = random.uniform(0,1)
-        if q <= self.q0: #exploitation
-            next_node = self.exploitation(current_node,next_node_candidates,local_pheromone_matrix)
-        else: #exploration
-            next_node = self.exploration(current_node,next_node_candidates,local_pheromone_matrix)
-        return next_node
-    
-    def next_node_check(self,current_node,next_node):
-        time_needed = self.time_to_second(current_node.depart_time)+self.timematrix[current_node._id][next_node._id]["waktu"]+next_node.waktu_kunjungan
-        time_limit = self.time_to_second(self.max_travel_time)
-        if (time_needed <= time_limit) and (time_needed <= self.time_to_second(next_node.jam_tutup)):
-            return True
-        else:
-            return False
-    
-    def set_next_node_depart_arrive_time(self,current_node,next_node):
-        arrive_time = self.time_to_second(current_node.depart_time)+self.timematrix[current_node._id][next_node._id]["waktu"]
-        arrive_time = max([arrive_time,self.time_to_second(next_node.jam_buka)])
-        next_node.arrive_time = self.second_to_time(arrive_time)
-        if next_node.tipe.lower() != "hotel":
-            next_node.depart_time = self.second_to_time(arrive_time+next_node.waktu_kunjungan)
-        return next_node
-    
-    def local_pheromone_update(self,solutions,fitness,local_pheromone_matrix):
-        for day in solutions:
-            nodes = [self.hotel._id] + day['index'] + [self.hotel._id]
-            i = 1
-            while i < len(nodes):
-                pheromone = local_pheromone_matrix[nodes[i-1]][nodes[i]]['pheromone']
-                pheromone = ((1-self.rho)*pheromone)+(self.rho*fitness)
-                local_pheromone_matrix[nodes[i-1]][nodes[i]]['pheromone'] = pheromone
-                i += 1
-        return local_pheromone_matrix
-    
-    def global_pheromone_update(self,best_solutions,best_fitness):
-        solutions = copy.deepcopy(best_solutions)
-        solution_index = []
-        for day in solutions:
-            day_solution = [self.hotel._id] + day['index'] + [self.hotel._id] 
-            day_solution = [(day_solution[i-1],day_solution[i]) for i in range(1,len(day['index']))]
-            solution_index = solution_index + day_solution
-        
-        for node in self.timematrix:
-            for next_node in self.timematrix[node]:
-                pheromone = self.timematrix[node][next_node]['pheromone']
-                if (node,next_node) in solution_index:
-                    pheromone = ((1-self.alpha)*pheromone)+(self.alpha*best_fitness)
-                else:
-                    pheromone = ((1-self.alpha)*pheromone)+0
-                self.timematrix[node][next_node]['pheromone'] = pheromone
     
     def construct_solution(self):
         best_solution = None
@@ -355,10 +128,10 @@ class ACSBSO_VRP(object):
         
         return best_solution,best_fitness
 
-class ACSBSO_TSP(object):
+class ACSBSO_TSP(BaseACS):
     def __init__(self,alpha_t = 1,beta = 3,q0 = 0.1,init_pheromone = 0.1,rho = 0.9,alpha = 0.1,num_ant = 30,max_iter_acs = 200,max_iter_bso=15,p0=0.5,p1=0.9,max_idem_acs=30,max_idem_bso=10,random_state=None):
-        self.db = ConDB()
-        
+        super().__init__(random_state = random_state)
+
         #ACS parameter setting
         self.alpha_t = alpha_t #relative value for pheromone (in transition rule)
         self.beta = beta #relative value for heuristic value (in transition rule)
@@ -377,236 +150,15 @@ class ACSBSO_TSP(object):
         self.bso_model = BSO_TSP(p1=p1,max_iter=max_iter_bso,max_idem=max_idem_bso,
                                 two_opt_method="first",random_state=random_state)
         
-        # data model setting
-        self.tour = None #POI yang dipilih oleh user untuk dikunjungi
-        self.hotel = None #hotel yang dipilih oleh user
-        self.timematrix = None
-        self.max_travel_time = None
-        self.travel_days = None
-        
-        #degree of interest (DOI for MAUT) setting
-        self.degree_waktu = 1
-        self.degree_tarif = 1
-        self.degree_rating = 1
-        self.degree_poi = 1
-        self.degree_poi_penalty = 1
-        self.degree_time_penalty = 1
-        
-        #scaler setting
-        self.min_rating = None
-        self.max_rating = None
-        self.min_tarif = None
-        self.max_tarif = None
-        self.min_waktu = None
-        self.max_waktu = None
         self.max_waktu_tsp = None
-        self.min_poi = None
-        self.max_poi = None
-        self.min_poi_penalty = None
-        self.max_poi_penalty = None
-        self.min_time_penalty = None
-        self.max_time_penalty = None
-        
-        #set random seed
-        if random_state != None:
-            random.seed(random_state)
     
     def set_model(self,tour,hotel,timematrix,travel_days = 3, depart_time = datetime.time(8,0,0),max_travel_time = datetime.time(20,0,0),degree_waktu = 1,degree_tarif = 1,degree_rating = 1):
-        #initiate model
-        self.tour = copy.deepcopy(tour)
-        self.hotel = copy.deepcopy(hotel)
-        self.travel_days = travel_days
-        self.hotel.depart_time = depart_time
-        self.max_travel_time = max_travel_time
-        self.timematrix = self.add_pheromone_to_timematrix(copy.deepcopy(timematrix))
-        
-        self.degree_waktu = degree_waktu
-        self.degree_tarif = degree_tarif
-        self.degree_rating = degree_rating
-        
-        self.min_rating = min([node.rating for node in self.tour])
-        self.max_rating = max([node.rating for node in self.tour])
-        self.min_tarif = min([node.tarif for node in self.tour])
-        self.max_tarif = sum([node.tarif for node in self.tour])
-        self.min_waktu = 0
-        self.max_waktu = (self.diff_second_between_time(depart_time,max_travel_time))*self.travel_days
-        self.min_poi = 0
-        self.max_poi = len(self.tour)
-        self.min_poi_penalty = 0
-        self.max_poi_penalty = len(self.tour)
-        self.min_time_penalty = 0
-        self.max_time_penalty = ((24*3600)-self.diff_second_between_time(max_travel_time,depart_time))*travel_days
-        
+        super().set_model(tour,hotel,timematrix,travel_days = travel_days,depart_time = depart_time,max_travel_time = max_travel_time,degree_waktu = degree_waktu,degree_tarif = degree_tarif,degree_rating = degree_rating)
         self.max_waktu_tsp = 0  # Initialize the total waktu to 0
-
         for source, destinations in self.timematrix.items():
             for destination, values in destinations.items():
                 self.max_waktu_tsp += values['waktu']
-
         self.bso_model.set_model(tour,hotel,timematrix,init_solution=[],travel_days=travel_days,degree_waktu = degree_waktu,degree_tarif = degree_tarif,degree_rating = degree_rating)
-    
-    def set_max_iter_acs(self,max_iter_acs):
-        self.max_iter_acs = max_iter_acs
-
-    def time_to_second(self,time):
-        return (time.hour*3600)+(time.minute*60)+time.second
-    
-    def second_to_time(self,second):
-        second = int(second)
-        return datetime.time(second//3600,(second//60)%60,0) #ignore second detail
-    
-    def diff_second_between_time(self,time_a,time_b):
-        #input: time_a and time_b, datetime.time()
-        #output: time_b - time_a, seconds (int)
-        return self.time_to_second(time_b) - self.time_to_second(time_a)
-    
-    def add_pheromone_to_timematrix(self, timematrix):
-        for i in timematrix:
-            for j in timematrix[i]:
-                timematrix[i][j]['pheromone'] = self.init_pheromone
-        return timematrix
-    
-    def min_max_scaler(self,min_value,max_value,value):
-        if max_value-min_value == 0:
-            return 0
-        else:
-            return (value-min_value)/(max_value-min_value)
-    
-    def MAUT_TSP(self,solutions):
-        #concat all attribute lists (except for waktu)
-        index_ls = solutions['index']
-        rating_ls = solutions['rating']
-        tarif_ls = solutions['tarif']
-                
-        #rating
-        avg_rating = sum(rating_ls)/len(rating_ls)
-        score_rating = self.min_max_scaler(self.min_rating,self.max_rating,avg_rating)*self.degree_rating
-        
-        #tarif
-        sum_tarif = sum(tarif_ls)
-        score_tarif = (1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif)) * self.degree_tarif
-        
-        #waktu
-        sum_waktu = solutions['waktu']
-        score_waktu = (1-self.min_max_scaler(self.min_waktu,self.max_waktu_tsp,sum_waktu))*self.degree_waktu
-        
-        #MAUT
-        pembilang = score_rating+score_tarif+score_waktu
-        penyebut = self.degree_rating+self.degree_tarif+self.degree_waktu
-        maut = pembilang/penyebut
-        return maut
-    
-    def MAUT(self,solutions,consider_total_poi = True,use_penalty = True):
-        #input: optimization solutions, format = [{"index":[],"waktu":[],"rating":[],"tarif":[]},...]
-        #output: fitness value calculated using MAUT
-        
-        #concat all attribute lists (except for waktu)
-        index_ls = sum([i['index'] for i in solutions],[])
-        rating_ls = sum([i['rating'] for i in solutions],[])
-        tarif_ls = sum([i['tarif'] for i in solutions],[])
-        
-        waktu_ls = [i['waktu'] for i in solutions]
-        
-        #rating
-        avg_rating = sum(rating_ls)/len(rating_ls)
-        score_rating = self.min_max_scaler(self.min_rating,self.max_rating,avg_rating)*self.degree_rating
-        
-        #tarif
-        sum_tarif = sum(tarif_ls)
-        score_tarif = (1-self.min_max_scaler(self.min_tarif,self.max_tarif,sum_tarif)) * self.degree_tarif
-        
-        #waktu
-        waktu_per_day = [self.diff_second_between_time(i[0],i[-1]) for i in waktu_ls]
-        sum_waktu = sum(waktu_per_day)
-        score_waktu = (1-self.min_max_scaler(self.min_waktu,self.max_waktu,sum_waktu))*self.degree_waktu
-        
-        #poi
-        count_poi = len(index_ls)
-        score_poi = self.min_max_scaler(self.min_poi,self.max_poi,count_poi) if consider_total_poi == True else 0
-        
-        if use_penalty==True:
-            #poi penalty
-            penalty_index = [node._id for node in self.tour if node._id not in index_ls]
-            count_penalty = len(penalty_index)
-            score_poipenalty = (1-self.min_max_scaler(self.min_poi_penalty,self.max_poi_penalty,count_penalty)) * self.degree_poi_penalty
-            
-            #time penalty
-            penalty_per_day = [max(self.diff_second_between_time(self.max_travel_time,i[-1]),0) for i in waktu_ls]
-            sum_time_penalty = sum(penalty_per_day)
-            score_timepenalty = (1-self.min_max_scaler(self.min_time_penalty,self.max_time_penalty,sum_time_penalty)) * self.degree_time_penalty
-        else:
-            score_poipenalty = 0
-            score_timepenalty = 0
-            
-        #MAUT
-        degree_rating = self.degree_rating
-        degree_tarif = self.degree_tarif
-        degree_waktu = self.degree_waktu
-        degree_poi = self.degree_poi if consider_total_poi == True else 0
-        degree_poi_penalty = self.degree_poi_penalty if use_penalty == True else 0
-        degree_time_penalty = self.degree_time_penalty if use_penalty == True else 0
-
-        pembilang = score_rating+score_tarif+score_waktu+score_poi+score_poipenalty+score_timepenalty
-        penyebut = degree_rating+degree_tarif+degree_waktu+degree_poi+degree_poi_penalty+degree_time_penalty
-        maut = pembilang/penyebut
-        return maut
-    
-    def MAUT_between_two_nodes(self,current_node,next_node):
-        score_rating = self.degree_rating * self.min_max_scaler(self.min_rating,self.max_rating,next_node.rating)
-        score_tarif = self.degree_tarif * (1-self.min_max_scaler(self.min_tarif,self.max_tarif,next_node.rating))
-        score_waktu = self.degree_waktu * (1-self.min_max_scaler(self.min_waktu,self.max_waktu,self.timematrix[current_node._id][next_node._id]['waktu']))
-        maut = (score_rating+score_tarif+score_waktu)/(self.degree_rating+self.degree_tarif+self.degree_waktu)
-        return maut
-    
-    def exploitation(self,current_node,next_node_candidates,local_pheromone_matrix):
-        max_pos = np.argmax([local_pheromone_matrix[current_node._id][next_node._id]['pheromone']*(self.MAUT_between_two_nodes(current_node,next_node)**self.beta) for next_node in next_node_candidates])
-        next_node = next_node_candidates[max_pos]
-        return next_node
-    
-    def exploration(self,current_node,next_node_candidates,local_pheromone_matrix):
-        #penyebut
-        sum_sample = 0
-        for next_node in next_node_candidates:
-            pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha_t
-            heuristic_val = self.MAUT_between_two_nodes(current_node,next_node)**self.beta
-            sum_sample += pheromone_in_edge*heuristic_val
-        
-        #probability
-        sum_sample = 0.0001 if sum_sample == 0 else sum_sample
-        next_node_prob = []
-        for next_node in next_node_candidates:
-            pheromone_in_edge = local_pheromone_matrix[current_node._id][next_node._id]['pheromone']**self.alpha_t
-            heuristic_val = self.MAUT_between_two_nodes(current_node,next_node)**self.beta
-            node_prob = (pheromone_in_edge*heuristic_val)/sum_sample
-            node_prob = 0.0001 if node_prob == 0 else node_prob
-            next_node_prob.append(node_prob)
-        
-        next_node = random.choices(next_node_candidates,next_node_prob,k=1)
-        return next_node[0]
-    
-    def transition_rule(self,current_node,next_node_candidates,local_pheromone_matrix):
-        q = random.uniform(0,1)
-        if q <= self.q0: #exploitation
-            next_node = self.exploitation(current_node,next_node_candidates,local_pheromone_matrix)
-        else: #exploration
-            next_node = self.exploration(current_node,next_node_candidates,local_pheromone_matrix)
-        return next_node
-    
-    def next_node_check(self,current_node,next_node):
-        time_needed = self.time_to_second(current_node.depart_time)+self.timematrix[current_node._id][next_node._id]["waktu"]+next_node.waktu_kunjungan
-        time_limit = self.time_to_second(self.max_travel_time)
-        if (time_needed <= time_limit) and (time_needed <= self.time_to_second(next_node.jam_tutup)):
-            return True
-        else:
-            return False
-    
-    def set_next_node_depart_arrive_time(self,current_node,next_node):
-        arrive_time = self.time_to_second(current_node.depart_time)+self.timematrix[current_node._id][next_node._id]["waktu"]
-        arrive_time = max([arrive_time,self.time_to_second(next_node.jam_buka)])
-        next_node.arrive_time = self.second_to_time(arrive_time)
-        if next_node.tipe.lower() != "hotel":
-            next_node.depart_time = self.second_to_time(arrive_time+next_node.waktu_kunjungan)
-        return next_node
     
     def local_pheromone_update(self,solutions,fitness,local_pheromone_matrix):
         nodes = [self.hotel._id] + solutions['index'] + [self.hotel._id]
@@ -704,43 +256,3 @@ class ACSBSO_TSP(object):
         
         return best_solution,best_fitness
     
-    def construct_solution(self):
-        day = 1
-        final_solution = []
-        tabu_nodes = []
-        temp_tour = copy.deepcopy(self.tour)
-        while day <= self.travel_days:
-            solution,fitness = self.TSP()
-            current_node = self.hotel
-            day_solution = {"index":[],"waktu":[current_node.depart_time],"rating":[],"tarif":[]}
-            next_node_candidates = [node for node in solution if node._id not in tabu_nodes]
-            for i in range(len(next_node_candidates)):
-                time_needed = self.time_to_second(current_node.depart_time)+self.timematrix[current_node._id][next_node_candidates[i]._id]["waktu"]+next_node_candidates[i].waktu_kunjungan
-                if time_needed >= self.time_to_second(next_node_candidates[i].jam_tutup):
-                    continue
-                elif self.next_node_check(current_node,next_node_candidates[i]):
-                    next_node_candidates[i] = self.set_next_node_depart_arrive_time(current_node,next_node_candidates[i])
-                    day_solution['index'].append(next_node_candidates[i]._id)
-                    day_solution['waktu'].append(next_node_candidates[i].arrive_time)
-                    day_solution['rating'].append(next_node_candidates[i].rating)
-                    day_solution['tarif'].append(next_node_candidates[i].tarif)
-                    tabu_nodes.append(next_node_candidates[i]._id)
-                    self.tour = [node for node in self.tour if node._id != next_node_candidates[i]._id] 
-                    current_node = next_node_candidates[i]
-                else:
-                    break
-            if current_node._id != self.hotel._id:
-                self.hotel = self.set_next_node_depart_arrive_time(current_node,self.hotel)
-                day_solution['waktu'].append(self.hotel.arrive_time)
-            
-            if len(day_solution['index']) > 0:
-                final_solution.append(day_solution)
-            
-            if len(self.tour) == 0:
-                break
-
-            day += 1
-        
-        final_fitness = self.MAUT(final_solution)
-        self.tour = copy.deepcopy(temp_tour)
-        return final_solution,final_fitness

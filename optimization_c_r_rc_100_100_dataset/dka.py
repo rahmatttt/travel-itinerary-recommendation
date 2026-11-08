@@ -1,15 +1,13 @@
 # DISCRETE KOMODO ALGORITHM
-from optimization.koneksi import ConDB
 import random
-import math
 import copy
-import time
-import json
-import datetime
 import numpy as np
+from optimization_c_r_rc_100_100_dataset.base import BaseOptimizer
 
-class DKA(object):
+class DKA(BaseOptimizer):
     def __init__(self,n = 5,p=0.5,smep=5,max_iter = 1000,max_idem = 20,random_state=None, return_fitness_history=False):
+        super().__init__(random_state = random_state)
+
         # parameter setting
         self.n = n #number of komodo
         self.p = p #portion of big male komodo
@@ -21,82 +19,14 @@ class DKA(object):
         self.init_solution = [] #2D list of nodes, [[node1,node2,....],[node4,node5,....]]
         self.rest_nodes = [] #1D list of nodes, [node1,node2,node4,node5,....]
         
-        # data model setting
-        self.nodes = None #node yang dipilih oleh user untuk dikunjungi
-        self.depot = None #depot: starting and end point
-        self.max_travel_time = None
-        self.num_vehicle = None
-    
-        #set random seed
-        if random_state != None:
-            random.seed(random_state)
-            
         self.return_fitness_history = return_fitness_history
     
     def set_model(self,nodes,depot,num_vehicle=3):
-        #initiate model
-        self.nodes = copy.deepcopy(nodes)
-        self.depot = copy.deepcopy(depot)
-        self.num_vehicle = num_vehicle
-        self.max_travel_time = depot["C"]
-        
+        super().set_model(nodes,depot,num_vehicle)
         self.n_big_male = int(np.floor((self.p*self.n)-1))
         self.n_big_male = 1 if self.n_big_male == 0 else self.n_big_male
         self.n_female = 1
         self.n_small_male = int(self.n - (self.n_big_male+self.n_female))
-    
-    def fitness(self,solution):
-        return sum([sol["S"] for sol in sum(solution,[])])
-    
-    def fitness_between_two_nodes(self,current_node,next_node):
-        return current_node["S"]+next_node["S"]
-    
-    def euclidean(self,node1,node2):
-        return np.sqrt(((node1["x"] - node2["x"])**2 + (node1["y"] - node2["y"])**2))
-    
-    def next_node_check(self,current_node,next_node,current_time):
-        travel_time = self.euclidean(current_node,next_node)
-        arrival_time = current_time + travel_time
-        finish_time = max(arrival_time,next_node["O"])+next_node["d"]
-        return_to_depot_time = self.euclidean(next_node,self.depot)
-        if (arrival_time <= next_node["C"]) and (finish_time + return_to_depot_time <= self.max_travel_time):
-            return True
-        else:
-            return False
-    
-    def split_itinerary(self,solution):
-        routes = []
-        
-        vehicle = 1
-        tabu_nodes = []
-        
-        while vehicle <= self.num_vehicle:
-            current_loc = self.depot
-            current_time = self.depot["O"]
-            route = []
-            next_node_candidates = [node for node in solution if node["id"] not in tabu_nodes]
-            for next_node in next_node_candidates:
-                travel_time = self.euclidean(current_loc,next_node)
-                arrival_time = current_time + travel_time
-                finish_time = max(arrival_time,next_node["O"])+next_node["d"]
-                return_to_depot_time = self.euclidean(next_node,self.depot)
-                if (arrival_time <= next_node["C"]) and (finish_time + return_to_depot_time <= self.max_travel_time):
-                    route.append(next_node)
-                    tabu_nodes.append(next_node["id"])
-                    current_loc = next_node
-                    current_time = finish_time
-                else:
-                    continue
-            
-            if len(route) > 0:
-                routes.append(route)
-            
-            if len(tabu_nodes) == len(self.nodes):
-                break
-            
-            vehicle += 1
-        
-        return routes
     
     def swap_operator(self,komodo):
         k = copy.deepcopy(komodo)

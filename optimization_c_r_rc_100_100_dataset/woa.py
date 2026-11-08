@@ -1,95 +1,18 @@
 # WHALE OPTIMIZATION ALGORITHM
-from optimization.koneksi import ConDB
 import random
-import math
-import copy
-import time
-import json
-import datetime
 import numpy as np
+from optimization_c_r_rc_100_100_dataset.base import BaseOptimizer
 
-class WOA(object):
+class WOA(BaseOptimizer):
     def __init__(self,population = 50,b = 1,max_iter = 1000,max_idem = 20,random_state=None):
+        super().__init__(random_state = random_state)
+
         #parameter setting
         self.population = population #population size
         self.b = b #logarithmic spiral
         self.a = 2 #a value set to 2 and will gradually decrease throughout the iterations until it reaches 0
         self.max_iter = max_iter #max iteration
         self.max_idem = max_idem #stop if the best fitness doesn't increase for max_idem iteration
-        
-        # data model setting
-        self.nodes = None #node yang dipilih oleh user untuk dikunjungi
-        self.depot = None #depot: starting and end point
-        self.max_travel_time = None
-        self.num_vehicle = None
-    
-        #set random seed
-        if random_state != None:
-            random.seed(random_state)
-    
-    def set_model(self,nodes,depot,num_vehicle=3):
-        #initiate model
-        self.nodes = copy.deepcopy(nodes)
-        self.depot = copy.deepcopy(depot)
-        self.num_vehicle = num_vehicle
-        self.max_travel_time = depot["C"]
-    
-    def fitness(self,solution):
-        return sum([sol["S"] for sol in sum(solution,[])])
-    
-    def fitness_between_two_nodes(self,current_node,next_node):
-        return current_node["S"]+next_node["S"]
-    
-    def euclidean(self,node1,node2):
-        return np.sqrt(((node1["x"] - node2["x"])**2 + (node1["y"] - node2["y"])**2))
-    
-    def next_node_check(self,current_node,next_node,current_time):
-        travel_time = self.euclidean(current_node,next_node)
-        arrival_time = current_time + travel_time
-        finish_time = max(arrival_time,next_node["O"])+next_node["d"]
-        return_to_depot_time = self.euclidean(next_node,self.depot)
-        if (arrival_time <= next_node["C"]) and (finish_time + return_to_depot_time <= self.max_travel_time):
-            return True
-        else:
-            return False
-    
-    def solution_list_of_float_to_nodes(self,solutions):
-        index_order = np.flip(np.argsort(solutions))
-        return list(np.array(self.nodes)[index_order])
-    
-    def split_itinerary(self,solution):
-        routes = []
-        
-        vehicle = 1
-        tabu_nodes = []
-        
-        while vehicle <= self.num_vehicle:
-            current_loc = self.depot
-            current_time = self.depot["O"]
-            route = []
-            next_node_candidates = [node for node in solution if node["id"] not in tabu_nodes]
-            for next_node in next_node_candidates:
-                travel_time = self.euclidean(current_loc,next_node)
-                arrival_time = current_time + travel_time
-                finish_time = max(arrival_time,next_node["O"])+next_node["d"]
-                return_to_depot_time = self.euclidean(next_node,self.depot)
-                if (arrival_time <= next_node["C"]) and (finish_time + return_to_depot_time <= self.max_travel_time):
-                    route.append(next_node)
-                    tabu_nodes.append(next_node["id"])
-                    current_loc = next_node
-                    current_time = finish_time
-                else:
-                    continue
-            
-            if len(route) > 0:
-                routes.append(route)
-            
-            if len(tabu_nodes) == len(self.nodes):
-                break
-            
-            vehicle += 1
-        
-        return routes
     
     def generate_population(self):
         population_ls = [np.array([random.uniform(0,10) for i in range(len(self.nodes))]) for j in range(self.population)]

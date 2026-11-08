@@ -1,15 +1,12 @@
 # MODELING TO GENERATE ALTERNATIVE (MGA)
-from optimization.koneksi import ConDB
 import random
-import math
-import copy
-import time
-import json
-import datetime
 import numpy as np
+from optimization_c_r_rc_100_100_dataset.base import BaseOptimizer
 
-class MGA(object):
+class MGA(BaseOptimizer):
     def __init__(self,population_size = 10,m=5,n=10,const=3,max_iter = 100,max_idem = 20,random_state=None):
+        super().__init__(random_state = random_state)
+
         # parameter setting
         self.population_size = population_size #number of individual in the population
         self.m = m #number of candidates returned by the breed function
@@ -17,76 +14,19 @@ class MGA(object):
         self.const = const #suitable constant chosen in advance to allow an acceptable deviation from the obj function (to calculate target fitness)
         self.max_iter = max_iter #max iteration of tabu search
         self.max_idem = max_idem #stop if the best fitness doesn't increase for max_idem iteration
-
-        # data model setting
-        self.nodes = None #node yang dipilih oleh user untuk dikunjungi
-        self.depot = None #depot: starting and end point
-        self.max_travel_time = None
-        self.num_vehicle = None
-    
-        #set random seed
-        if random_state != None:
-            random.seed(random_state)
             
     def set_model(self,nodes,depot,num_vehicle=3):
-        #initiate model
-        self.nodes = copy.deepcopy(nodes)
-        self.depot = copy.deepcopy(depot)
-        self.num_vehicle = num_vehicle
-        self.max_travel_time = depot["C"]
-        
+        super().set_model(nodes,depot,num_vehicle)
         self.operator_credit = {
             "displacement" : 1,
             "swap" : 1,
             "insertion" : 1,
             "reversal" : 1
         }
-        
         self.archive = [] #the archived solution (S)
         self.reference,_ = self.reference_solution()
         self.target_fitness = self.reference["fitness"] - self.const*np.abs(self.reference["fitness"])
-        
         self.archive = [self.reference] #the archived solution (S)
-    
-    def fitness(self,solution):
-        return sum([sol["S"] for sol in sum(solution,[])])
-    
-    def euclidean(self,node1,node2):
-        return np.sqrt(((node1["x"] - node2["x"])**2 + (node1["y"] - node2["y"])**2))
-    
-    def split_itinerary(self,solution):
-        routes = []
-        
-        vehicle = 1
-        tabu_nodes = []
-        
-        while vehicle <= self.num_vehicle:
-            current_loc = self.depot
-            current_time = self.depot["O"]
-            route = []
-            next_node_candidates = [node for node in solution if node["id"] not in tabu_nodes]
-            for next_node in next_node_candidates:
-                travel_time = self.euclidean(current_loc,next_node)
-                arrival_time = current_time + travel_time
-                finish_time = max(arrival_time,next_node["O"])+next_node["d"]
-                return_to_depot_time = self.euclidean(next_node,self.depot)
-                if (arrival_time <= next_node["C"]) and (finish_time + return_to_depot_time <= self.max_travel_time):
-                    route.append(next_node)
-                    tabu_nodes.append(next_node["id"])
-                    current_loc = next_node
-                    current_time = finish_time
-                else:
-                    continue
-            
-            if len(route) > 0:
-                routes.append(route)
-            
-            if len(tabu_nodes) == len(self.nodes):
-                break
-            
-            vehicle += 1
-        
-        return routes
     
     def generate_solution(self, init_solution = []):
         solution = self.split_itinerary(random.sample(self.nodes,len(self.nodes))) if len(init_solution) == 0 else self.split_itinerary(init_solution)
@@ -227,11 +167,6 @@ class MGA(object):
             population[i]["dissimilarity"] = compute_dissimilarity(population[i])
         
         return population
-    
-    def get_rest_nodes_from_solution(self,solution_nodes):
-        solution_id = [node["id"] for node in sum(solution_nodes,[])]
-        rest_nodes = [node for node in self.nodes if node["id"] not in solution_id]
-        return rest_nodes
     
     def construct_solution(self):
         population = self.generate_init_population()
