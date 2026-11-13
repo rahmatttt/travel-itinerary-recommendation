@@ -55,31 +55,8 @@ class BSO_VRP(BaseOptimizer):
                 self.p1 = 1 #no two interchange (only two opt)
     
     def generate_init_solution(self):
-        solution = list(copy.deepcopy(self.tour))
-        random.shuffle(solution)
-        
-        final_solution = [] #2d list of nodes
-        day = 1
-        tabu_nodes = [] #list of tabu node's id
-        while day <= self.travel_days:
-            current_node = self.hotel
-            day_solution = [] #list of nodes
-            next_node_candidates = [node for node in solution if node._id not in tabu_nodes]
-            for i in range(len(next_node_candidates)):
-                if self.next_node_check(current_node,next_node_candidates[i]):
-                    next_node_candidates[i] = self.set_next_node_depart_arrive_time(current_node,next_node_candidates[i])
-                    day_solution.append(next_node_candidates[i])
-                    tabu_nodes.append(next_node_candidates[i]._id)
-                    current_node = next_node_candidates[i]
-            
-            if len(day_solution) > 0:
-                final_solution.append(day_solution)
-            
-            if len(tabu_nodes) == len(self.tour):
-                break
-            
-            day += 1
-        return final_solution
+        """Random order of all POIs split into days, as a 2D list of nodes (one list per day)."""
+        return self.split_itinerary(super().generate_init_solution())
     
     def random_clustering(self,solution_nodes):
         random.shuffle(solution_nodes)

@@ -19,10 +19,7 @@ class GA_VRP_TD(BaseOptimizer):
         # set initial solution
         self.init_solution = [] #2D list of nodes, [[node1,node2,....],[node4,node5,....]]
         self.rest_nodes = [] #1D list of nodes, [node1,node2,node4,node5,....]
-    
-    def set_model(self,tour,hotel,timematrix,init_solution=[],start_day = 5,travel_days = 3, depart_time = datetime.time(8,0,0),max_travel_time = datetime.time(20,0,0),degree_waktu = 1,degree_tarif = 1,degree_rating = 1):
-        super().set_model(tour,hotel,timematrix,start_day = start_day,travel_days = travel_days,depart_time = depart_time,max_travel_time = max_travel_time,degree_waktu = degree_waktu,degree_tarif = degree_tarif,degree_rating = degree_rating)
-    
+        
     def partially_mapped_crossover(self,parent1,parent2): #PMX
         start,end = sorted(random.sample(range(len(parent1)), 2))
         child1 = [None] * len(parent1)

@@ -225,6 +225,7 @@ class BaseOptimizer(object):
         return solution_dict
 
     def generate_init_solution(self):
+        """Random order of all POIs, as a 1D list of nodes."""
         solution = list(copy.deepcopy(self.tour))    
         random.shuffle(solution)
         return solution
@@ -332,6 +333,7 @@ class BaseAntColony(BaseOptimizer):
         return pheromone_matrix
 
     def construct_solution(self):
+        """Itinerary builder for the *_TSP classes: calls self.TSP() for every day, so the subclass must define TSP(). The *_VRP classes override this method."""
         day = 1
         final_solution = []
         tabu_nodes = []
@@ -493,6 +495,7 @@ class BaseILS(BaseOptimizer):
         return best_solution,best_fitness
 
     def generate_init_solution(self):
+        """Random continuous vector with one value per POI, decoded by solution_list_of_float_to_nodes."""
         return np.random.uniform(-5.12,5.12,size=len(self.tour))
 
     def perturbation(self,solution_nodes):

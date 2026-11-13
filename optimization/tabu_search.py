@@ -27,6 +27,7 @@ class TS_VRP(BaseOptimizer):
         self.rest_nodes = self.get_rest_nodes_from_solution(self.init_solution)
     
     def generate_init_solution(self):
+        """Greedy itinerary: each step adds the feasible POI with the highest MAUT_between_two_nodes. 2D list of nodes (one list per day)."""
         solution = []
         day = 1
         tabu_nodes = []
